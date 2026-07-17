@@ -98,7 +98,7 @@ nav.mainnav{
   transition:box-shadow .3s;
 }
 nav.mainnav.scrolled{box-shadow:0 10px 30px -18px rgba(8,25,43,.25);}
-nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;height:96px;}
+nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;height:120px;}
 .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700;font-size:19px;color:var(--blue);white-space:nowrap;}
 .logo .mark{width:38px;height:38px;position:relative;perspective:200px;}
 .logo .mark .cube{position:absolute;inset:0;transform-style:preserve-3d;animation:logoSpin 7s linear infinite;}
@@ -557,7 +557,7 @@ footer ul li a:hover{color:var(--orange-soft);}
     
     <a href="index.html" class="logo" id="dynamic-logo-link">
       <span class="mark"><span class="cube"><i class="f1"></i><i class="f2"></i><i class="f3"></i></span></span>
-      <img src="logo1.png" id="dynamic-logo" alt="Prime Estate" style="height: 65px; transition: opacity 0.5s ease; object-fit: contain;">
+      <img src="logo1.png" id="dynamic-logo" alt="Prime Estate" style="height: 90px; transition: opacity 0.5s ease; object-fit: contain;">
     </a>
     <ul class="navlinks" id="navlinks">
       <li><a href="index.html" class="active">Home</a></li>
@@ -853,7 +853,7 @@ window.dispatchEvent(new Event('scroll'));
           flyingLogo.style.top = '50%';
           flyingLogo.style.transform = 'translate(-50%, -50%) scale(0.5)';
           flyingLogo.style.opacity = '0';
-          flyingLogo.style.height = '240px';
+          flyingLogo.style.height = '380px';
           flyingLogo.style.width = 'auto';
           flyingLogo.style.objectFit = 'contain';
           flyingLogo.classList.remove('flying-logo-anim');
