@@ -828,12 +828,18 @@ window.dispatchEvent(new Event('scroll'));
 
 <script>
 
+
   // Dynamic Flying Logo Logic
   document.addEventListener('DOMContentLoaded', () => {
     const logos = ['logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
     let currentLogoIndex = 0;
     const navLogo = document.getElementById('dynamic-logo');
     
+    let isPaused = false;
+    let isCenterMode = false;
+    let flyTimeout = null;
+    let loopInterval = null;
+
     if (navLogo) {
       // Inject flashing CSS
       const style = document.createElement('style');
@@ -869,7 +875,33 @@ window.dispatchEvent(new Event('scroll'));
       flyingLogo.style.opacity = '0';
       document.body.appendChild(flyingLogo);
 
+      function executeFlyToNav() {
+          isCenterMode = false;
+          const rect = navLogo.getBoundingClientRect();
+          
+          logoBackdrop.style.opacity = '0'; // hide backdrop
+          flyingLogo.classList.remove('flying-logo-anim'); // stop flashing
+          flyingLogo.style.transition = 'all 0.9s cubic-bezier(0.25, 1, 0.5, 1)';
+          flyingLogo.style.left = rect.left + 'px';
+          flyingLogo.style.top = rect.top + 'px';
+          flyingLogo.style.height = rect.height + 'px';
+          flyingLogo.style.transform = 'translate(0, 0) scale(1)';
+          
+          navLogo.style.opacity = '0';
+          
+          // Snap and update actual logo
+          setTimeout(() => {
+              navLogo.src = logos[currentLogoIndex];
+              navLogo.style.opacity = '1';
+              flyingLogo.style.opacity = '0';
+              currentLogoIndex = (currentLogoIndex + 1) % logos.length;
+          }, 900);
+      }
+
       function triggerLogoAnimation() {
+          if (isPaused) return;
+          isCenterMode = true;
+          
           flyingLogo.src = logos[currentLogoIndex];
           flyingLogo.style.transition = 'none';
           flyingLogo.style.left = '50%';
@@ -891,33 +923,47 @@ window.dispatchEvent(new Event('scroll'));
           }, 50);
 
           // Fly to navbar after 2.5s
-          setTimeout(() => {
-              const rect = navLogo.getBoundingClientRect();
-              
-              logoBackdrop.style.opacity = '0'; // hide backdrop
-              flyingLogo.classList.remove('flying-logo-anim'); // stop flashing
-              flyingLogo.style.transition = 'all 0.9s cubic-bezier(0.25, 1, 0.5, 1)';
-              flyingLogo.style.left = rect.left + 'px';
-              flyingLogo.style.top = rect.top + 'px';
-              flyingLogo.style.height = rect.height + 'px';
-              flyingLogo.style.transform = 'translate(0, 0) scale(1)';
-              
-              navLogo.style.opacity = '0';
-              
-              // Snap and update actual logo
-              setTimeout(() => {
-                  navLogo.src = logos[currentLogoIndex];
-                  navLogo.style.opacity = '1';
-                  flyingLogo.style.opacity = '0';
-                  currentLogoIndex = (currentLogoIndex + 1) % logos.length;
-              }, 900);
-          }, 2500); // stay in center for 2.5 seconds
+          flyTimeout = setTimeout(() => {
+              if (!isPaused) {
+                  executeFlyToNav();
+              }
+          }, 2500);
       }
+      
+      function startLoop() {
+          if (loopInterval) clearInterval(loopInterval);
+          loopInterval = setInterval(() => {
+              if (!isPaused && !isCenterMode) {
+                  triggerLogoAnimation();
+              }
+          }, 12000);
+      }
+
+      // Handle Spacebar Interactivity
+      document.addEventListener('keydown', (e) => {
+          if (e.code === 'Space') {
+              e.preventDefault(); // prevent page scroll
+              isPaused = !isPaused;
+              
+              if (isPaused) {
+                  // If paused while logo is flashing in center
+                  if (isCenterMode) {
+                      clearTimeout(flyTimeout);
+                  }
+              } else {
+                  // If unpaused while logo was stuck in center
+                  if (isCenterMode) {
+                      executeFlyToNav();
+                  }
+                  startLoop(); // Reset the loop interval safely
+              }
+          }
+      });
 
       // Wait for opener video (7 seconds)
       setTimeout(() => {
           triggerLogoAnimation();
-          setInterval(triggerLogoAnimation, 12000); // Repeat every 15 seconds
+          startLoop();
       }, 7500);
     }
   });
