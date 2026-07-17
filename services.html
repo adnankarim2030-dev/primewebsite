@@ -505,6 +505,37 @@ footer ul li a:hover{color:var(--orange-soft);}
 .mnav.open .mnav-panel{transform:translateX(0);}
 .mnav-panel a{display:block;padding:14px 0;font-family:'Space Grotesk';font-size:17px;border-bottom:1px solid var(--line);color:var(--blue);}
 .mnav-close{float:right;font-size:22px;cursor:pointer;color:var(--blue);}
+
+/* ============ RESPONSIVE UTILITIES ============ */
+.section-pad {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.grid-2, .grid-2-asym, .grid-2-asym-rev, .grid-3, .grid-4 {
+    display: grid;
+    gap: 40px;
+}
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-2-asym { grid-template-columns: 1fr 1.2fr; }
+.grid-2-asym-rev { grid-template-columns: 1.2fr 1fr; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 980px) {
+    .section-pad { padding-top: 70px; padding-bottom: 70px; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .grid-2-asym, .grid-2-asym-rev { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .section-pad { padding-top: 50px; padding-bottom: 50px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    /* Fix text alignment on mobile for asymmetric grids */
+    .grid-2-asym > div, .grid-2-asym-rev > div { text-align: center; }
+    .grid-2-asym img, .grid-2-asym-rev img { margin: 0 auto; }
+}
+
 </style>
 </head>
 <body>
@@ -571,9 +602,9 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ SERVICE INTRO ============ -->
-<section class="tinted" style="padding-top:80px; padding-bottom:80px;">
+<section class="tinted section-pad" >
   <div class="wrap">
-    <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center;">
+    <div class="grid-2-asym" style="align-items:center;">
       <div>
         <img src="https://primeestateenterprises.com/wp-content/uploads/2024/04/modern-house-facade-1-1024x682.jpg" alt="Service" style="width:100%; border-radius:24px; box-shadow:0 30px 60px rgba(11,61,107,0.15);">
       </div>
@@ -595,7 +626,7 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ WHAT WE OFFER ============ -->
-<section style="padding-top:80px; padding-bottom:80px;">
+<section class="section-pad" >
   <div class="wrap text-center">
     <p style="font-family:'JetBrains Mono'; color:var(--orange); font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">What We Offer</p>
     <h2 style="font-size:clamp(28px, 3vw, 36px); margin-bottom:16px;">Homes That Transform Your Living Experience</h2>
@@ -623,9 +654,9 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ SUPPORT / CONSULTATION ============ -->
-<section class="tinted" style="padding-top:80px; padding-bottom:80px;">
+<section class="tinted section-pad" >
   <div class="wrap">
-    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:30px;">
+    <div class="grid-3">
       <div class="info-card" style="padding:40px;">
         <h3 style="font-size:22px;">Free Consultation</h3>
         <p style="margin:0; color:#cfe4ff;">Get free consultation with our expert for your real estate journey.</p>
@@ -643,7 +674,7 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ CALL TO ACTION ============ -->
-<section style="padding-top:80px; padding-bottom:100px;">
+<section class="section-pad" >
   <div class="wrap text-center">
     <h2 style="font-size:clamp(28px, 3.4vw, 42px); margin-bottom:24px;">Crafting Your Ideal Home for a Better Tomorrow.</h2>
     <p style="font-size:18px; color:var(--ink-soft); max-width:800px; margin:0 auto 40px;">Build a future you deserve in Pakistan. Find your perfect property and invest in a brighter future. Let’s turn your dream home into reality.</p>

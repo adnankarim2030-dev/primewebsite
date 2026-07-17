@@ -505,6 +505,37 @@ footer ul li a:hover{color:var(--orange-soft);}
 .mnav.open .mnav-panel{transform:translateX(0);}
 .mnav-panel a{display:block;padding:14px 0;font-family:'Space Grotesk';font-size:17px;border-bottom:1px solid var(--line);color:var(--blue);}
 .mnav-close{float:right;font-size:22px;cursor:pointer;color:var(--blue);}
+
+/* ============ RESPONSIVE UTILITIES ============ */
+.section-pad {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.grid-2, .grid-2-asym, .grid-2-asym-rev, .grid-3, .grid-4 {
+    display: grid;
+    gap: 40px;
+}
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-2-asym { grid-template-columns: 1fr 1.2fr; }
+.grid-2-asym-rev { grid-template-columns: 1.2fr 1fr; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 980px) {
+    .section-pad { padding-top: 70px; padding-bottom: 70px; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .grid-2-asym, .grid-2-asym-rev { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .section-pad { padding-top: 50px; padding-bottom: 50px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    /* Fix text alignment on mobile for asymmetric grids */
+    .grid-2-asym > div, .grid-2-asym-rev > div { text-align: center; }
+    .grid-2-asym img, .grid-2-asym-rev img { margin: 0 auto; }
+}
+
 </style>
 </head>
 <body>
@@ -571,9 +602,9 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ ABOUT INTRO ============ -->
-<section class="tinted" style="padding-top:80px; padding-bottom:80px;">
+<section class="tinted section-pad" >
   <div class="wrap">
-    <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:60px; align-items:center;">
+    <div class="grid-2-asym-rev" style="align-items:center;">
       <div class="about-intro">
         <h2 style="font-size:clamp(28px, 3.4vw, 42px); margin-bottom:24px; line-height:1.2;">Crafting Your Real Estate Story with Expertise and Care</h2>
         <p style="font-size:17px; color:var(--ink-soft); line-height:1.7; margin-bottom:24px;">
@@ -591,9 +622,9 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ VISION & MISSION ============ -->
-<section style="padding-top:80px; padding-bottom:80px;">
+<section class="section-pad" >
   <div class="wrap">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+    <div class="grid-2">
       <!-- Mission -->
       <div class="info-card" style="padding:50px;">
         <h3 style="font-size:28px; margin-bottom:14px;">Our Mission</h3>
@@ -613,13 +644,13 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ WHY CHOOSE US ============ -->
-<section style="padding-top:80px; padding-bottom:80px; background:#f6faff;">
+<section class="section-pad" style=" background:#f6faff;">
   <div class="wrap">
     <div class="section-head" style="text-align:center; margin:0 auto 60px;">
       <h2 style="margin-bottom:16px;">Why Choose Us</h2>
       <p style="font-size:18px; color:var(--ink-soft); max-width:700px; margin:0 auto;">Experience A Stress Free And SuccessFul Real Estate Journey With Us</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:30px;">
+    <div class="grid-3">
       <div class="info-card" style="padding:40px; background:#fff; border:1px solid var(--line); color:var(--ink);">
         <h3 style="color:var(--blue); font-size:22px;">Quality</h3>
         <p style="color:var(--ink-soft); margin:0;">We deliver only excellence and aim to exceed expectations in everything we do.</p>
@@ -649,12 +680,12 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ FEATURED PROJECTS ============ -->
-<section style="padding-top:80px; padding-bottom:100px;">
+<section class="section-pad" >
   <div class="wrap">
     <div class="section-head" style="text-align:center; margin:0 auto 50px;">
       <h2>Our Premium Focus</h2>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+    <div class="grid-2">
       <div style="border-radius:20px; overflow:hidden; box-shadow:0 20px 40px rgba(8,25,43,0.1);">
          <img src="https://primeestateenterprises.com/wp-content/uploads/2024/05/Emaar-Panorama-Karachi-A-12-03-1024x640-1.jpg" alt="Emaar Panorama" style="width:100%; display:block;">
       </div>
@@ -666,7 +697,7 @@ footer ul li a:hover{color:var(--orange-soft);}
 </section>
 
 <!-- ============ JOURNEY / CALL TO ACTIONS ============ -->
-<section class="tinted" style="padding-top:80px; padding-bottom:80px;">
+<section class="tinted section-pad" >
   <div class="wrap text-center">
     <h2 style="font-size:clamp(28px, 3.4vw, 42px); margin-bottom:24px;">We Work Hard To Take You To Hassle Free And SuccessFul Real Estate Journey</h2>
     <div style="display:flex; justify-content:center; gap:20px; margin-top:40px; flex-wrap:wrap;">
