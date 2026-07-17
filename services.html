@@ -554,9 +554,9 @@ footer ul li a:hover{color:var(--orange-soft);}
 <!-- NAV -->
 <nav class="mainnav" id="mainnav">
   <div class="wrap">
-    <a href="index.html" class="logo">
-      <span class="mark"><span class="cube"><i class="f1"></i><i class="f2"></i><i class="f3"></i></span></span>
-      <span>PRIME ESTATE<small>ENTERPRISES · KARACHI</small></span>
+    
+    <a href="index.html" class="logo" id="dynamic-logo-link">
+      <img src="logo1.png" id="dynamic-logo" alt="Prime Estate" style="height: 44px; transition: opacity 0.5s ease; object-fit: contain;">
     </a>
     <ul class="navlinks" id="navlinks">
       <li><a href="index.html" class="active">Home</a></li>
@@ -816,6 +816,25 @@ document.querySelectorAll('.mnav-panel a').forEach(a=>a.addEventListener('click'
 
 /* init cab position */
 window.dispatchEvent(new Event('scroll'));
+</script>
+
+<script>
+  // Logo Rotation Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const logos = ['logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
+    let currentLogoIndex = 0;
+    const logoElement = document.getElementById('dynamic-logo');
+    if (logoElement) {
+      setInterval(() => {
+        logoElement.style.opacity = '0';
+        setTimeout(() => {
+          currentLogoIndex = (currentLogoIndex + 1) % logos.length;
+          logoElement.src = logos[currentLogoIndex];
+          logoElement.style.opacity = '1';
+        }, 500); // Wait for fade out
+      }, 10000); // 10 seconds
+    }
+  });
 </script>
 </body>
 </html>
