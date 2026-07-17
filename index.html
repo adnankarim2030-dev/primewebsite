@@ -536,9 +536,149 @@ footer ul li a:hover{color:var(--orange-soft);}
     .grid-2-asym img, .grid-2-asym-rev img { margin: 0 auto; }
 }
 
+
+/* ============ CINEMATIC OPENER ============ */
+body.no-scroll { overflow: hidden; height: 100vh; }
+
+#intro-opener {
+  position: fixed; inset: 0; z-index: 999999;
+  background: radial-gradient(circle at center, #1E5FA8, #08192B);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.map-perspective {
+  perspective: 1200px;
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+}
+.map-3d-wrap {
+  width: 600px; height: 600px;
+  transform: rotateX(60deg) rotateZ(-30deg) scale(0.8) translateZ(-200px);
+  transform-style: preserve-3d;
+  transform-origin: 32% 96%; /* Focused roughly on Karachi coordinates */
+  animation: 
+    tiltMap 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.2s,
+    zoomKarachi 1.5s cubic-bezier(0.8, 0, 0.2, 1) forwards 4.2s;
+}
+
+@keyframes tiltMap {
+  to { transform: rotateX(45deg) rotateZ(-15deg) scale(1) translateZ(0); }
+}
+
+@keyframes zoomKarachi {
+  0% { transform: rotateX(45deg) rotateZ(-15deg) scale(1) translateZ(0); }
+  40% { transform: rotateX(20deg) rotateZ(0deg) scale(2) translateZ(100px); }
+  100% { transform: rotateX(0deg) rotateZ(0deg) scale(35) translateZ(800px); opacity: 0; }
+}
+
+.pak-map { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
+
+.map-line {
+  fill: rgba(11, 61, 107, 0.6);
+  stroke: #3FCB93; stroke-width: 4; stroke-linejoin: round;
+  stroke-dasharray: 3000; stroke-dashoffset: 3000;
+  animation: drawMap 2.5s ease-in-out forwards 0.5s, glowMap 2s infinite alternate 3s;
+}
+
+@keyframes drawMap {
+  to { stroke-dashoffset: 0; fill: rgba(11, 61, 107, 0.9); }
+}
+@keyframes glowMap {
+  from { filter: drop-shadow(0 0 5px #3FCB93); }
+  to { filter: drop-shadow(0 0 25px #3FCB93); }
+}
+
+.city-dot {
+  opacity: 0; transform: scale(0);
+  transform-origin: center;
+}
+@keyframes popCity {
+  0% { opacity: 0; transform: scale(0) translateZ(0); }
+  60% { transform: scale(1.3) translateZ(30px); }
+  100% { opacity: 1; transform: scale(1) translateZ(10px); }
+}
+
+.c-isb { animation: popCity 0.5s forwards 2.0s; }
+.c-pew { animation: popCity 0.5s forwards 2.3s; }
+.c-lhr { animation: popCity 0.5s forwards 2.6s; }
+.c-qta { animation: popCity 0.5s forwards 2.9s; }
+.c-khi { animation: popCity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 3.4s; }
+
+.khi-pulse { animation: pulseKhi 1.5s infinite; transform-origin: center; }
+@keyframes pulseKhi {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.khi-target {
+  animation: spinTarget 4s linear infinite; transform-origin: center;
+}
+@keyframes spinTarget { 100% { transform: rotate(360deg); } }
+
+.khi-label { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 26px; fill: #FF7A3D; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5)); }
+.normal-label { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #fff; opacity: 0.8; }
+
+.flash-overlay {
+  position: absolute; inset: 0; background: #fff; z-index: 2;
+  opacity: 0; pointer-events: none;
+  animation: flashScreen 1.5s forwards 4.8s;
+}
+@keyframes flashScreen {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
 </style>
 </head>
-<body>
+<body class="no-scroll">
+
+<!-- ============ CINEMATIC OPENER ============ -->
+<div id="intro-opener">
+  <div class="map-perspective">
+    <div class="map-3d-wrap">
+      <svg viewBox="0 0 500 500" class="pak-map" preserveAspectRatio="xMidYMid meet">
+        <!-- Stylized Polygon of Pakistan -->
+        <path class="map-line" d="M280 20 L320 50 L360 120 L340 210 L280 350 L240 420 L160 480 L40 440 L20 400 L80 320 L120 250 L180 160 L240 80 Z" />
+        
+        <!-- Cities -->
+        <g class="cities">
+          <!-- Islamabad -->
+          <g class="city-dot c-isb" transform="translate(260, 150)">
+            <circle r="5" fill="#3FCB93" />
+            <text x="12" y="5" class="normal-label">ISLAMABAD</text>
+          </g>
+          <!-- Peshawar -->
+          <g class="city-dot c-pew" transform="translate(190, 160)">
+            <circle r="4" fill="#3FCB93" />
+            <text x="-75" y="4" class="normal-label">PESHAWAR</text>
+          </g>
+          <!-- Lahore -->
+          <g class="city-dot c-lhr" transform="translate(320, 220)">
+            <circle r="5" fill="#3FCB93" />
+            <text x="12" y="5" class="normal-label">LAHORE</text>
+          </g>
+          <!-- Quetta -->
+          <g class="city-dot c-qta" transform="translate(110, 280)">
+            <circle r="5" fill="#3FCB93" />
+            <text x="-60" y="4" class="normal-label">QUETTA</text>
+          </g>
+          <!-- Karachi (Focus) -->
+          <g class="city-dot c-khi" transform="translate(160, 480)">
+            <circle r="16" fill="#FF7A3D" class="khi-pulse" />
+            <circle r="6" fill="#fff" />
+            <text x="24" y="8" class="khi-label">KARACHI</text>
+            <circle r="35" fill="none" stroke="#FF7A3D" stroke-width="2" stroke-dasharray="6 6" class="khi-target" />
+            <!-- Connection Lines from Karachi to other cities -->
+            <path d="M0 0 L100 -330" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4 4" />
+            <path d="M0 0 L160 -260" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4 4" />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="flash-overlay"></div>
+</div>
+
 
 <!-- TOP BAR -->
 <div class="topbar">
@@ -1039,5 +1179,20 @@ document.querySelectorAll('.mnav-panel a').forEach(a=>a.addEventListener('click'
 /* init cab position */
 window.dispatchEvent(new Event('scroll'));
 </script>
+
+<script>
+  // Add no-scroll immediately
+  document.body.classList.add('no-scroll');
+  
+  // Remove opener after animation sequence (6 seconds total)
+  setTimeout(() => {
+    const opener = document.getElementById('intro-opener');
+    if(opener) {
+      opener.style.display = 'none';
+    }
+    document.body.classList.remove('no-scroll');
+  }, 5800);
+</script>
+
 </body>
 </html>
