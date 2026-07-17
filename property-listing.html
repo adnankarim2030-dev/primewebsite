@@ -98,7 +98,7 @@ nav.mainnav{
   transition:box-shadow .3s;
 }
 nav.mainnav.scrolled{box-shadow:0 10px 30px -18px rgba(8,25,43,.25);}
-nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;}
+nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;height:96px;}
 .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700;font-size:19px;color:var(--blue);white-space:nowrap;}
 .logo .mark{width:38px;height:38px;position:relative;perspective:200px;}
 .logo .mark .cube{position:absolute;inset:0;transform-style:preserve-3d;animation:logoSpin 7s linear infinite;}
@@ -557,7 +557,7 @@ footer ul li a:hover{color:var(--orange-soft);}
     
     <a href="index.html" class="logo" id="dynamic-logo-link">
       <span class="mark"><span class="cube"><i class="f1"></i><i class="f2"></i><i class="f3"></i></span></span>
-      <img src="logo1.png" id="dynamic-logo" alt="Prime Estate" style="height: 44px; transition: opacity 0.5s ease; object-fit: contain;">
+      <img src="logo1.png" id="dynamic-logo" alt="Prime Estate" style="height: 65px; transition: opacity 0.5s ease; object-fit: contain;">
     </a>
     <ul class="navlinks" id="navlinks">
       <li><a href="index.html" class="active">Home</a></li>
@@ -903,6 +903,7 @@ window.dispatchEvent(new Event('scroll'));
 </script>
 
 <script>
+
   // Dynamic Flying Logo Logic
   document.addEventListener('DOMContentLoaded', () => {
     const logos = ['logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
@@ -923,6 +924,20 @@ window.dispatchEvent(new Event('scroll'));
       `;
       document.head.appendChild(style);
 
+      // Create Backdrop Overlay
+      const logoBackdrop = document.createElement('div');
+      logoBackdrop.style.position = 'fixed';
+      logoBackdrop.style.inset = '0';
+      logoBackdrop.style.zIndex = '999998';
+      logoBackdrop.style.pointerEvents = 'none';
+      logoBackdrop.style.background = 'rgba(255, 255, 255, 0.75)';
+      logoBackdrop.style.backdropFilter = 'blur(12px)';
+      logoBackdrop.style.WebkitBackdropFilter = 'blur(12px)';
+      logoBackdrop.style.opacity = '0';
+      logoBackdrop.style.transition = 'opacity 0.8s ease-in-out';
+      document.body.appendChild(logoBackdrop);
+
+      // Create Flying Logo
       const flyingLogo = document.createElement('img');
       flyingLogo.style.position = 'fixed';
       flyingLogo.style.zIndex = '999999';
@@ -942,17 +957,20 @@ window.dispatchEvent(new Event('scroll'));
           flyingLogo.style.objectFit = 'contain';
           flyingLogo.classList.remove('flying-logo-anim');
 
-          // Pop into center and flash
+          // Pop into center, show backdrop, and flash
           setTimeout(() => {
+              logoBackdrop.style.opacity = '1';
               flyingLogo.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
               flyingLogo.style.transform = 'translate(-50%, -50%) scale(1.3)';
               flyingLogo.style.opacity = '1';
               flyingLogo.classList.add('flying-logo-anim');
           }, 50);
 
-          // Fly to navbar
+          // Fly to navbar after 2.5s
           setTimeout(() => {
               const rect = navLogo.getBoundingClientRect();
+              
+              logoBackdrop.style.opacity = '0'; // hide backdrop
               flyingLogo.classList.remove('flying-logo-anim'); // stop flashing
               flyingLogo.style.transition = 'all 0.9s cubic-bezier(0.25, 1, 0.5, 1)';
               flyingLogo.style.left = rect.left + 'px';
@@ -972,10 +990,10 @@ window.dispatchEvent(new Event('scroll'));
           }, 2500); // stay in center for 2.5 seconds
       }
 
-      // Wait for opener video
+      // Wait for opener video (7 seconds)
       setTimeout(() => {
           triggerLogoAnimation();
-          setInterval(triggerLogoAnimation, 10000);
+          setInterval(triggerLogoAnimation, 15000); // Repeat every 15 seconds
       }, 7500);
     }
   });
