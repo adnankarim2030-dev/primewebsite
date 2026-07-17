@@ -562,9 +562,71 @@ footer ul li a:hover{color:var(--orange-soft);}
 
 
 
+<style>
+/* 3D GEOMETRICAL ANIMATION FOR HERO */
+.page-hero { position: relative; overflow: hidden; }
+.hero-content { position: relative; z-index: 2; }
+.geo-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+    perspective: 1000px; pointer-events: none;
+}
+.geo-shape {
+    position: absolute;
+    transform-style: preserve-3d;
+    animation: floatRotate 20s infinite linear;
+}
+
+/* Cube 1 */
+.cube { width: 60px; height: 60px; left: 15%; top: 20%; animation-duration: 25s; }
+.cube div { position: absolute; width: 100%; height: 100%; border: 2px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); }
+.cube .front  { transform: translateZ(30px); }
+.cube .back   { transform: rotateY(180deg) translateZ(30px); }
+.cube .right  { transform: rotateY(90deg) translateZ(30px); }
+.cube .left   { transform: rotateY(-90deg) translateZ(30px); }
+.cube .top    { transform: rotateX(90deg) translateZ(30px); }
+.cube .bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+/* Cube 2 */
+.cube2 { width: 100px; height: 100px; left: 75%; top: 10%; animation-duration: 35s; animation-direction: reverse; }
+.cube2 div { position: absolute; width: 100%; height: 100%; border: 2px solid rgba(255,255,255,0.1); background: transparent; }
+.cube2 .front  { transform: translateZ(50px); }
+.cube2 .back   { transform: rotateY(180deg) translateZ(50px); }
+.cube2 .right  { transform: rotateY(90deg) translateZ(50px); }
+.cube2 .left   { transform: rotateY(-90deg) translateZ(50px); }
+.cube2 .top    { transform: rotateX(90deg) translateZ(50px); }
+.cube2 .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+/* Flat floating shapes in 3D space */
+.geo-circle { width: 120px; height: 120px; border-radius: 50%; border: 2px dashed rgba(255,255,255,0.2); left: 80%; top: 60%; animation-duration: 22s; }
+.geo-rect { width: 150px; height: 80px; border: 2px solid rgba(255,255,255,0.15); left: 10%; top: 70%; animation-duration: 28s; animation-direction: reverse; }
+
+@keyframes floatRotate {
+    0% { transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0); }
+    50% { transform: translateY(-80px) rotateX(180deg) rotateY(180deg) rotateZ(90deg); }
+    100% { transform: translateY(0) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+</style>
+
 <!-- ============ INTERNAL HERO ============ -->
 <section class="page-hero">
-  <div class="wrap text-center">
+  <!-- 3D Geometric Background -->
+  <div class="geo-bg">
+      <!-- Cube 1 -->
+      <div class="geo-shape cube">
+          <div class="front"></div><div class="back"></div><div class="right"></div>
+          <div class="left"></div><div class="top"></div><div class="bottom"></div>
+      </div>
+      <!-- Cube 2 -->
+      <div class="geo-shape cube2">
+          <div class="front"></div><div class="back"></div><div class="right"></div>
+          <div class="left"></div><div class="top"></div><div class="bottom"></div>
+      </div>
+      <!-- Circle & Rect -->
+      <div class="geo-shape geo-circle"></div>
+      <div class="geo-shape geo-rect"></div>
+  </div>
+
+  <div class="wrap text-center hero-content">
     <h1>Construction & Consultation</h1>
     <p class="lead">Property Deals. Satisfaction Guaranteed: 100% Happy Homeowners.</p>
   </div>
@@ -575,7 +637,8 @@ footer ul li a:hover{color:var(--orange-soft);}
   <div class="wrap">
     <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center;">
       <div>
-        <img src="https://primeestateenterprises.com/wp-content/uploads/2024/04/real-estate-agent-1.jpg" style="width:100%; border-radius:24px; box-shadow:0 30px 60px rgba(11,61,107,0.15);">
+        <!-- Uses the project_management image -->
+        <img src="project_management.png" style="width:100%; border-radius:24px; box-shadow:0 30px 60px rgba(11,61,107,0.15);">
       </div>
       <div>
         <p style="font-family:'JetBrains Mono'; color:var(--orange); font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Project Consultation</p>
@@ -607,7 +670,8 @@ footer ul li a:hover{color:var(--orange-soft);}
         <a href="contact-us.html" class="btn btn-primary">Elevate Your Journey</a>
       </div>
       <div>
-        <img src="https://primeestateenterprises.com/wp-content/uploads/2024/04/modern-bedroom-interior-in-earth-tones-3d-rendering.jpg" style="width:100%; border-radius:24px; box-shadow:0 30px 60px rgba(11,61,107,0.15);">
+        <!-- Uses the architect blueprint image -->
+        <img src="architect_blueprint.png" style="width:100%; border-radius:24px; box-shadow:0 30px 60px rgba(11,61,107,0.15);">
       </div>
     </div>
   </div>
@@ -644,25 +708,8 @@ footer ul li a:hover{color:var(--orange-soft);}
     </div>
     
     <div style="margin-top:60px; border-radius:24px; overflow:hidden;">
-        <img src="https://primeestateenterprises.com/wp-content/uploads/2024/04/real-estate-sale-and-happy-family-outside-of-new-house-excited-and-smiling-in-a-garden-property-.jpg" style="width:100%; height:400px; object-fit:cover;">
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROJECT MANAGEMENT ============ -->
-<section class="tinted" style="padding-top:80px; padding-bottom:80px;">
-  <div class="wrap">
-    <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center;">
-      <div>
-        <img src="https://primeestateenterprises.com/wp-content/uploads/2024/04/two-business-women-meeting-at-cafe-table.jpg" style="width:100%; border-radius:24px; box-shadow:0 30px 60px rgba(11,61,107,0.15);">
-      </div>
-      <div>
-        <p style="font-family:'JetBrains Mono'; color:var(--orange); font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Project Management</p>
-        <h2 style="font-size:clamp(28px, 3.4vw, 42px); margin-bottom:24px; line-height:1.2;">Building A Better Future With Project Management Strategies</h2>
-        <p style="font-size:17px; color:var(--ink-soft); line-height:1.7; margin-bottom:24px;">
-          We offer property management services at the highest standards to you for stress free experience. Leverage our expertise for streamline processes, maximize your investment, reduce risk, and give exceptional results that meet your vision. Your real estate goals are our mission. We turn your vision into reality.
-        </p>
-      </div>
+        <!-- Uses the sunset construction site image -->
+        <img src="construction_site.png" style="width:100%; height:400px; object-fit:cover;">
     </div>
   </div>
 </section>
