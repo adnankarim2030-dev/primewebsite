@@ -187,6 +187,17 @@ nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;
 .stat-row .stat b{font-family:'Space Grotesk';font-size:32px;color:var(--blue);display:block;}
 .stat-row .stat span{font-size:12.5px;color:var(--ink-soft);font-family:'JetBrains Mono';text-transform:uppercase;letter-spacing:.06em;}
 
+/* ============ INTERNAL PAGE HEADER ============ */
+.page-hero {
+  padding: 160px 0 60px;
+  background: radial-gradient(circle at center, rgba(31,157,108,.05), transparent 60%), linear-gradient(180deg, #f6faff 0%, #ffffff 100%);
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.page-hero h1 { font-size: clamp(38px, 4.6vw, 54px); margin-bottom: 16px; }
+.page-hero p.lead { font-size: 18px; color: var(--ink-soft); max-width: 600px; margin: 0 auto; }
+
+
 /* 3D SKYLINE REPLACED WITH VIDEO */
 .skyline-stage{position:relative;height:520px;}
 .skyline{
@@ -559,31 +570,49 @@ footer ul li a:hover{color:var(--orange-soft);}
   </div>
 </div>
 
-<section id="about" style="padding-top:160px; min-height:80vh;">
 
+<!-- ============ INTERNAL HERO ============ -->
+<section class="page-hero">
+  <div class="wrap text-center">
+    <h1>About Us</h1>
+    <p class="lead">Crafting Your Real Estate Story with Expertise and Care</p>
+  </div>
+</section>
+
+<!-- ============ ABOUT INTRO ============ -->
+<section class="tinted" style="padding-top:80px; padding-bottom:80px;">
   <div class="wrap">
-    <div class="about-grid">
-      <div class="about-copy">
-        <span class="eyebrow reveal">Who We Are</span>
-        <h2 class="reveal">Fulfil your dreams, complete<br>your life with your <span class="accent-underline">ideal home</span></h2>
-        <p class="reveal" style="color:var(--ink-soft);margin-top:18px;">Founded in 1986, Prime Estate Enterprises is one of the leading pioneers in Pakistan's real estate industry. Across three decades we've specialised in development, consulting, trading, brokerage and construction — earning trust one relationship at a time.</p>
-        <div class="timeline reveal">
-          <div class="tl-item"><span class="tl-year mono">1986</span><span class="tl-text"><b>Foundation</b><span>Prime Estate Enterprises opens its doors in Karachi.</span></span></div>
-          <div class="tl-item"><span class="tl-year mono">2004</span><span class="tl-text"><b>Construction Division</b><span>In‑house architecture & build teams launched.</span></span></div>
-          <div class="tl-item"><span class="tl-year mono">2018</span><span class="tl-text"><b>Digital Listings</b><span>Karachi's premium inventory goes online.</span></span></div>
-          <div class="tl-item"><span class="tl-year mono">2026</span><span class="tl-text"><b>Relaunch</b><span>A new experience for property discovery.</span></span></div>
-        </div>
-        <a href="#services" class="btn btn-ghost reveal" style="margin-top:34px;">More About Us →</a>
+    <div class="about-intro" style="max-width:800px; margin:0 auto; text-align:center;">
+      <h2 style="font-size:clamp(28px, 3.4vw, 42px); margin-bottom:24px;">Who We Are</h2>
+      <p style="font-size:17px; color:var(--ink-soft); line-height:1.7;">
+        Let us help you craft your perfect real estate story with our expertise and care at every step, from finding your dream property to navigating the buying and selling process. We build a future you deserve in Pakistan. Find your perfect property and invest in a brighter future. Ensure a smooth and successful experience with us.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISION & MISSION ============ -->
+<section style="padding-top:40px; padding-bottom:120px;">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+      <!-- Mission -->
+      <div class="info-card" style="padding:50px;">
+        <h3 style="font-size:28px; margin-bottom:14px;">Our Mission</h3>
+        <p style="font-size:16px; line-height:1.6; margin:0; color:#cfe4ff;">
+          To make the buying and selling of real estate as cost effective as possible while maintaining the highest level of standards for our respected clients.
+        </p>
       </div>
-      <div class="stack-3d reveal-r">
-        <div class="stack-card"><span class="tag mono">DEVELOPMENT</span><h4>Land to landmark</h4></div>
-        <div class="stack-card"><span class="tag mono">CONSULTING</span><h4>Market-smart advice</h4></div>
-        <div class="stack-card"><span class="tag mono">BROKERAGE</span><h4>Trusted transactions</h4></div>
+      <!-- Vision -->
+      <div class="info-card" style="padding:50px; background:linear-gradient(160deg,var(--orange),var(--orange-soft));">
+        <h3 style="font-size:28px; margin-bottom:14px;">Our Vision</h3>
+        <p style="font-size:16px; line-height:1.6; margin:0; color:#fff;">
+          To achieve the highest possible standards of real estate in Pakistan while maintaining our agency to be the premier and preferred real estate company for all our clients.
+        </p>
       </div>
     </div>
   </div>
-
 </section>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -772,6 +801,17 @@ nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;
 .stat-row{display:flex;gap:44px;margin-top:56px;opacity:0;animation:fadeUp .9s var(--ease) 1s forwards;}
 .stat-row .stat b{font-family:'Space Grotesk';font-size:32px;color:var(--blue);display:block;}
 .stat-row .stat span{font-size:12.5px;color:var(--ink-soft);font-family:'JetBrains Mono';text-transform:uppercase;letter-spacing:.06em;}
+
+/* ============ INTERNAL PAGE HEADER ============ */
+.page-hero {
+  padding: 160px 0 60px;
+  background: radial-gradient(circle at center, rgba(31,157,108,.05), transparent 60%), linear-gradient(180deg, #f6faff 0%, #ffffff 100%);
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.page-hero h1 { font-size: clamp(38px, 4.6vw, 54px); margin-bottom: 16px; }
+.page-hero p.lead { font-size: 18px; color: var(--ink-soft); max-width: 600px; margin: 0 auto; }
+
 
 /* 3D SKYLINE REPLACED WITH VIDEO */
 .skyline-stage{position:relative;height:520px;}
@@ -1133,7 +1173,12 @@ footer ul li a:hover{color:var(--orange-soft);}
   </div>
 </div>
 
-
+<!-- FLOOR / ELEVATOR NAV -->
+<div class="floor-nav" id="floorNav">
+  <div style="position:relative;display:flex;">
+    <div class="rail"></div>
+    <div class="cab" id="cab"></div>
+  </div>
   <div class="floor-track" id="floorTrack">
     <div class="floor-stop" data-target="#home"><span class="dot"></span><span class="lbl">01 · Lobby / Home</span></div>
     <div class="floor-stop" data-target="#about"><span class="dot"></span><span class="lbl">02 · About Us</span></div>
