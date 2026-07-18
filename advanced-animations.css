@@ -1,0 +1,38 @@
+/* Container must prevent overflow for sliding up animations */
+.adv-heading-word-wrapper {
+    display: inline-flex;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+/* Heading Word */
+.adv-heading-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(110%) rotateX(-30deg);
+    transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: bottom center;
+    will-change: transform, opacity;
+}
+.anim-container.in-view .adv-heading-word {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+}
+
+/* Body Word */
+.adv-body-word {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(12px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                filter 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity, filter;
+}
+.anim-container.in-view .adv-body-word {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
