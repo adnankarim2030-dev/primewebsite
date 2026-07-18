@@ -98,9 +98,9 @@ nav.mainnav{
   transition:box-shadow .3s;
 }
 nav.mainnav.scrolled{box-shadow:0 10px 30px -18px rgba(8,25,43,.25);}
-nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;height:140px;}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Montserrat';font-weight:700;font-size:19px;color:var(--blue);white-space:nowrap;}
-.logo .mark{width:38px;height:38px;position:relative;perspective:200px;transform:scale(1.1);transform-origin:left center;margin-right:8px;}
+nav.mainnav .wrap{display:flex;align-items:center;justify-content:flex-end;height:120px;gap:20px;}
+.logo{display:flex;align-items:center;gap:15px;font-family:'Montserrat';font-weight:700;font-size:19px;color:var(--blue);white-space:nowrap;margin-right:auto;}
+.logo .mark{width:46px;height:46px;flex-shrink:0;position:relative;perspective:200px;margin-right:8px;}
 .logo .mark .cube{position:absolute;inset:0;transform-style:preserve-3d;animation:logoSpin 7s linear infinite;}
 .logo .mark .cube i{position:absolute;inset:0;border-radius:6px;}
 .logo .mark .f1{background:linear-gradient(135deg,var(--blue),var(--blue-mid));transform:translateZ(9px);}
@@ -109,14 +109,20 @@ nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;
 @keyframes logoSpin{to{transform:rotateY(360deg) rotateX(360deg);}}
 .logo small{display:block;font-family:'JetBrains Mono';font-weight:400;font-size:10px;color:var(--ink-soft);letter-spacing:.08em;white-space:nowrap;}
 
-.navlinks{display:flex;gap:12px;align-items:center;}
+.navlinks{display:flex;gap:20px;align-items:center;}
 .navlinks a{
-  padding:10px 14px;border-radius:999px;font-size:15px;font-weight:500;color:var(--ink);
-  position:relative;transition:color .25s, background .25s;
+  padding:10px 14px;border-radius:999px;font-size:16px;font-weight:500;color:var(--ink);
+  position:relative;transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   white-space:nowrap;
+  display:inline-block;
 }
-.navlinks a:hover, .navlinks a.active{color:var(--blue);background:var(--blue-soft);}
-.nav-cta{display:flex;align-items:center;gap:14px;}
+.navlinks a:hover, .navlinks a.active{
+  color:var(--orange);
+  background:rgba(255,122,61,0.15);
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 10px 20px -8px rgba(255,122,61,0.5);
+}
+.nav-cta{display:flex;align-items:center;gap:14px;margin-left:0;}
 .burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);align-items:center;justify-content:center;cursor:pointer;}
 .burger span, .burger span::before, .burger span::after{content:"";display:block;width:18px;height:2px;background:var(--blue);position:relative;transition:.3s;}
 .burger span::before{position:absolute;top:-6px;}
@@ -505,7 +511,16 @@ footer ul li a:hover{color:var(--orange-soft);}
 .mnav.open{opacity:1;pointer-events:auto;}
 .mnav-panel{position:absolute;right:0;top:0;bottom:0;width:280px;background:#fff;padding:36px 28px;transform:translateX(100%);transition:.4s var(--ease);}
 .mnav.open .mnav-panel{transform:translateX(0);}
-.mnav-panel a{display:block;padding:14px 0;font-family:'Montserrat';font-size:17px;border-bottom:1px solid var(--line);color:var(--blue);}
+.mnav-panel a{
+  display:block;padding:14px 0;font-family:'Montserrat';font-size:17px;border-bottom:1px solid var(--line);color:var(--blue);
+  transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.mnav-panel a:hover, .mnav-panel a.active{
+  color:var(--orange);
+  transform:translateX(10px) scale(1.02);
+  text-shadow:2px 4px 8px rgba(255,122,61,0.3);
+  border-bottom-color:var(--orange);
+}
 .mnav-close{float:right;font-size:22px;cursor:pointer;color:var(--blue);}
 
 /* ============ RESPONSIVE UTILITIES ============ */
@@ -560,10 +575,10 @@ footer ul li a:hover{color:var(--orange-soft);}
     
     <a href="index.html" class="logo" id="dynamic-logo-link">
       <span class="mark"><span class="cube"><i class="f1"></i><i class="f2"></i><i class="f3"></i></span></span>
-      <img src="logo1.png" id="dynamic-logo" alt="Prime Estate" style="height: 140px; transition: opacity 0.5s ease; object-fit: contain;">
+      <div style="width: 140px; height: 80px; overflow: hidden; display: flex; align-items: center; justify-content: center;"><img src="logo.png" id="dynamic-logo" alt="Prime Estate" style="height: 120px; max-width: none; transition: opacity 0.5s ease;"></div>
     </a>
     <ul class="navlinks" id="navlinks">
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html" >Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="property-listing.html">Property Listing</a></li>
@@ -572,7 +587,7 @@ footer ul li a:hover{color:var(--orange-soft);}
       <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="contact-us.html" class="btn btn-primary" style="padding:12px 22px;font-size:14px;">Get a Consultation</a>
+      <a href="contact-us.html" class="btn btn-primary" style="padding:10px 18px;font-size:13px;">Get a Consultation</a>
       <div class="burger" id="burger"><span></span></div>
     </div>
   </div>
@@ -850,9 +865,7 @@ window.addEventListener('scroll', ()=>{
     const rect = sec.getBoundingClientRect();
     if(rect.top <= window.innerHeight*0.4){ idx = i; }
   });
-  navLinks.forEach(l=>l.classList.remove('active'));
-  navLinks[idx] && navLinks[idx].classList.add('active');
-  floorStops.forEach(f=>f.classList.remove('active'));
+      floorStops.forEach(f=>f.classList.remove('active'));
   floorStops[idx] && floorStops[idx].classList.add('active');
 
   // move cab: floor stops are reversed (column-reverse), floor 0 (home) at bottom
@@ -910,5 +923,34 @@ window.dispatchEvent(new Event('scroll'));
 
 
   <script src="advanced-animations.js"></script>
+
+
+<script>
+(function() {
+    let path = window.location.pathname.split('/').pop();
+    if (!path || path === '') path = 'index.html';
+    
+    // Clear all active classes first
+    document.querySelectorAll('.navlinks a, .mnav-panel a').forEach(a => {
+        a.classList.remove('active');
+    });
+
+    // Add active class to the matching link
+    let found = false;
+    document.querySelectorAll('.navlinks a, .mnav-panel a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === path) {
+            a.classList.add('active');
+            found = true;
+        }
+    });
+    
+    // Fallback: if no match, and we are at root, highlight Home
+    if (!found && (path === '/' || path === '')) {
+        const homeLink = document.querySelector('.navlinks a[href="index.html"]');
+        if (homeLink) homeLink.classList.add('active');
+    }
+})();
+</script>
 </body>
 </html>
