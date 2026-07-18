@@ -604,6 +604,18 @@ body.no-scroll { overflow: hidden; height: 100vh; }
 }
 </style>
   <link rel="stylesheet" href="advanced-animations.css">
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLogo = localStorage.getItem('selectedLogo');
+    if(savedLogo) {
+      const dynamicLogo = document.getElementById('dynamic-logo');
+      if(dynamicLogo) {
+        dynamicLogo.src = savedLogo;
+      }
+    }
+  });
+</script>
 </head>
 <body class="no-scroll">
 
@@ -643,7 +655,7 @@ body.no-scroll { overflow: hidden; height: 100vh; }
     
     <a href="index.html" class="logo" id="dynamic-logo-link">
       <span class="mark"><span class="cube"><i class="f1"></i><i class="f2"></i><i class="f3"></i></span></span>
-      <div style="width: 140px; height: 80px; overflow: hidden; display: flex; align-items: center; justify-content: center;"><img src="logo.png" id="dynamic-logo" alt="Prime Estate" style="height: 120px; max-width: none; transition: opacity 0.5s ease;"></div>
+      <div style="width: 140px; height: 80px; overflow: hidden; display: flex; align-items: center; justify-content: center;"><img src="logo2.png" id="dynamic-logo" alt="Prime Estate" style="height: 120px; max-width: none; transition: opacity 0.5s ease;"></div>
     </a>
     <ul class="navlinks" id="navlinks">
       <li><a href="index.html" >Home</a></li>
