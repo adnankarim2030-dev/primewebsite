@@ -560,7 +560,37 @@ footer ul li a:hover{color:var(--orange-soft);}
     .grid-2-asym img, .grid-2-asym-rev img { margin: 0 auto; }
 }
 
-</style>
+
+@media (max-width: 1240px) {
+  nav.mainnav .wrap {
+    padding: 0 20px; /* match the wrap padding if it changes */
+  }
+  .navlinks {
+    gap: 8px !important;
+  }
+  .navlinks a {
+    padding: 8px 10px !important;
+    font-size: 14px !important;
+  }
+  .logo .mark {
+    width: 36px;
+    height: 36px;
+    margin-right: 4px;
+  }
+  .logo {
+    gap: 8px !important;
+  }
+  .nav-cta .btn {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 1080px) {
+  .navlinks { display: none !important; }
+  .nav-cta .btn { display: none !important; }
+  .burger { display: flex !important; }
+}
+\n</style>
   <link rel="stylesheet" href="advanced-animations.css">
 
 <script>
