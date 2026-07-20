@@ -18,7 +18,7 @@
   --orange:#FF7A3D;
   --orange-soft:#FFA35C;
   --white:#FFFFFF;
-  --ink:#08192B;
+  --ink:#000000;
   --ink-soft:#4B6076;
   --sand:#FFF7F1;
   --line:rgba(11,61,107,0.12);
@@ -93,13 +93,13 @@ img,svg{display:block;max-width:100%;}
 
 nav.mainnav{
   position:sticky;top:0;z-index:200;
-  background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+  background:var(--blue);
   border-bottom:1px solid var(--line);
   transition:box-shadow .3s;
 }
 nav.mainnav.scrolled{box-shadow:0 10px 30px -18px rgba(8,25,43,.25);}
 nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;height:120px;}
-.logo{display:flex;align-items:center;gap:12px;font-family:'Montserrat';font-weight:700;font-size:19px;color:var(--blue);white-space:nowrap;margin-right:0;}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Montserrat';font-weight:700;font-size:19px;color:var(--white);white-space:nowrap;margin-right:0;}
 .logo .mark{width:46px;height:46px;flex-shrink:0;position:relative;perspective:200px;margin-right:8px;}
 .logo .mark .cube{position:absolute;inset:0;transform-style:preserve-3d;animation:logoSpin 7s linear infinite;}
 .logo .mark .cube i{position:absolute;inset:0;border-radius:6px;}
@@ -111,7 +111,7 @@ nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;
 
 .navlinks{display:flex;gap:16px;align-items:center;}
 .navlinks a{
-  padding:10px 14px;border-radius:999px;font-size:16px;font-weight:500;color:var(--ink);
+  padding:10px 14px;border-radius:999px;font-size:16px;font-weight:500;color:var(--white);
   position:relative;transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   white-space:nowrap;
   display:inline-block;
@@ -124,7 +124,7 @@ nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;
 }
 .nav-cta{display:flex;align-items:center;gap:14px;margin-left:0;}
 .burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);align-items:center;justify-content:center;cursor:pointer;}
-.burger span, .burger span::before, .burger span::after{content:"";display:block;width:18px;height:2px;background:var(--blue);position:relative;transition:.3s;}
+.burger span, .burger span::before, .burger span::after{content:"";display:block;width:18px;height:2px;background:var(--white);position:relative;transition:.3s;}
 .burger span::before{position:absolute;top:-6px;}
 .burger span::after{position:absolute;top:6px;}
 
@@ -516,10 +516,10 @@ footer ul li a:hover{color:var(--orange-soft);}
 /* mobile nav drawer */
 .mnav{position:fixed;inset:0;background:rgba(8,25,43,.5);backdrop-filter:blur(4px);z-index:300;opacity:0;pointer-events:none;transition:.3s;}
 .mnav.open{opacity:1;pointer-events:auto;}
-.mnav-panel{position:absolute;right:0;top:0;bottom:0;width:280px;background:#fff;padding:36px 28px;transform:translateX(100%);transition:.4s var(--ease);}
+.mnav-panel{position:absolute;right:0;top:0;bottom:0;width:280px;background:var(--blue);padding:36px 28px;transform:translateX(100%);transition:.4s var(--ease);}
 .mnav.open .mnav-panel{transform:translateX(0);}
 .mnav-panel a{
-  display:block;padding:14px 0;font-family:'Montserrat';font-size:17px;border-bottom:1px solid var(--line);color:var(--blue);
+  display:block;padding:14px 0;font-family:'Montserrat';font-size:17px;border-bottom:1px solid rgba(255,255,255,0.15);color:var(--white);
   transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .mnav-panel a:hover, .mnav-panel a.active{
@@ -528,7 +528,7 @@ footer ul li a:hover{color:var(--orange-soft);}
   text-shadow:2px 4px 8px rgba(255,122,61,0.3);
   border-bottom-color:var(--orange);
 }
-.mnav-close{float:right;font-size:22px;cursor:pointer;color:var(--blue);}
+.mnav-close{float:right;font-size:22px;cursor:pointer;color:var(--white);}
 
 /* ============ RESPONSIVE UTILITIES ============ */
 .section-pad {
@@ -692,7 +692,7 @@ body.no-scroll { overflow: hidden; height: 100vh; }
     
     <a href="index.html" class="logo" id="dynamic-logo-link">
       <span class="mark"><span class="cube"><i class="f1"></i><i class="f2"></i><i class="f3"></i></span></span>
-      <div style="width: 140px; height: 80px; overflow: hidden; display: flex; align-items: center; justify-content: center;"><img src="logo2.png" id="dynamic-logo" alt="Prime Estate" style="height: 120px; max-width: none; transition: opacity 0.5s ease;"></div>
+      <div style="width: 140px; height: 80px; overflow: hidden; display: flex; align-items: center; justify-content: center;"><img src="logo2.png" id="dynamic-logo" alt="Prime Estate" style="height: 120px; max-width: none; transition: opacity 0.5s ease; filter: brightness(0) invert(1);"></div>
     </a>
     <ul class="navlinks" id="navlinks">
       <li><a href="index.html" >Home</a></li>
