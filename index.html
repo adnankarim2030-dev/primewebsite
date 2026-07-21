@@ -207,7 +207,7 @@ nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;
 /* 3D SKYLINE REPLACED WITH VIDEO */
 .skyline-stage{position:relative;height:520px;}
 .skyline{
-  position:absolute;inset:0;margin:auto;width:420px;height:420px;
+  position:absolute;inset:0;margin:auto;width:100%;max-width:420px;height:100%;max-height:420px;aspect-ratio:1/1;
   border-radius:24px; overflow:hidden; background:#000;
   box-shadow: 0 30px 60px rgba(11,61,107,0.25);
   animation:floatY 15s ease-in-out infinite;
@@ -475,7 +475,7 @@ footer ul li a:hover{color:var(--orange-soft);}
 
 /* whatsapp float */
 .wa-float{
-  position:fixed;bottom:28px;left:28px;z-index:200;width:56px;height:56px;border-radius:50%;
+  position:fixed;bottom:28px;right:28px;z-index:200;width:56px;height:56px;border-radius:50%;
   background:linear-gradient(135deg,var(--green),var(--green-soft));display:flex;align-items:center;justify-content:center;
   color:#fff;font-size:24px;box-shadow:0 18px 34px -14px rgba(31,157,108,.6);cursor:pointer;
   animation:pulseWa 2.4s ease-in-out infinite;
@@ -500,6 +500,10 @@ footer ul li a:hover{color:var(--orange-soft);}
 @media (max-width:760px){
   .wrap{padding:0 20px;}
   section{padding:50px 0;}
+  .hero h1{font-size:clamp(28px,7.5vw,36px);}
+  .hero .cta-row{flex-direction:column;}
+  .hero-badge{transform:scale(0.85); top:10px; left:-10px;}
+  .hero-badge.b2{bottom:10px; right:10px; left:auto;}
   nav.mainnav .wrap{height:80px;gap:10px;}
   .logo .mark{width:36px;height:36px;}
   .logo > div{width:110px !important;height:60px !important;}
