@@ -1204,19 +1204,19 @@ body.no-scroll { overflow: hidden; height: 100vh; }
 <!-- ============ INTERACTIVE LOGO SELECTOR ============ -->
 <div id="logo-selector-overlay">
   <div class="logo-selector-container">
-    <div class="logo-option" data-logo="logo_option_1.png" data-title="Prime" data-sub="BUILDERS & DEVELOPERS">
+    <div class="logo-option" data-logo="logo_option_1.png" data-title="Prime Build & Co" data-sub="BUILDERS & DEVELOPERS">
       <img src="logo_option_1.png" alt="Prime Builders">
       <div style="font-family:'Montserrat'; font-weight:700; font-size:14px; color:#191B28; margin-top:10px;">Prime Builders</div>
     </div>
-    <div class="logo-option" data-logo="logo_option_2.png" data-title="Prime" data-sub="ESTATES & DEVELOPMENTS">
+    <div class="logo-option" data-logo="logo_option_2.png" data-title="Prime Build & Co" data-sub="ESTATES & DEVELOPMENTS">
       <img src="logo_option_2.png" alt="Prime Estates">
       <div style="font-family:'Montserrat'; font-weight:700; font-size:14px; color:#191B28; margin-top:10px;">Prime Estates</div>
     </div>
-    <div class="logo-option" data-logo="logo_option_3.png" data-title="Prime" data-sub="BUILDERS & DEVELOPERS">
+    <div class="logo-option" data-logo="logo_option_3.png" data-title="Prime Build & Co" data-sub="BUILDERS & DEVELOPERS">
       <img src="logo_option_3.png" alt="Prime Construction">
       <div style="font-family:'Montserrat'; font-weight:700; font-size:14px; color:#191B28; margin-top:10px;">Prime Construction</div>
     </div>
-    <div class="logo-option" data-logo="logo_option_4.png" data-title="Prime" data-sub="ESTATES & DEVELOPMENTS">
+    <div class="logo-option" data-logo="logo_option_4.png" data-title="Prime Build & Co" data-sub="ESTATES & DEVELOPMENTS">
       <img src="logo_option_4.png" alt="Prime Developments">
       <div style="font-family:'Montserrat'; font-weight:700; font-size:14px; color:#191B28; margin-top:10px;">Prime Developments</div>
     </div>
@@ -1247,7 +1247,7 @@ body.no-scroll { overflow: hidden; height: 100vh; }
       <a href="index.html" class="brand-logo">
         <img id="dynamic-logo" src="logo_option_1.png" alt="Brand Logo" style="height:72px; max-width:240px; object-fit:contain; border-radius:6px; background:transparent; padding:4px;">
         <div>
-          <span id="dynamic-brand-title" class="brand-title">Prime</span>
+          <span id="dynamic-brand-title" class="brand-title">Prime Build & Co</span>
           <span id="dynamic-brand-sub" class="brand-sub">ESTATES & DEVELOPMENTS</span>
         </div>
       </a>
@@ -2024,7 +2024,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load saved choices into header
   try {
     const savedLogo = localStorage.getItem('selectedLogo');
-    const savedTitle = localStorage.getItem('selectedTitle') || 'Prime';
+    const savedTitle = localStorage.getItem('selectedTitle') || 'Prime Build & Co';
     const savedSub = localStorage.getItem('selectedSub');
     
     if (savedLogo && navLogo) navLogo.src = savedLogo;
@@ -2050,7 +2050,7 @@ document.addEventListener('DOMContentLoaded', () => {
     options.forEach(option => {
       option.addEventListener('click', () => {
         const selectedLogo = option.getAttribute('data-logo');
-        const selectedTitle = option.getAttribute('data-title') || 'Prime';
+        const selectedTitle = option.getAttribute('data-title') || 'Prime Build & Co';
         const selectedSub = option.getAttribute('data-sub') || 'ESTATES & DEVELOPMENTS';
 
         try {
