@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properties Financial Calculator — Prime Estate Enterprises Karachi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="advanced-animations.css">
+<style>
+/* ============ 3-TIER LUXURY HEADER ============ */
+.header-3tier {
+  width: 100%;
+  position: relative;
+  z-index: 200;
+}
+
+.topbar-tier {
+  background: #191B28;
+  color: #D3D6E2;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(201, 166, 108, 0.2);
+}
+
+.topbar-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 32px;
+}
+
+.topbar-left-links {
+  display: flex;
+  gap: 22px;
+}
+
+.topbar-left-links a {
+  color: #D3D6E2;
+  transition: color 0.3s ease;
+}
+
+.topbar-left-links a:hover {
+  color: #C9A66C;
+}
+
+.topbar-right-info {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topbar-info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.midbar-tier {
+  background: #F4F1EA;
+  border-bottom: 1px solid rgba(25, 27, 40, 0.08);
+  padding: 16px 0;
+}
+
+.midbar-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #191B28;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.brand-sub {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: #C9A66C;
+  letter-spacing: 0.14em;
+  margin-top: 2px;
+}
+
+.sector-toggle-pill {
+  background: #191B28;
+  padding: 5px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 4px 15px rgba(25, 27, 40, 0.15);
+}
+
+.sector-toggle-pill .toggle-btn {
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  color: #A0A4B8;
+  background: transparent;
+}
+
+.sector-toggle-pill .toggle-btn.active {
+  background: linear-gradient(135deg, #C9A66C 0%, #DFBE86 100%);
+  color: #191B28;
+  box-shadow: 0 4px 12px rgba(201, 166, 108, 0.4);
+}
+
+.midbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.advisor-callout {
+  text-align: right;
+}
+
+.adv-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: #5C6073;
+  letter-spacing: 0.08em;
+}
+
+.adv-phone {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #191B28;
+}
+
+.btn-list-prop {
+  background: linear-gradient(135deg, #C9A66C 0%, #DFBE86 100%);
+  color: #191B28;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  padding: 12px 24px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px -6px rgba(201, 166, 108, 0.6);
+  transition: all 0.3s var(--ease);
+}
+
+.mainnav-tier {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #F4F1EA;
+  border-top: 1px solid rgba(25, 27, 40, 0.08);
+  border-bottom: 1px solid rgba(25, 27, 40, 0.12);
+}
+
+.mainnav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+}
+
+.nav-links-center {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-item {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #191B28;
+  padding: 14px 4px;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover, .nav-item.active {
+  color: #C9A66C;
+}
+
+.nav-item.active::after, .nav-item:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #C9A66C;
+  border-radius: 3px 3px 0 0;
+}
+
+/* ============ TOKENS & BASE ============ */
+:root{
+  --blue:#191B28;
+  --blue-mid:#2A2D3F;
+  --blue-soft:#ECEEF4;
+  --green:#C9A66C;
+  --green-soft:#DFBE86;
+  --orange:#C9A66C;
+  --orange-soft:#DFBE86;
+  --white:#FFFFFF;
+  --ink:#191B28;
+  --ink-soft:#5C6073;
+  --sand:#F4F1EA;
+  --line:rgba(25,27,40,0.12);
+  --radius:18px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Lato',sans-serif;
+  color:var(--ink);
+  background:var(--sand);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:-0.01em;color:var(--blue);}
+.mono{font-family:'JetBrains Mono',monospace;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--orange);
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--orange);display:inline-block;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 28px;border-radius:999px;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;
+  cursor:pointer;border:none;transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{background:linear-gradient(120deg,var(--orange),var(--orange-soft));color:#191B28;font-weight:700;box-shadow:0 14px 30px -12px rgba(201,166,108,.6);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 38px -14px rgba(201,166,108,.75);}
+
+.page-hero {
+  padding: 80px 0 50px;
+  background: radial-gradient(circle at center, rgba(201,166,108,.08), transparent 65%), linear-gradient(180deg, #F4F1EA 0%, #EAE5DB 100%);
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.page-hero h1 { font-size: clamp(36px, 4.8vw, 54px); margin-bottom: 14px; font-weight: 800; }
+.page-hero p.lead { font-size: 18px; color: var(--ink-soft); max-width: 650px; margin: 0 auto; }
+
+footer { background:#191B28; color:#D3D6E2; padding:80px 0 30px; margin-top:80px; border-top:1px solid rgba(201,166,108,0.2); }
+.foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:40px; margin-bottom:50px; }
+.foot-logo { font-family:'Montserrat'; font-weight:800; font-size:18px; color:#FFFFFF; margin-bottom:12px; }
+.foot-grid h5 { font-family:'Montserrat'; font-size:15px; color:#C9A66C; margin-bottom:16px; font-weight:700; }
+.foot-grid ul li { margin-bottom:10px; font-size:14px; }
+.foot-grid ul li a { color:#A0A4B8; transition:color 0.3s; }
+.foot-grid ul li a:hover { color:#C9A66C; }
+.foot-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-space-between; font-size:13px; color:#787C92; }
+
+@media (max-width: 980px) {
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .calc-card > div { grid-template-columns: 1fr !important; }
+}
+</style>
+<style>
+/* Large Clean White Background Logo Selector */
+#logo-selector-overlay {
+  position: fixed; inset: 0; z-index: 999999;
+  background: rgba(25, 27, 40, 0.95);
+  backdrop-filter: blur(16px);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s;
+}
+.logo-selector-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 980px;
+  width: 92%;
+  padding: 40px;
+}
+.logo-option {
+  cursor: pointer;
+  background: #FFFFFF !important;
+  border-radius: 20px;
+  padding: 24px 30px;
+  height: 220px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, border-color 0.35s;
+  border: 3px solid transparent;
+}
+.logo-option:hover {
+  transform: scale(1.06);
+  border-color: #C9A66C;
+  box-shadow: 0 20px 50px rgba(201,166,108,0.45);
+}
+.logo-option img {
+  max-height: 150px;
+  width: 100%;
+  object-fit: contain;
+  background: transparent;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 3-TIER LUXURY HEADER ============ -->
+<header class="header-3tier">
+  <div class="topbar-tier">
+    <div class="wrap topbar-wrap">
+      <div class="topbar-left-links">
+        <a href="about.html">About Prime</a>
+        <a href="about.html#why-us">Why Us</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="contact-us.html">Contact</a>
+      </div>
+      <div class="topbar-right-info">
+        <span class="topbar-info-item">📍 Karachi, Pakistan</span>
+        <span class="topbar-info-item">✉ primeestateenterprises@gmail.com</span>
+        <span class="topbar-info-item">📞 +92 21 111 111 800</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="midbar-tier">
+    <div class="wrap midbar-wrap">
+      <a href="index.html" class="brand-logo">
+        <img id="dynamic-logo" src="logo_option_1.png" alt="Brand Logo" style="height:72px; max-width:240px; object-fit:contain; border-radius:6px; background:transparent; padding:4px;">
+        <div>
+          <span id="dynamic-brand-title" class="brand-title">Prime</span>
+          <span id="dynamic-brand-sub" class="brand-sub">ESTATES & DEVELOPMENTS</span>
+        </div>
+      </a>
+
+      <div class="sector-toggle-pill">
+        <button type="button" class="toggle-btn active" onclick="location.href='property-listing.html'">REAL ESTATE</button>
+        <button type="button" class="toggle-btn" onclick="location.href='construction.html'">BUILDERS & DEVELOPERS</button>
+      </div>
+
+      <div class="midbar-actions">
+        <div class="advisor-callout">
+          <span class="adv-label">SPEAK TO ADVISOR</span>
+          <span class="adv-phone">+92 21 111 111 800</span>
+        </div>
+        <a href="contact-us.html" class="btn btn-list-prop">LIST PROPERTY</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="mainnav-tier" id="mainnav">
+    <div class="wrap mainnav-wrap">
+      <div class="nav-links-center">
+        <a href="index.html" class="nav-item ">Home</a>
+        <a href="about.html" class="nav-item ">About Us</a>
+        <a href="property-listing.html" class="nav-item ">All Listings</a>
+        <a href="property-listing.html?cat=Houses" class="nav-item">Houses</a>
+        <a href="property-listing.html?cat=Apartments" class="nav-item">Apartments</a>
+        <a href="property-listing.html?cat=Plots" class="nav-item">Plots</a>
+        <a href="services.html" class="nav-item ">Services</a>
+        <a href="construction.html" class="nav-item ">Construction</a>
+        <a href="mortgage-calculator.html" class="nav-item active">Financial Calculator</a>
+        <a href="contact-us.html" class="nav-item ">Contact</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Financial Tools</span>
+    <h1>Properties <span style="color:#C9A66C;">Financial Calculator</span></h1>
+    <p class="lead">Plan your real estate investment with our accurate home loan & monthly installment calculator.</p>
+  </div>
+</section>
+
+<!-- ============ MORTGAGE & FINANCING CALCULATOR ============ -->
+<section id="calculator" class="calc-section" style="padding: 70px 0; background: var(--sand);">
+  <div class="wrap">
+    <!-- CALCULATOR CARD -->
+    <div class="calc-card reveal" style="background:#191B28; border-radius:24px; padding:44px 40px; border:1px solid rgba(201,166,108,0.35); box-shadow:0 30px 70px rgba(25,27,40,0.35); color:#FFFFFF;">
+      <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start;">
+        
+        <!-- LEFT: INPUTS & PRESETS -->
+        <div>
+          <!-- PROPERTY PRESET SELECTOR -->
+          <div style="margin-bottom: 24px;">
+            <label style="display:block; font-family:'Montserrat'; font-size:13px; font-weight:700; color:#C9A66C; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px;">Select Property Preset</label>
+            <select id="calcPropertyPreset" style="width:100%; background:rgba(244,241,234,0.1); color:#FFFFFF; border:1px solid rgba(201,166,108,0.4); padding:14px 18px; border-radius:12px; font-family:'Lato'; font-size:15px; font-weight:600; outline:none; cursor:pointer;">
+              <option value="custom" style="color:#191B28;">-- Custom Property Price --</option>
+              <option value="121361833" style="color:#191B28;">Emaar Tower - PKR 121,361,833</option>
+              <option value="24000000" style="color:#191B28;">Modern Villa DHA - PKR 24,000,000</option>
+              <option value="39000000" style="color:#191B28;">Smart Town Residence - PKR 39,000,000</option>
+              <option value="36400000" style="color:#191B28;">Ophelia Apartment - PKR 36,400,000</option>
+              <option value="42000000" style="color:#191B28;">Raaja Garden City - PKR 42,000,000</option>
+              <option value="28000000" style="color:#191B28;">Twin Tower Office - PKR 28,000,000</option>
+            </select>
+          </div>
+
+          <!-- PROPERTY PRICE -->
+          <div style="margin-bottom: 24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label style="font-family:'Montserrat'; font-size:13px; font-weight:700; color:#E2E4EB; letter-spacing:0.04em;">PROPERTY PRICE (PKR)</label>
+              <span id="calcPriceDisplay" style="font-family:'JetBrains Mono'; font-size:17px; font-weight:700; color:#C9A66C;">PKR 35,000,000</span>
+            </div>
+            <input type="range" id="calcPriceRange" min="5000000" max="250000000" step="1000000" value="35000000" style="width:100%; accent-color:#C9A66C; cursor:pointer;">
+          </div>
+
+          <!-- DOWN PAYMENT -->
+          <div style="margin-bottom: 24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label style="font-family:'Montserrat'; font-size:13px; font-weight:700; color:#E2E4EB; letter-spacing:0.04em;">DOWN PAYMENT (<span id="calcDownPercentLabel">20</span>%)</label>
+              <span id="calcDownAmountDisplay" style="font-family:'JetBrains Mono'; font-size:16px; font-weight:700; color:#C9A66C;">PKR 7,000,000</span>
+            </div>
+            <input type="range" id="calcDownRange" min="10" max="50" step="5" value="20" style="width:100%; accent-color:#C9A66C; cursor:pointer;">
+          </div>
+
+          <!-- LOAN TENURE (YEARS) -->
+          <div style="margin-bottom: 24px;">
+            <label style="display:block; font-family:'Montserrat'; font-size:13px; font-weight:700; color:#E2E4EB; letter-spacing:0.04em; margin-bottom:10px;">LOAN TENURE (YEARS)</label>
+            <div style="display:flex; gap:10px;">
+              <button type="button" class="tenure-btn" data-years="5" style="flex:1; padding:10px; border-radius:10px; border:1px solid rgba(201,166,108,0.4); background:transparent; color:#FFF; font-family:'Montserrat'; font-weight:700; cursor:pointer;">5 Yrs</button>
+              <button type="button" class="tenure-btn" data-years="10" style="flex:1; padding:10px; border-radius:10px; border:1px solid rgba(201,166,108,0.4); background:transparent; color:#FFF; font-family:'Montserrat'; font-weight:700; cursor:pointer;">10 Yrs</button>
+              <button type="button" class="tenure-btn active" data-years="15" style="flex:1; padding:10px; border-radius:10px; border:1px solid #C9A66C; background:#C9A66C; color:#191B28; font-family:'Montserrat'; font-weight:700; cursor:pointer;">15 Yrs</button>
+              <button type="button" class="tenure-btn" data-years="20" style="flex:1; padding:10px; border-radius:10px; border:1px solid rgba(201,166,108,0.4); background:transparent; color:#FFF; font-family:'Montserrat'; font-weight:700; cursor:pointer;">20 Yrs</button>
+              <button type="button" class="tenure-btn" data-years="25" style="flex:1; padding:10px; border-radius:10px; border:1px solid rgba(201,166,108,0.4); background:transparent; color:#FFF; font-family:'Montserrat'; font-weight:700; cursor:pointer;">25 Yrs</button>
+            </div>
+          </div>
+
+          <!-- ANNUAL INTEREST RATE (%) -->
+          <div style="margin-bottom: 10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label style="font-family:'Montserrat'; font-size:13px; font-weight:700; color:#E2E4EB; letter-spacing:0.04em;">ANNUAL INTEREST RATE (KIBOR + BANK)</label>
+              <span id="calcInterestRateDisplay" style="font-family:'JetBrains Mono'; font-size:16px; font-weight:700; color:#C9A66C;">11.5 %</span>
+            </div>
+            <input type="range" id="calcInterestRange" min="8.0" max="18.0" step="0.25" value="11.5" style="width:100%; accent-color:#C9A66C; cursor:pointer;">
+          </div>
+        </div>
+
+        <!-- RIGHT: RESULTS & BREAKDOWN -->
+        <div style="background:rgba(255,255,255,0.04); border-radius:20px; padding:32px 28px; border:1px solid rgba(201,166,108,0.25);">
+          <span style="display:block; font-family:'JetBrains Mono'; font-size:11px; font-weight:700; color:#C9A66C; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:6px;">Estimated Monthly Installment</span>
+          
+          <div id="calcMonthlyDisplay" style="font-family:'Montserrat'; font-size:clamp(32px, 3.5vw, 42px); font-weight:800; color:#C9A66C; line-height:1.1; margin-bottom:20px;">
+            PKR 327,150 <span style="font-size:14px; font-weight:500; color:#A0A4B8;">/ mo</span>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; margin-bottom:24px; display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; justify-content:space-between; font-size:14px;">
+              <span style="color:#A0A4B8;">Loan Principal Amount:</span>
+              <span id="calcLoanPrincipalDisplay" style="font-family:'JetBrains Mono'; font-weight:700; color:#FFFFFF;">PKR 28,000,000</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:14px;">
+              <span style="color:#A0A4B8;">Total Interest Payable:</span>
+              <span id="calcTotalInterestDisplay" style="font-family:'JetBrains Mono'; font-weight:700; color:#DFBE86;">PKR 30,887,000</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:14px;">
+              <span style="color:#A0A4B8;">Initial Down Payment:</span>
+              <span id="calcDownSummaryDisplay" style="font-family:'JetBrains Mono'; font-weight:700; color:#FFFFFF;">PKR 7,000,000</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:14px; border-top:1px dashed rgba(255,255,255,0.15); padding-top:10px;">
+              <span style="color:#E2E4EB; font-weight:700;">Total Lifetime Outflow:</span>
+              <span id="calcTotalOutflowDisplay" style="font-family:'JetBrains Mono'; font-weight:700; color:#C9A66C;">PKR 65,887,000</span>
+            </div>
+          </div>
+
+          <!-- VISUAL RATIO BAR -->
+          <div style="margin-bottom:28px;">
+            <div style="display:flex; justify-content:space-between; font-size:11px; font-family:'JetBrains Mono'; color:#A0A4B8; margin-bottom:6px;">
+              <span>■ Down Payment</span>
+              <span>■ Principal Loan</span>
+              <span>■ Total Interest</span>
+            </div>
+            <div style="height:10px; border-radius:6px; background:rgba(255,255,255,0.1); overflow:hidden; display:flex;">
+              <div id="barDown" style="width:20%; background:#FFFFFF; height:100%; transition:width 0.4s ease;"></div>
+              <div id="barPrincipal" style="width:38%; background:#C9A66C; height:100%; transition:width 0.4s ease;"></div>
+              <div id="barInterest" style="width:42%; background:#DFBE86; height:100%; transition:width 0.4s ease;"></div>
+            </div>
+          </div>
+
+          <a id="btnApplyFinancing" href="contact-us.html" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px; border-radius:12px; font-size:15px; font-weight:800; letter-spacing:0.04em;">
+            Apply for Pre-Approval →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KIBOR & FINANCING GUIDE ============ -->
+<section style="padding: 60px 0 90px; background: #FAF8F5;">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+      <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:20px; padding:32px 26px;">
+        <div style="font-size:32px; margin-bottom:14px;">🏦</div>
+        <h3 style="font-size:20px; margin-bottom:10px;">KIBOR Rate Benchmark</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px;">Karachi Interbank Offered Rate (KIBOR) determines mortgage rates across major Pakistani commercial banks.</p>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:20px; padding:32px 26px;">
+        <div style="font-size:32px; margin-bottom:14px;">📐</div>
+        <h3 style="font-size:20px; margin-bottom:10px;">Down Payment Terms</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px;">State Bank of Pakistan guidelines require a minimum 15% to 20% down payment for residential property financing.</p>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:20px; padding:32px 26px;">
+        <div style="font-size:32px; margin-bottom:14px;">📄</div>
+        <h3 style="font-size:20px; margin-bottom:10px;">Verified Title Guarantee</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px;">Prime Estate Enterprises verifies property titles and allotment letters for seamless bank approval.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">PRIME ESTATE ENTERPRISES</div>
+        <p style="font-size:14px;max-width:280px;">Delivering the highest standard of real estate and construction services to clients across Karachi since 1986.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="property-listing.html">Property Listing</a></li><li><a href="mortgage-calculator.html">Financial Calculator</a></li></ul>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul><li><a href="window-collection.html">Window Collection</a></li><li><a href="contact-us.html">Contact Us</a></li><li><a href="index.html">Careers</a></li><li><a href="index.html">Blog</a></li></ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>63‑C DHA 2, Phase 2, Karachi</li>
+          <li>primeestateenterprises@gmail.com</li>
+          <li>(021) 111-111-800</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Prime Estate Enterprises. All rights reserved.</span>
+      <span>Design concept · Karachi, Pakistan</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const presetSelect = document.getElementById('calcPropertyPreset');
+  const priceRange = document.getElementById('calcPriceRange');
+  const priceDisplay = document.getElementById('calcPriceDisplay');
+  
+  const downRange = document.getElementById('calcDownRange');
+  const downPercentLabel = document.getElementById('calcDownPercentLabel');
+  const downAmountDisplay = document.getElementById('calcDownAmountDisplay');
+  
+  const tenureBtns = document.querySelectorAll('.tenure-btn');
+  const interestRange = document.getElementById('calcInterestRange');
+  const interestRateDisplay = document.getElementById('calcInterestRateDisplay');
+  
+  const monthlyDisplay = document.getElementById('calcMonthlyDisplay');
+  const loanPrincipalDisplay = document.getElementById('calcLoanPrincipalDisplay');
+  const totalInterestDisplay = document.getElementById('calcTotalInterestDisplay');
+  const downSummaryDisplay = document.getElementById('calcDownSummaryDisplay');
+  const totalOutflowDisplay = document.getElementById('calcTotalOutflowDisplay');
+  
+  const barDown = document.getElementById('barDown');
+  const barPrincipal = document.getElementById('barPrincipal');
+  const barInterest = document.getElementById('barInterest');
+  const btnApplyFinancing = document.getElementById('btnApplyFinancing');
+
+  if (!priceRange || !downRange) return;
+
+  let currentTenureYears = 15;
+
+  function formatPKR(val) {
+    return 'PKR ' + Math.round(val).toLocaleString('en-PK');
+  }
+
+  function calculateMortgage() {
+    const totalPrice = parseFloat(priceRange.value) || 0;
+    const downPercent = parseFloat(downRange.value) || 20;
+    const annualInterest = parseFloat(interestRange.value) || 11.5;
+
+    const downAmount = totalPrice * (downPercent / 100);
+    const loanPrincipal = totalPrice - downAmount;
+
+    const monthlyInterestRate = (annualInterest / 100) / 12;
+    const totalMonths = currentTenureYears * 12;
+
+    let monthlyPayment = 0;
+    if (monthlyInterestRate > 0) {
+      const emiFactor = Math.pow(1 + monthlyInterestRate, totalMonths);
+      monthlyPayment = loanPrincipal * (monthlyInterestRate * emiFactor) / (emiFactor - 1);
+    } else {
+      monthlyPayment = loanPrincipal / totalMonths;
+    }
+
+    const totalLoanPayment = monthlyPayment * totalMonths;
+    const totalInterest = totalLoanPayment - loanPrincipal;
+    const totalOutflow = downAmount + totalLoanPayment;
+
+    priceDisplay.textContent = formatPKR(totalPrice);
+    downPercentLabel.textContent = downPercent;
+    downAmountDisplay.textContent = formatPKR(downAmount);
+    interestRateDisplay.textContent = annualInterest.toFixed(2) + ' %';
+    
+    monthlyDisplay.innerHTML = `${formatPKR(monthlyPayment)} <span style="font-size:14px; font-weight:500; color:#A0A4B8;">/ mo</span>`;
+    loanPrincipalDisplay.textContent = formatPKR(loanPrincipal);
+    totalInterestDisplay.textContent = formatPKR(totalInterest);
+    downSummaryDisplay.textContent = formatPKR(downAmount);
+    totalOutflowDisplay.textContent = formatPKR(totalOutflow);
+
+    if (totalOutflow > 0) {
+      const downPct = (downAmount / totalOutflow) * 100;
+      const principalPct = (loanPrincipal / totalOutflow) * 100;
+      const interestPct = (totalInterest / totalOutflow) * 100;
+
+      barDown.style.width = downPct.toFixed(1) + '%';
+      barPrincipal.style.width = principalPct.toFixed(1) + '%';
+      barInterest.style.width = interestPct.toFixed(1) + '%';
+    }
+
+    if (btnApplyFinancing) {
+      btnApplyFinancing.href = `contact-us.html?mortgage=true&price=${totalPrice}&down=${downAmount}&tenure=${currentTenureYears}`;
+    }
+  }
+
+  if (presetSelect) {
+    presetSelect.addEventListener('change', (e) => {
+      if (e.target.value !== 'custom') {
+        priceRange.value = e.target.value;
+        calculateMortgage();
+      }
+    });
+  }
+
+  priceRange.addEventListener('input', () => {
+    if (presetSelect) presetSelect.value = 'custom';
+    calculateMortgage();
+  });
+
+  downRange.addEventListener('input', calculateMortgage);
+  interestRange.addEventListener('input', calculateMortgage);
+
+  tenureBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tenureBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.background = 'transparent';
+        b.style.color = '#FFF';
+        b.style.borderColor = 'rgba(201,166,108,0.4)';
+      });
+      btn.classList.add('active');
+      btn.style.background = '#C9A66C';
+      btn.style.color = '#191B28';
+      btn.style.borderColor = '#C9A66C';
+      currentTenureYears = parseInt(btn.getAttribute('data-years')) || 15;
+      calculateMortgage();
+    });
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramPrice = urlParams.get('price');
+  if (paramPrice && priceRange) {
+    priceRange.value = paramPrice;
+  }
+
+  calculateMortgage();
+});
+</script>
+<script src="advanced-animations.js"></script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.getElementById('logo-selector-overlay');
+  const navLogo = document.getElementById('dynamic-logo');
+  const brandTitle = document.getElementById('dynamic-brand-title');
+  const brandSub = document.getElementById('dynamic-brand-sub');
+  const options = document.querySelectorAll('.logo-option');
+
+  // Load saved choices into header
+  try {
+    const savedLogo = localStorage.getItem('selectedLogo');
+    const savedTitle = localStorage.getItem('selectedTitle') || 'Prime';
+    const savedSub = localStorage.getItem('selectedSub');
+    
+    if (savedLogo && navLogo) navLogo.src = savedLogo;
+    if (brandTitle) brandTitle.textContent = savedTitle;
+    if (savedSub && brandSub) brandSub.textContent = savedSub;
+
+    // Check if current page is Home page
+    const p = window.location.pathname.toLowerCase();
+    const isHomePage = p.endsWith('index.html') || p === '/' || p.endsWith('/') || p.endsWith('\\') || !p.includes('.html');
+
+    if (savedLogo && overlay && !isHomePage) {
+      overlay.style.display = 'none';
+      document.body.classList.remove('no-scroll');
+    } else if (isHomePage && overlay) {
+      overlay.style.display = 'flex';
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+      document.body.classList.add('no-scroll');
+    }
+  } catch(e) {}
+
+  if (overlay && options.length > 0) {
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        const selectedLogo = option.getAttribute('data-logo');
+        const selectedTitle = option.getAttribute('data-title') || 'Prime';
+        const selectedSub = option.getAttribute('data-sub') || 'ESTATES & DEVELOPMENTS';
+
+        try {
+          localStorage.setItem('selectedLogo', selectedLogo);
+          localStorage.setItem('selectedTitle', selectedTitle);
+          localStorage.setItem('selectedSub', selectedSub);
+        } catch(e) {}
+
+        if (navLogo) navLogo.src = selectedLogo;
+        if (brandTitle) brandTitle.textContent = selectedTitle;
+        if (brandSub) brandSub.textContent = selectedSub;
+
+        overlay.style.transition = 'opacity 0.6s ease, visibility 0.6s ease';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.visibility = 'hidden';
+          overlay.style.display = 'none';
+          document.body.classList.remove('no-scroll');
+        }, 600);
+      });
+    });
+  } else {
+    document.body.classList.remove('no-scroll');
+  }
+});
+</script>
+
+
+
+</body>
+</html>
