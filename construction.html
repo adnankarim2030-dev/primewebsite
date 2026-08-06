@@ -234,6 +234,91 @@
   border-radius: 3px 3px 0 0;
 }
 
+/* ============ NAV DROPDOWN ============ */
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.caret {
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.25s ease;
+  margin-top: -1px;
+}
+
+.nav-dropdown:hover .caret,
+.nav-dropdown.open .caret {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(25, 27, 40, 0.18);
+  border: 1px solid rgba(25, 27, 40, 0.08);
+  padding: 8px 0;
+  margin-top: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #191B28;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(201, 166, 108, 0.12);
+  color: #C9A66C;
+  padding-left: 22px;
+}
+
+.mnav-dropdown {
+  width: 100%;
+  margin: 4px 0;
+}
+
+.mnav-sub-item {
+  font-size: 13px !important;
+  padding: 6px 0 6px 14px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  display: block;
+}
+
+.mnav-sub-item:hover {
+  color: #C9A66C !important;
+}
+
 @media (max-width: 980px) {
   .topbar-right-info span:not(:last-child) { display: none; }
   .sector-toggle-pill { display: none; }
@@ -955,10 +1040,14 @@ footer ul li a:hover{color:var(--orange-soft);}
       <div class="nav-links-center">
         <a href="index.html" class="nav-item ">Home</a>
         <a href="about.html" class="nav-item ">About Us</a>
-        <a href="property-listing.html" class="nav-item ">All Listings</a>
-        <a href="property-listing.html?cat=Houses" class="nav-item">Houses</a>
-        <a href="property-listing.html?cat=Apartments" class="nav-item">Apartments</a>
-        <a href="property-listing.html?cat=Plots" class="nav-item">Plots</a>
+        <div class="nav-dropdown">
+          <a href="property-listing.html" class="nav-item nav-dropdown-toggle">All Listings <span class="caret">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="property-listing.html?cat=Houses" class="dropdown-item">Houses</a>
+            <a href="property-listing.html?cat=Apartments" class="dropdown-item">Apartments</a>
+            <a href="property-listing.html?cat=Plots" class="dropdown-item">Plots</a>
+          </div>
+        </div>
         <a href="services.html" class="nav-item ">Services</a>
         <a href="construction.html" class="nav-item active">Construction</a>
         <a href="mortgage-calculator.html" class="nav-item ">Financial Calculator</a>
@@ -979,8 +1068,15 @@ footer ul li a:hover{color:var(--orange-soft);}
     <div style="clear:both;height:20px;"></div>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
+    <div class="mnav-dropdown">
+      <a href="property-listing.html" style="font-weight:700;">All Listings ▾</a>
+      <div style="padding-left:14px; margin-top:2px;">
+        <a href="property-listing.html?cat=Houses" class="mnav-sub-item">Houses</a>
+        <a href="property-listing.html?cat=Apartments" class="mnav-sub-item">Apartments</a>
+        <a href="property-listing.html?cat=Plots" class="mnav-sub-item">Plots</a>
+      </div>
+    </div>
     <a href="services.html">Services</a>
-    <a href="property-listing.html">Property Listing</a>
     <a href="construction.html">Construction</a>
     <a href="window-collection.html">Window Collection</a>
     <a href="contact-us.html">Contact Us</a>
