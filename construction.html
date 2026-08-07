@@ -1108,11 +1108,11 @@ footer ul li a:hover{color:var(--orange-soft);}
 <!-- ============ INTERACTIVE LOGO SELECTOR ============ -->
 <div id="logo-selector-overlay">
   <div class="logo-selector-container">
-    <div class="logo-option" data-logo="logo_option_1.png" data-title="Prime Build & Co" data-sub="REAL ESTATE">
+    <div class="logo-option" data-logo="logo_option_1.png" data-title="Prime Build & Co" data-sub="BUILDERS & DEVELOPERS">
       <img src="logo_option_1.png" alt="Prime Logo 1">
       <div style="font-family:'Montserrat'; font-weight:700; font-size:14px; color:#191B28; margin-top:10px;">Prime Logo 1</div>
     </div>
-    <div class="logo-option" data-logo="logo_option_2.png" data-title="Prime Build & Co" data-sub="REAL ESTATE">
+    <div class="logo-option" data-logo="logo_option_2.png" data-title="Prime Build & Co" data-sub="BUILDERS & DEVELOPERS">
       <img src="logo_option_2.png" alt="Prime Logo 2">
       <div style="font-family:'Montserrat'; font-weight:700; font-size:14px; color:#191B28; margin-top:10px;">Prime Logo 2</div>
     </div>
@@ -1144,7 +1144,7 @@ footer ul li a:hover{color:var(--orange-soft);}
         <img id="dynamic-logo" src="logo_option_1.png" alt="Brand Logo" style="height:72px; max-width:240px; object-fit:contain; border-radius:6px; background:transparent; padding:4px;">
         <div>
           <span id="dynamic-brand-title" class="brand-title">Prime Build & Co</span>
-          <span id="dynamic-brand-sub" class="brand-sub">REAL ESTATE</span>
+          <span id="dynamic-brand-sub" class="brand-sub">BUILDERS & DEVELOPERS</span>
         </div>
       </a>
 
@@ -1713,7 +1713,11 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     const savedLogo = localStorage.getItem('selectedLogo');
     const savedTitle = localStorage.getItem('selectedTitle') || 'Prime Build & Co';
-    const savedSub = localStorage.getItem('selectedSub');
+    let savedSub = localStorage.getItem('selectedSub');
+    if (!savedSub || savedSub === 'REAL ESTATE') {
+      savedSub = 'BUILDERS & DEVELOPERS';
+      try { localStorage.setItem('selectedSub', 'BUILDERS & DEVELOPERS'); } catch(e){}
+    }
     
     if (savedLogo && navLogo) navLogo.src = savedLogo;
     if (brandTitle) brandTitle.textContent = savedTitle;
@@ -1739,7 +1743,7 @@ document.addEventListener('DOMContentLoaded', () => {
       option.addEventListener('click', () => {
         const selectedLogo = option.getAttribute('data-logo');
         const selectedTitle = option.getAttribute('data-title') || 'Prime Build & Co';
-        const selectedSub = option.getAttribute('data-sub') || 'REAL ESTATE';
+        const selectedSub = option.getAttribute('data-sub') || 'BUILDERS & DEVELOPERS';
 
         try {
           localStorage.setItem('selectedLogo', selectedLogo);
