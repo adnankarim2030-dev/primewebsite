@@ -1287,49 +1287,63 @@ body.no-scroll { overflow: hidden; height: 100vh; }
 /* ============ ENHANCED MOBILE BURGER & MENU STYLES ============ */
 .burger {
   display: none;
-  align-items: center;
-  gap: 8px;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
   background: #ffffff !important;
-  border: 1px solid rgba(25, 27, 40, 0.25) !important;
+  border: 1.5px solid rgba(25, 27, 40, 0.25) !important;
   border-radius: 8px !important;
-  padding: 8px 14px !important;
+  padding: 8px 16px !important;
   width: auto !important;
   height: auto !important;
-  min-height: 38px !important;
+  min-height: 40px !important;
   margin-left: auto !important;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08) !important;
   transition: all 0.25s ease;
   z-index: 210;
+  box-sizing: border-box !important;
 }
 .burger:hover {
   border-color: #C9A66C !important;
-  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(201,166,108,0.25) !important;
 }
-.burger-box {
-  width: 18px;
-  height: 12px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-shrink: 0;
+.burger span, .burger span::before, .burger span::after {
+  display: none !important;
 }
-.burger-box span {
-  display: block;
-  width: 100%;
-  height: 2px;
+.burger-icon {
+  width: 20px !important;
+  height: 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  flex-shrink: 0 !important;
+}
+.burger-icon .bar {
+  display: block !important;
+  width: 100% !important;
+  height: 2.5px !important;
   background: #191B28 !important;
-  border-radius: 2px;
+  border-radius: 2px !important;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
-.burger-label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
+.burger-text {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
   color: #191B28 !important;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  white-space: nowrap;
+  letter-spacing: 0.08em !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  width: auto !important;
+  height: auto !important;
+  position: static !important;
 }
 .mobile-brand-title {
   display: none;
@@ -1483,12 +1497,12 @@ body.no-scroll { overflow: hidden; height: 100vh; }
       </div>
 
       <div class="burger" id="burgerBtn" aria-label="Toggle Navigation Menu">
-  <span class="burger-box">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-  <span class="burger-label">MENU</span>
+  <div class="burger-icon">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="burger-text">MENU</div>
 </div>
     </div>
   </nav>
