@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin &amp; Leads Dashboard — Prime Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #14243C;
+  --blue-mid: #1E3557;
+  --sand: #F3F1EA;
+  --white: #FFFFFF;
+  --ink: #14243C;
+  --ink-soft: #4A5568;
+  --gold: #C9A66C;
+  --line: rgba(20, 36, 60, 0.12);
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--sand);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+
+/* 3-Tier Header */
+.topbar-tier {
+  background: var(--blue);
+  color: #D3D6E2;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(201,166,108,0.2);
+}
+.topbar-wrap { display: flex; justify-content: space-between; align-items: center; padding: 8px 28px; flex-wrap: wrap; gap: 10px; }
+.topbar-left-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.topbar-left-links a:hover { color: var(--gold); }
+.topbar-right-info { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.midbar-tier { background: var(--sand); border-bottom: 1px solid var(--line); padding: 14px 0; }
+.midbar-wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.btn-list-prop {
+  background: linear-gradient(135deg, #C9A66C 0%, #DFBE86 100%);
+  color: #14243C; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13.5px;
+  padding: 11px 22px; border-radius: 10px; display: inline-block;
+}
+.mainnav-tier { background: var(--sand); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; }
+.mainnav-wrap { display: flex; align-items: center; justify-content: center; height: 52px; }
+.nav-links-center { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.nav-item { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--blue); padding: 8px 4px; }
+.nav-item:hover, .nav-item.active { color: var(--gold); }
+
+/* Dashboard Content */
+.dash-hero {
+  background: var(--blue);
+  color: var(--sand);
+  padding: 36px 0;
+}
+.dash-hero-flex {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.dash-hero h1 { font-family: 'Montserrat', sans-serif; font-size: 28px; color: #FFFFFF; }
+.dash-hero p { color: #CBD5E1; font-size: 15px; margin-top: 4px; }
+.dash-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-dash {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+  padding: 10px 18px; border-radius: 10px; cursor: pointer; border: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-dash-gold { background: var(--gold); color: var(--blue); }
+.btn-dash-outline { background: transparent; color: var(--sand); border: 1px solid rgba(243,241,234,0.35); }
+
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  margin: 28px 0;
+}
+.kpi-card {
+  background: #FFFFFF; border-radius: 16px; padding: 20px 22px;
+  border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(20,36,60,0.05);
+}
+.kpi-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 11.5px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 700;
+}
+.kpi-val {
+  font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 800;
+  color: var(--blue); margin-top: 6px;
+}
+
+.dash-tabs {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;
+}
+.dash-tab-btn {
+  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
+  padding: 11px 20px; border-radius: 10px; border: 1px solid var(--line);
+  background: #FFFFFF; color: var(--blue); cursor: pointer;
+}
+.dash-tab-btn.active {
+  background: var(--blue); color: var(--sand); border-color: var(--blue);
+}
+.dash-panel { display: none; }
+.dash-panel.active { display: block; }
+
+.table-card {
+  background: #FFFFFF; border-radius: 16px; border: 1px solid var(--line);
+  overflow-x: auto; box-shadow: 0 6px 20px rgba(20,36,60,0.05); margin-bottom: 28px;
+}
+.table-card-head {
+  padding: 16px 22px; border-bottom: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.table-card-head h3 { font-family: 'Montserrat', sans-serif; font-size: 17px; color: var(--blue); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  background: var(--sand); text-align: left; padding: 12px 16px;
+  font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700;
+  color: var(--blue); border-bottom: 1px solid var(--line);
+}
+td { padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+
+.badge {
+  display: inline-block; padding: 4px 10px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+}
+.badge-ok { background: #DCFCE7; color: #166534; }
+.badge-pend { background: #FEF3C7; color: #92400E; }
+.badge-blue { background: #E0E7FF; color: #14243C; }
+
+.act-btn {
+  padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--sand); color: var(--blue); font-size: 12px; font-weight: 700;
+  cursor: pointer; margin-right: 4px;
+}
+.act-btn:hover { background: var(--blue); color: #fff; }
+.act-btn-del { color: #B91C1C; }
+.act-btn-del:hover { background: #B91C1C; color: #fff; }
+
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+}
+
+.burger {
+  display: none; align-items: center; gap: 10px; background: #ffffff;
+  border: 1.5px solid rgba(20, 36, 60, 0.25); border-radius: 8px;
+  padding: 7px 14px; margin-left: auto; cursor: pointer;
+}
+.burger-icon { width: 20px; height: 14px; display: flex; flex-direction: column; justify-content: space-between; }
+.burger-icon .bar { display: block; width: 100%; height: 2.5px; background: #14243C; border-radius: 2px; }
+.burger-text { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800; color: #14243C; }
+.mobile-brand-title { display: none; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 17px; color: #14243C; }
+@media (max-width: 980px) {
+  .burger { display: inline-flex; }
+  .mobile-brand-title { display: block; }
+  .nav-links-center { display: none; }
+  .mainnav-wrap { justify-content: space-between; }
+}
+.mnav { position: fixed; inset: 0; background: rgba(20,36,60,0.75); backdrop-filter: blur(8px); z-index: 999999; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
+.mnav.open { opacity: 1; pointer-events: auto; }
+.mnav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; max-width: 85vw; background: #14243C; padding: 24px 20px; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); overflow-y: auto; }
+.mnav.open .mnav-panel { transform: translateX(0); }
+.mnav-panel a { display: block; font-family: 'Montserrat', sans-serif; font-size: 15.5px; font-weight: 600; color: #F3F1EA !important; padding: 12px 14px; border-radius: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.mnav-panel a:hover { background: rgba(201,166,108,0.2); color: #C9A66C !important; }
+.mnav-sub-item { font-size: 14px !important; color: #D3D6E2 !important; padding: 8px 12px !important; border-bottom: none !important; }
+</style>
+  <link rel="stylesheet" href="advanced-animations.css">
+<style>
+/* ============ TOP-RIGHT 3-LINE HAMBURGER ICON IN SOCIAL ROW ============ */
+.burger-text { display: none !important; }
+@media (max-width: 980px) {
+  .mainnav-tier { display: none !important; }
+  .midbar-tier { padding: 10px 0 !important; }
+  .midbar-wrap {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+  .brand-logo { flex-shrink: 1 !important; min-width: 0 !important; }
+  .brand-logo img {
+    height: clamp(32px, 8vw, 46px) !important;
+    max-width: clamp(120px, 34vw, 200px) !important;
+    width: auto !important;
+  }
+  .midbar-actions, .midbar-right-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  .header-socials {
+    display: flex !important;
+    align-items: center !important;
+    gap: clamp(4px, 1.2vw, 8px) !important;
+  }
+  .social-anim-btn {
+    width: clamp(26px, 6.8vw, 34px) !important;
+    height: clamp(26px, 6.8vw, 34px) !important;
+  }
+  .social-anim-btn svg {
+    width: clamp(12px, 3.2vw, 15px) !important;
+    height: clamp(12px, 3.2vw, 15px) !important;
+  }
+  .burger {
+    display: inline-flex !important;
+    position: static !important;
+    width: clamp(28px, 7.2vw, 34px) !important;
+    height: clamp(28px, 7.2vw, 34px) !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid rgba(20, 36, 60, 0.25) !important;
+    box-shadow: 0 3px 10px rgba(20, 36, 60, 0.12) !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .burger-icon {
+    width: clamp(14px, 3.6vw, 17px) !important;
+    height: clamp(10px, 2.6vw, 12px) !important;
+  }
+  .burger-icon .bar {
+    height: 2px !important;
+    background: #14243C !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="header-3tier">
+  <div class="topbar-tier">
+    <div class="wrap topbar-wrap">
+      <div class="topbar-left-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Prime</a>
+        <a href="contact-us.html">Contact</a>
+        <a href="dashboard.html" style="color:#C9A66C; font-weight:700;">Admin Dashboard</a>
+      </div>
+      <div class="topbar-right-info">
+        <span>📍 Karachi, Pakistan</span>
+        <span>✉ primeestateenterprises@gmail.com</span>
+        <span>📞 +92 21 111 111 800</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="midbar-tier">
+    <div class="wrap midbar-wrap">
+      <a href="index.html" class="brand-logo">
+        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" style="height:58px; max-width:260px; object-fit:contain;">
+      </a>
+      <div class="header-socials" aria-label="Prime Group Social Links">
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-anim-btn" title="Facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-anim-btn" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-anim-btn" title="LinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" class="social-anim-btn" title="YouTube" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+        </a>
+        <a href="https://wa.me/9221111111800" target="_blank" rel="noopener" class="social-anim-btn" title="WhatsApp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m5.8 14.1c-.25.7-1.43 1.34-1.98 1.42-.52.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.42-5.21-4.62-.15-.2-1.24-1.65-1.24-3.15s.79-2.24 1.07-2.54c.28-.3.61-.38.81-.38l.58.01c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.17-.32.38-.45.51-.15.15-.31.31-.13.61.18.3.79 1.3 1.7 2.11 1.17 1.04 2.16 1.37 2.46 1.52.3.15.48.13.66-.08.18-.2.76-.88.96-1.18.2-.3.4-.25.67-.15.27.1 1.74.82 2.04.97.3.15.5.22.57.34.08.12.08.7-.17 1.4z"/></svg>
+        </a>
+      </div>
+        <div class="burger" id="burgerBtn" aria-label="Toggle Navigation Menu">
+  <div class="burger-icon">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <nav class="mainnav-tier">
+    <div class="wrap mainnav-wrap">
+      <a href="index.html" class="mobile-brand-title">Prime Group</a>
+      <div class="nav-links-center">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="property-listing.html" class="nav-item">Real Estate</a>
+        <a href="construction.html" class="nav-item">Constructions</a>
+        <a href="window-collection.html" class="nav-item">Window Collection</a>
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="mortgage-calculator.html" class="nav-item">Calculator</a>
+        <a href="dashboard.html" class="nav-item active">Dashboard</a>
+      </div>
+    </div>
+      </div>
+  </nav>
+</header>
+
+</div>
+
+<!-- MOBILE NAV SIDEBAR -->
+<div class="mnav" id="mnav">
+  <div class="mnav-panel">
+    <div class="mnav-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; border-bottom:1px solid rgba(243,241,234,0.18); padding-bottom:14px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:17px; color:#F3F1EA; letter-spacing:0.04em;">PRIME GROUP MENU</span>
+      <div class="mnav-close" id="mnavClose" style="font-size:28px; cursor:pointer; color:#F3F1EA; line-height:1;">&times;</div>
+    </div>
+    <a href="index.html">🏠 Home</a>
+    <div class="mnav-dropdown">
+      <a href="property-listing.html" style="font-weight:700; display:flex; justify-content:space-between; align-items:center;">🏷️ Real Estate <span>▾</span></a>
+      <div style="padding-left:16px; margin-top:4px;">
+        <a href="property-listing.html?cat=Houses" class="mnav-sub-item">🏡 Houses</a>
+        <a href="property-listing.html?cat=Apartments" class="mnav-sub-item">🏢 Apartments</a>
+        <a href="property-listing.html?cat=Plots" class="mnav-sub-item">📐 Plots</a>
+      </div>
+    </div>
+    <a href="construction.html">🏗️ Constructions</a>
+    <a href="window-collection.html">🪟 Window Collection</a>
+    <a href="services.html">🛠️ Services</a>
+    <a href="mortgage-calculator.html">🧮 Financial Calculator</a>
+    <a href="about.html">🏢 About Us</a>
+    <a href="contact-us.html">📞 Contact Us</a>
+    <a href="dashboard.html" style="color:#C9A66C !important; border-top:1px solid rgba(243,241,234,0.18); margin-top:8px;">📊 Admin Dashboard</a>
+  </div>
+</div>
+
+<section class="dash-hero">
+  <div class="wrap dash-hero-flex">
+    <div>
+      <h1>Prime Group — Visitors, Customers &amp; Form Confirmations</h1>
+      <p>Track website visitors, Gmail-verified customers, property listing confirmations, and email notifications.</p>
+    </div>
+    <div class="dash-actions">
+      <button type="button" class="btn-dash btn-dash-gold" id="exportCsvBtn">⬇ Export Leads CSV</button>
+      <a href="index.html?tab=list-property#home" class="btn-dash btn-dash-outline">+ New Listing</a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap" style="padding-top: 10px; padding-bottom: 50px;">
+  <!-- KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Visitors</div>
+      <div class="kpi-val" id="kpiVisitors">0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Gmail Verified Customers</div>
+      <div class="kpi-val" id="kpiCustomers">0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Confirmed Listings</div>
+      <div class="kpi-val" id="kpiListings">0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Emails Dispatched</div>
+      <div class="kpi-val" id="kpiEmails">0</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="dash-tabs">
+    <button type="button" class="dash-tab-btn active" data-panel="panel-listings">📋 Property Form Confirmations</button>
+    <button type="button" class="dash-tab-btn" data-panel="panel-customers">👥 Customers &amp; Visitors Details</button>
+    <button type="button" class="dash-tab-btn" data-panel="panel-emails">✉️ Email Dispatch Log</button>
+  </div>
+
+  <!-- Panel 1: Listings -->
+  <div id="panel-listings" class="dash-panel active">
+    <div class="table-card">
+      <div class="table-card-head">
+        <h3>Submitted Property Listings &amp; Confirmations</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Ref ID</th>
+            <th>Property Title</th>
+            <th>Customer (Gmail &amp; Phone)</th>
+            <th>Type &amp; Area</th>
+            <th>Price (PKR)</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="listingsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Panel 2: Customers & Visitors -->
+  <div id="panel-customers" class="dash-panel">
+    <div class="table-card">
+      <div class="table-card-head">
+        <h3>Gmail Verified Customers</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Gmail Address</th>
+            <th>Mobile</th>
+            <th>Listings</th>
+            <th>Verified At</th>
+          </tr>
+        </thead>
+        <tbody id="customersTableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-head">
+        <h3>Recent Website Visitors</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Session ID</th>
+            <th>Device</th>
+            <th>First Page</th>
+            <th>Last Page</th>
+            <th>Views</th>
+            <th>Last Active</th>
+          </tr>
+        </thead>
+        <tbody id="visitorsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Panel 3: Email Dispatch Log -->
+  <div id="panel-emails" class="dash-panel">
+    <div class="table-card">
+      <div class="table-card-head">
+        <h3>Customer &amp; Prime Group Email Confirmations</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Email ID</th>
+            <th>Recipient</th>
+            <th>Type</th>
+            <th>Subject</th>
+            <th>Sent At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="emailsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="list-property-logic.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const { KEYS, readStore, writeStore } = window.PrimeGroupEngine;
+
+  // Tab switching
+  document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.dash-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.getAttribute('data-panel')).classList.add('active');
+    });
+  });
+
+  function fmtDate(iso) {
+    if (!iso) return '—';
+    return new Date(iso).toLocaleString();
+  }
+
+  function renderDashboard() {
+    const visitors = readStore(KEYS.VISITORS, []);
+    const customers = readStore(KEYS.CUSTOMERS, []);
+    const listings = readStore(KEYS.LISTINGS, []);
+    const emails = readStore(KEYS.EMAILS, []);
+
+    document.getElementById('kpiVisitors').textContent = visitors.length;
+    document.getElementById('kpiCustomers').textContent = customers.length;
+    document.getElementById('kpiListings').textContent = listings.filter(l => l.status === 'Confirmed & Live').length;
+    document.getElementById('kpiEmails').textContent = emails.length;
+
+    // Listings table
+    const lBody = document.getElementById('listingsTableBody');
+    if (listings.length === 0) {
+      lBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:26px; color:#5C6073;">No property submissions yet. Submit a listing on the Homepage to see it here!</td></tr>';
+    } else {
+      lBody.innerHTML = listings.map((item, idx) => `
+        <tr>
+          <td><strong>${item.id}</strong></td>
+          <td>
+            <strong>${item.title}</strong><br>
+            <small style="color:#5C6073;">📍 ${item.location}, ${item.city}</small>
+          </td>
+          <td>
+            <span>${item.customerEmail || item.email}</span><br>
+            <small style="color:#5C6073;">📞 ${item.mobile}</small>
+          </td>
+          <td>${item.purpose} · ${item.subtype}<br><small>${item.area} ${item.areaUnit}</small></td>
+          <td><strong>PKR ${item.price}</strong></td>
+          <td>
+            <span class="badge ${item.status === 'Confirmed & Live' ? 'badge-ok' : 'badge-pend'}">${item.status}</span>
+          </td>
+          <td>
+            <button class="act-btn" onclick="toggleListingStatus(${idx})">${item.status === 'Confirmed & Live' ? 'Pause' : 'Confirm'}</button>
+            <button class="act-btn act-btn-del" onclick="deleteListing(${idx})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Customers table
+    const cBody = document.getElementById('customersTableBody');
+    if (customers.length === 0) {
+      cBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#5C6073;">No Gmail verified customers yet.</td></tr>';
+    } else {
+      cBody.innerHTML = customers.map(c => `
+        <tr>
+          <td><strong>${c.id}</strong></td>
+          <td>${c.name}</td>
+          <td><span class="badge badge-blue">${c.email}</span></td>
+          <td>${c.phone || '—'}</td>
+          <td>${c.listingsCount || 0}</td>
+          <td>${fmtDate(c.verifiedAt)}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Visitors table
+    const vBody = document.getElementById('visitorsTableBody');
+    vBody.innerHTML = visitors.map(v => `
+      <tr>
+        <td><strong>${v.id}</strong></td>
+        <td>${v.device}</td>
+        <td>${v.firstPage}</td>
+        <td>${v.lastPage}</td>
+        <td>${v.pageViews}</td>
+        <td>${fmtDate(v.lastVisit)}</td>
+      </tr>
+    `).join('');
+
+    // Emails table
+    const eBody = document.getElementById('emailsTableBody');
+    if (emails.length === 0) {
+      eBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#5C6073;">No confirmation emails dispatched yet.</td></tr>';
+    } else {
+      eBody.innerHTML = emails.map(em => `
+        <tr>
+          <td><strong>${em.id}</strong></td>
+          <td>${em.to}</td>
+          <td><span class="badge badge-blue">${em.recipientType}</span></td>
+          <td>${em.subject}</td>
+          <td>${fmtDate(em.sentAt)}</td>
+          <td>
+            <a class="act-btn" href="mailto:${encodeURIComponent(em.to)}?subject=${encodeURIComponent(em.subject)}&body=${encodeURIComponent(em.body)}">Open Mail</a>
+          </td>
+        </tr>
+      `).join('');
+    }
+  }
+
+  window.toggleListingStatus = function(idx) {
+    const listings = readStore(KEYS.LISTINGS, []);
+    if (!listings[idx]) return;
+    listings[idx].status = listings[idx].status === 'Confirmed & Live' ? 'Pending Confirmation' : 'Confirmed & Live';
+    writeStore(KEYS.LISTINGS, listings);
+    renderDashboard();
+  };
+
+  window.deleteListing = function(idx) {
+    const listings = readStore(KEYS.LISTINGS, []);
+    listings.splice(idx, 1);
+    writeStore(KEYS.LISTINGS, listings);
+    renderDashboard();
+  };
+
+  document.getElementById('exportCsvBtn').addEventListener('click', () => {
+    const listings = readStore(KEYS.LISTINGS, []);
+    if (listings.length === 0) {
+      alert('No listings to export yet.');
+      return;
+    }
+    const headers = ['RefID', 'Title', 'Purpose', 'Type', 'City', 'Location', 'Area', 'PricePKR', 'CustomerEmail', 'Mobile', 'Status'];
+    const rows = listings.map(l => [
+      l.id, `"${(l.title || '').replace(/"/g, '""')}"`, l.purpose, l.subtype, l.city,
+      `"${(l.location || '').replace(/"/g, '""')}"`, `${l.area} ${l.areaUnit}`, l.price,
+      l.customerEmail || l.email, l.mobile, l.status
+    ].join(','));
+    const csv = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'prime-group-leads.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  renderDashboard();
+});
+</script>
+<script src="advanced-animations.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const b = document.getElementById('burgerBtn');
+  const m = document.getElementById('mnav');
+  const c = document.getElementById('mnavClose');
+  if (b && m) {
+    b.addEventListener('click', () => m.classList.add('open'));
+    if (c) c.addEventListener('click', () => m.classList.remove('open'));
+    m.addEventListener('click', (e) => { if (e.target === m) m.classList.remove('open'); });
+  }
+});
+</script>
+</body>
+</html>

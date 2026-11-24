@@ -1,16 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const SKIP_SELECTOR = 'nav, footer, #gmailAuthModal, .lp-zameen-wrap, .lp-success-box, .table-card';
 
     function wrapWords(node, isHeading) {
         if (node.nodeType === Node.TEXT_NODE) {
             const text = node.nodeValue;
-            // Split by words, capturing whitespace
             const words = text.split(/(\s+)/);
-            if(words.length === 1 && text.trim() === '') return; // Just whitespace
+            if (words.length === 1 && text.trim() === '') return;
 
             const fragment = document.createDocumentFragment();
             words.forEach(word => {
                 if (word.trim() === '') {
-                    // It's whitespace, keep it as text node
                     fragment.appendChild(document.createTextNode(word));
                 } else {
                     const wordSpan = document.createElement('span');
@@ -30,10 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             node.parentNode.replaceChild(fragment, node);
         } else if (node.nodeType === Node.ELEMENT_NODE) {
-            // Skip scripts, styles, or elements already processed/should be ignored
-            if(['SCRIPT', 'STYLE', 'IMG', 'SVG', 'IFRAME', 'VIDEO'].includes(node.tagName.toUpperCase())) return;
-            // Recursively process child nodes
-            // Convert to array to avoid mutation issues during iteration
+            if (['SCRIPT', 'STYLE', 'IMG', 'SVG', 'IFRAME', 'VIDEO', 'INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(node.tagName.toUpperCase())) return;
             Array.from(node.childNodes).forEach(child => wrapWords(child, isHeading));
         }
     }
@@ -41,57 +37,55 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Process Headings
     const headings = document.querySelectorAll('h1, h2, h3');
     headings.forEach(heading => {
-        // Skip nav links and footer titles to avoid breaking layout
-        if(heading.closest('nav') || heading.closest('footer')) return;
-        
+        if (heading.closest(SKIP_SELECTOR)) return;
         wrapWords(heading, true);
         heading.classList.add('anim-container');
-        
-        // Assign staggered delays
-        const words = heading.querySelectorAll('.adv-heading-word');
-        words.forEach((word, idx) => {
-            word.style.transitionDelay = `${idx * 0.05}s`;
+        heading.querySelectorAll('.adv-heading-word').forEach((word, idx) => {
+            word.style.transitionDelay = `${Math.min(idx * 0.045, 0.45)}s`;
         });
     });
 
     // 2. Process Body Text
     const allParagraphs = Array.from(document.querySelectorAll('p:not(footer p):not(.topbar p)'));
     const specificParagraphs = Array.from(document.querySelectorAll('.section-head p, .about-copy p, .lead'));
-    let paragraphs = [...new Set([...allParagraphs, ...specificParagraphs])];
-    
-    paragraphs = paragraphs.filter(p => {
-        const text = p.textContent.trim();
-        return text.split(/\s+/).length > 3; 
+    let paragraphs = [...new Set([...allParagraphs, ...specificParagraphs])].filter(p => {
+        if (p.closest(SKIP_SELECTOR)) return false;
+        return p.textContent.trim().split(/\s+/).length > 3;
     });
 
     paragraphs.forEach(p => {
         wrapWords(p, false);
         p.classList.add('anim-container');
-        
-        // Assign staggered delays
-        const words = p.querySelectorAll('.adv-body-word');
-        words.forEach((word, idx) => {
-            // Faster stagger for body text so it doesn't take too long
-            word.style.transitionDelay = `${idx * 0.015}s`;
+        p.querySelectorAll('.adv-body-word').forEach((word, idx) => {
+            word.style.transitionDelay = `${Math.min(idx * 0.012, 0.35)}s`;
         });
     });
 
-    // 3. Intersection Observer to trigger animations
+    // 3. Process Sections & Cards for Overall Scroll Reveal
+    const scrollTargets = document.querySelectorAll(
+        '.section-head, .about-copy, .stack-3d, .svc-card, .offer-card, .pcard, .pstep, .tl-item, .blueprint, .kpi-card, .table-card, .reveal, .reveal-r'
+    );
+    scrollTargets.forEach((el, idx) => {
+        if (el.closest('header') || el.closest('nav')) return;
+        el.classList.add('adv-scroll-item');
+        el.style.transitionDelay = `${(idx % 4) * 0.07}s`;
+    });
+
+    // 4. Intersection Observer for Text & Sections (never hide cards once revealed)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if(entry.isIntersecting) {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
-            } else {
-                // Remove to allow re-animating when scrolling back
-                entry.target.classList.remove('in-view');
+                entry.target.classList.add('in');
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1, // Trigger when 10% visible
-        rootMargin: '0px 0px -15% 0px' 
+        threshold: 0.02,
+        rootMargin: '80px 0px 80px 0px'
     });
 
-    document.querySelectorAll('.anim-container').forEach(container => {
-        observer.observe(container);
+    document.querySelectorAll('.anim-container, .adv-scroll-item').forEach(el => {
+        observer.observe(el);
     });
 });

@@ -10,8 +10,8 @@
     display: inline-block;
     opacity: 0;
     transform: translateY(110%) rotateX(-30deg);
-    transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: opacity 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                transform 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-origin: bottom center;
     will-change: transform, opacity;
 }
@@ -24,15 +24,157 @@
 .adv-body-word {
     display: inline-block;
     opacity: 0;
-    filter: blur(6px);
-    transform: translateY(12px);
-    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                filter 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
-                transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: blur(5px);
+    transform: translateY(10px);
+    transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                filter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform, opacity, filter;
 }
 .anim-container.in-view .adv-body-word {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+/* Overall Section & Card Scroll Animations */
+.adv-scroll-item {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+.adv-scroll-item.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Animated Header Social Icons */
+.header-socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.social-anim-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #14243C;
+    color: #F3F1EA;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid rgba(20, 36, 60, 0.15);
+    box-shadow: 0 4px 12px rgba(20, 36, 60, 0.14);
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    animation: socialFloat 3.6s ease-in-out infinite;
+    text-decoration: none;
+}
+.social-anim-btn:nth-child(2) { animation-delay: 0.3s; }
+.social-anim-btn:nth-child(3) { animation-delay: 0.6s; }
+.social-anim-btn:nth-child(4) { animation-delay: 0.9s; }
+.social-anim-btn:nth-child(5) { animation-delay: 1.2s; }
+.social-anim-btn svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+}
+.social-anim-btn:hover {
+    transform: translateY(-4px) scale(1.12);
+    background: #C9A66C;
+    color: #14243C;
+    box-shadow: 0 10px 20px rgba(201, 166, 108, 0.45);
+}
+@keyframes socialFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* ============ UNIVERSAL MULTI-DEVICE MOBILE RESPONSIVENESS ============ */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+@media (max-width: 980px) {
+    .midbar-wrap {
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+        justify-content: space-between !important;
+    }
+    .midbar-actions {
+        gap: 12px !important;
+    }
+    .topbar-wrap {
+        padding: 8px 16px !important;
+        gap: 8px !important;
+    }
+    .topbar-left-links {
+        gap: 12px !important;
+        flex-wrap: wrap !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        padding: 0 16px !important;
+    }
+    .midbar-tier {
+        padding: 10px 0 !important;
+    }
+    .brand-logo img {
+        height: 46px !important;
+        max-width: 210px !important;
+    }
+    .header-socials {
+        gap: 8px !important;
+        justify-content: center !important;
+    }
+    .social-anim-btn {
+        width: 34px !important;
+        height: 34px !important;
+    }
+    .social-anim-btn svg {
+        width: 15px !important;
+        height: 15px !important;
+    }
+    .hero-filter-title {
+        font-size: clamp(26px, 7.5vw, 38px) !important;
+    }
+    .hero-filter-subtitle {
+        font-size: 15px !important;
+    }
+    .stat-row {
+        flex-wrap: wrap !important;
+        gap: 20px !important;
+        margin-top: 24px !important;
+    }
+    .stat-row .stat b {
+        font-size: 26px !important;
+    }
+    #inventoryQuickSearch {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+    .lp-banner {
+        padding: 16px !important;
+    }
+    .gmail-modal-card {
+        padding: 22px 18px !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-mode-tabs {
+        grid-template-columns: 1fr !important;
+    }
+    .social-anim-btn {
+        width: 31px !important;
+        height: 31px !important;
+    }
+    .topbar-tier {
+        font-size: 11px !important;
+    }
 }
