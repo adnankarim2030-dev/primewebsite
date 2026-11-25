@@ -518,11 +518,53 @@ nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;
   z-index: 1;
 }
 
-.hero-video-bg video {
+.hero-video-bg video,
+.hero-bg-slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out;
+  will-change: opacity;
+}
+
+.hero-bg-slide.active {
+  opacity: 1;
+}
+
+.hero-reel-dots {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(20, 36, 60, 0.55);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(243, 241, 234, 0.22);
+}
+
+.hero-reel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: rgba(243, 241, 234, 0.4);
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.hero-reel-dot.active {
+  width: 24px;
+  background: #F3F1EA;
 }
 
 .hero-video-overlay {
@@ -1903,12 +1945,18 @@ body.no-scroll { overflow: hidden; height: 100vh; }
 
 <!-- ============ HOME / HERO VIDEO & PROPERTY SEARCH FILTER ============ -->
 <section id="home" class="hero-video-section">
-  <div class="hero-video-bg">
-    <video autoplay loop muted playsinline poster="modern_villa.png">
-      <source src="website%20header%20animation.mp4" type="video/mp4">
-      <source src="building%20animation.mp4" type="video/mp4">
-    </video>
+  <div class="hero-video-bg" id="heroVideoReel">
+    <video class="hero-bg-slide active" autoplay loop muted playsinline preload="auto" poster="modern_villa.png" src="website%20header%20animation.mp4"></video>
+    <video class="hero-bg-slide" loop muted playsinline preload="metadata" poster="emaar_tower.png" src="3d%20animated%20building.mp4"></video>
+    <video class="hero-bg-slide" loop muted playsinline preload="metadata" poster="twin_tower.png" src="building%20animation.mp4"></video>
+    <video class="hero-bg-slide" loop muted playsinline preload="metadata" poster="smart_town.png" src="isomatric%20animation.mp4"></video>
     <div class="hero-video-overlay"></div>
+  </div>
+  <div class="hero-reel-dots" id="heroReelDots" aria-label="Background video clips">
+    <button type="button" class="hero-reel-dot active" data-slide="0" aria-label="Video 1"></button>
+    <button type="button" class="hero-reel-dot" data-slide="1" aria-label="Video 2"></button>
+    <button type="button" class="hero-reel-dot" data-slide="2" aria-label="Video 3"></button>
+    <button type="button" class="hero-reel-dot" data-slide="3" aria-label="Video 4"></button>
   </div>
 
   <div class="wrap hero-filter-content">
@@ -3136,5 +3184,64 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <script src="list-property-logic.js?v=6"></script>
+<script>
+(function() {
+  const slides = Array.from(document.querySelectorAll('#heroVideoReel .hero-bg-slide'));
+  const dots = Array.from(document.querySelectorAll('#heroReelDots .hero-reel-dot'));
+  if (slides.length < 2) return;
+
+  let current = 0;
+  let timer = null;
+  const INTERVAL_MS = 7000;
+
+  function goToSlide(nextIdx) {
+    if (nextIdx === current) return;
+    const prev = slides[current];
+    const next = slides[nextIdx];
+
+    try {
+      next.currentTime = 0;
+      const p = next.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    } catch (e) {}
+
+    next.classList.add('active');
+    prev.classList.remove('active');
+
+    dots.forEach((d, i) => d.classList.toggle('active', i === nextIdx));
+
+    const prevRef = prev;
+    setTimeout(() => {
+      if (!prevRef.classList.contains('active')) {
+        try { prevRef.pause(); } catch (e) {}
+      }
+    }, 1500);
+
+    current = nextIdx;
+  }
+
+  function startAutoReel() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      goToSlide((current + 1) % slides.length);
+    }, INTERVAL_MS);
+  }
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      goToSlide(idx);
+      startAutoReel();
+    });
+  });
+
+  // Ensure first video plays cleanly
+  try {
+    const firstPlay = slides[0].play();
+    if (firstPlay && typeof firstPlay.catch === 'function') firstPlay.catch(() => {});
+  } catch (e) {}
+
+  startAutoReel();
+})();
+</script>
 </body>
 </html>
