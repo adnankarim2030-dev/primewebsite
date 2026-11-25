@@ -588,7 +588,6 @@
               ${item.beds ? `<li>${escapeHtml(item.beds)} Beds</li>` : ''}
               ${item.baths ? `<li>${escapeHtml(item.baths)} Baths</li>` : ''}
             </ul>
-            <p style="font-size:13.5px; color:#D6D2C7; margin-bottom:10px; line-height:1.5;">${escapeHtml(item.description || '')}</p>
             <div class="pcard-loc">📍 ${escapeHtml(item.location)}, ${escapeHtml(item.city)}</div>
             <div style="background:rgba(243,241,234,0.08); border-radius:10px; padding:10px 12px; font-size:12.5px; color:#F3F1EA; margin-bottom:14px; border:1px solid rgba(243,241,234,0.18);">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:4px;">

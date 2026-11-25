@@ -93,6 +93,11 @@
     50% { transform: translateY(-3px); }
 }
 
+/* ============ HIDE TOP UTILITY BAR (DESKTOP & MOBILE) ============ */
+.topbar-tier, .topbar {
+    display: none !important;
+}
+
 /* ============ UNIVERSAL MULTI-DEVICE MOBILE RESPONSIVENESS ============ */
 html, body {
     max-width: 100% !important;
