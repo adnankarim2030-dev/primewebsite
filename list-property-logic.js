@@ -474,25 +474,77 @@
       countBadge.textContent = `Showing ${filtered.length} ${filtered.length === 1 ? 'Property' : 'Properties'}`;
     }
 
-    // Inject carousel CSS once
+    // Inject carousel & dark-card + list-view CSS once
     if (!document.getElementById('pgCarouselStyles')) {
       const style = document.createElement('style');
       style.id = 'pgCarouselStyles';
       style.textContent = `
-        .pg-carousel { position: relative; height: 230px; overflow: hidden; background: #14243C; }
+        .pg-carousel { position: relative; height: 230px; overflow: hidden; background: #0E1A2B; }
         .pg-carousel-track { display: flex; height: 100%; width: 100%; transition: transform 0.65s cubic-bezier(.22,1,.36,1); }
         .pg-carousel-slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
         .pg-carousel-slide img, .pg-carousel-slide video { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .pg-carousel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,36,60,0.65) 0%, transparent 55%); pointer-events: none; z-index: 1; }
-        .pg-c-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 28px; height: 28px; border-radius: 50%; border: none; background: rgba(20,36,60,0.75); color: #F3F1EA; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s ease; }
+        .pg-carousel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,36,60,0.72) 0%, transparent 55%); pointer-events: none; z-index: 1; }
+        .pg-c-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 28px; height: 28px; border-radius: 50%; border: none; background: rgba(20,36,60,0.82); color: #F3F1EA; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s ease; }
         .pg-carousel:hover .pg-c-nav { opacity: 1; }
         @media (hover: none), (max-width: 900px) { .pg-c-nav { opacity: 0.85; } }
         .pg-c-prev { left: 10px; }
         .pg-c-next { right: 10px; }
         .pg-c-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; gap: 5px; }
-        .pg-c-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.45); border: none; padding: 0; cursor: pointer; transition: all 0.25s ease; }
-        .pg-c-dot.active { background: #C9A66C; width: 16px; border-radius: 999px; }
-        .pg-c-count { position: absolute; top: 12px; right: 12px; z-index: 3; background: rgba(20,36,60,0.82); color: #F3F1EA; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+        .pg-c-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(243,241,234,0.45); border: none; padding: 0; cursor: pointer; transition: all 0.25s ease; }
+        .pg-c-dot.active { background: #F3F1EA; width: 16px; border-radius: 999px; }
+        .pg-c-count { position: absolute; top: 12px; right: 12px; z-index: 3; background: rgba(20,36,60,0.86); color: #F3F1EA; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(243,241,234,0.22); }
+
+        /* Dark Blue Card Theme */
+        #listing .pcard {
+          background: #14243C !important;
+          color: #F3F1EA !important;
+          border: 1px solid rgba(243,241,234,0.16) !important;
+          box-shadow: 0 18px 40px -22px rgba(20,36,60,0.45);
+          transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        #listing .pcard:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 30px 58px -22px rgba(20,36,60,0.62);
+          border-color: rgba(243,241,234,0.34) !important;
+        }
+        #listing .pcard-body { padding: 22px 24px; display: flex; flex-direction: column; flex: 1; }
+        #listing .pcard-body h4 { font-size: 18px; color: #FFFFFF !important; line-height: 1.3; margin-bottom: 4px; }
+        #listing .pcard-body .price { color: #F3F1EA !important; font-size: 20px; font-weight: 700; margin: 6px 0 12px; }
+        #listing .pcard-body ul { color: #D6D2C7 !important; margin-bottom: 12px; }
+        #listing .pcard-body ul li::before { background: #F3F1EA !important; }
+        #listing .pcard-loc { color: #D6D2C7 !important; margin-bottom: 12px; }
+        #listing .pcard-inquire-btn {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: #F3F1EA; color: #14243C !important;
+          padding: 8px 16px; border-radius: 999px;
+          font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+          transition: background 0.25s ease, transform 0.25s ease;
+        }
+        #listing .pcard-inquire-btn:hover { background: #FFFFFF; transform: translateX(2px); }
+
+        /* Horizontal List View Mode */
+        #listing .listing-grid.list-view {
+          grid-template-columns: 1fr !important;
+          gap: 20px;
+        }
+        #listing .listing-grid.list-view .pcard {
+          display: grid;
+          grid-template-columns: 340px 1fr;
+          align-items: stretch;
+        }
+        #listing .listing-grid.list-view .pg-carousel {
+          height: 100%;
+          min-height: 250px;
+        }
+        @media (max-width: 820px) {
+          #listing .listing-grid.list-view .pcard {
+            grid-template-columns: 1fr;
+          }
+          #listing .listing-grid.list-view .pg-carousel {
+            min-height: 220px;
+            height: 220px;
+          }
+        }
       `;
       document.head.appendChild(style);
     }
@@ -522,29 +574,32 @@
             <div class="pg-carousel-track">
               ${slides.join('')}
             </div>
-            <span class="tag" style="position:absolute; bottom:12px; left:12px; z-index:3; background:rgba(255,255,255,.94); padding:5px 12px; border-radius:999px; font-family:'JetBrains Mono'; font-size:11px; font-weight:700; color:#14243C;">${item.purpose === 'Rent' ? 'For Rent' : 'For Sale'} · ${escapeHtml(item.subtype)}</span>
+            <span class="tag" style="position:absolute; bottom:12px; left:12px; z-index:3; background:rgba(243,241,234,.95); padding:5px 12px; border-radius:999px; font-family:'JetBrains Mono'; font-size:11px; font-weight:700; color:#14243C;">${item.purpose === 'Rent' ? 'For Rent' : 'For Sale'} · ${escapeHtml(item.subtype)}</span>
             ${totalSlides > 1 ? `<span class="pg-c-count">1 / ${totalSlides}${videoSrc ? ' · 🎥' : ''}</span>` : ''}
             ${totalSlides > 1 ? `<button type="button" class="pg-c-nav pg-c-prev" onclick="movePgSlide(${cardIdx}, -1)">‹</button><button type="button" class="pg-c-nav pg-c-next" onclick="movePgSlide(${cardIdx}, 1)">›</button>` : ''}
             ${totalSlides > 1 ? `<div class="pg-c-dots">${slides.map((_, i) => `<button type="button" class="pg-c-dot ${i === 0 ? 'active' : ''}" onclick="setPgSlide(${cardIdx}, ${i})"></button>`).join('')}</div>` : ''}
-            ${hasVideo ? `<button type="button" class="pcard-video-btn" onclick="openPropertyVideo('${escapeHtml(videoSrc)}', '${escapeHtml(item.videoUrl || '')}', '${escapeHtml(item.title)}')" style="position:absolute; bottom:12px; right:12px; z-index:3; background:#14243C; color:#F3F1EA; border:1px solid #C9A66C; border-radius:999px; padding:5px 12px; font-size:11px; font-weight:700; cursor:pointer;">▶ Watch Video</button>` : ''}
+            ${hasVideo ? `<button type="button" class="pcard-video-btn" onclick="openPropertyVideo('${escapeHtml(videoSrc)}', '${escapeHtml(item.videoUrl || '')}', '${escapeHtml(item.title)}')" style="position:absolute; bottom:12px; right:12px; z-index:3; background:#14243C; color:#F3F1EA; border:1px solid rgba(243,241,234,0.45); border-radius:999px; padding:5px 12px; font-size:11px; font-weight:700; cursor:pointer;">▶ Watch Video</button>` : ''}
           </div>
           <div class="pcard-body">
-            <h4 style="font-size:18px; color:#14243C;">${escapeHtml(item.title)}</h4>
+            <h4>${escapeHtml(item.title)}</h4>
             <div class="price mono">PKR ${escapeHtml(item.price)}</div>
             <ul>
               <li>${escapeHtml(item.area)} ${escapeHtml(item.areaUnit)}</li>
               ${item.beds ? `<li>${escapeHtml(item.beds)} Beds</li>` : ''}
               ${item.baths ? `<li>${escapeHtml(item.baths)} Baths</li>` : ''}
             </ul>
-            <p style="font-size:13.5px; color:#4A5568; margin-bottom:10px; line-height:1.45;">${escapeHtml(item.description || '')}</p>
-            <div class="pcard-loc" style="margin-bottom:8px;">📍 ${escapeHtml(item.location)}, ${escapeHtml(item.city)}</div>
-            <div style="background:#F3F1EA; border-radius:10px; padding:9px 12px; font-size:12.5px; color:#14243C; margin-bottom:12px; border:1px solid rgba(20,36,60,0.1);">
-              <div><strong>Seller:</strong> ${escapeHtml(item.customerName || 'Verified Client')} · <span style="color:#1F9D6C; font-weight:700;">✓ Verified</span></div>
-              <div><strong>Contact:</strong> <a href="tel:${escapeHtml(item.mobile)}" style="color:#14243C; font-weight:700; text-decoration:underline;">${escapeHtml(item.mobile)}</a></div>
+            <p style="font-size:13.5px; color:#D6D2C7; margin-bottom:10px; line-height:1.5;">${escapeHtml(item.description || '')}</p>
+            <div class="pcard-loc">📍 ${escapeHtml(item.location)}, ${escapeHtml(item.city)}</div>
+            <div style="background:rgba(243,241,234,0.08); border-radius:10px; padding:10px 12px; font-size:12.5px; color:#F3F1EA; margin-bottom:14px; border:1px solid rgba(243,241,234,0.18);">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:4px;">
+                <span><strong>Seller:</strong> ${escapeHtml(item.customerName || 'Verified Client')}</span>
+                <span style="background:rgba(243,241,234,0.16); color:#F3F1EA; font-weight:700; padding:2px 8px; border-radius:999px; font-size:11px;">✓ Verified</span>
+              </div>
+              <div><strong>Contact:</strong> <a href="tel:${escapeHtml(item.mobile)}" style="color:#FFFFFF; font-weight:700; text-decoration:underline; text-underline-offset:3px;">${escapeHtml(item.mobile)}</a></div>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <a href="contact-us.html" class="more">Inquire Now <span>→</span></a>
-              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5C6073;">${escapeHtml(item.id)}</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+              <a href="contact-us.html" class="pcard-inquire-btn">Inquire Now <span>→</span></a>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#B8B4A8;">${escapeHtml(item.id)}</span>
             </div>
           </div>
         </div>
@@ -600,7 +655,7 @@
       modal.id = 'pgVideoModal';
       modal.style.cssText = 'position:fixed;inset:0;z-index:9999999;background:rgba(20,36,60,0.88);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;';
       modal.innerHTML = `
-        <div style="background:#FFFFFF;border-radius:18px;max-width:760px;width:100%;padding:20px;box-shadow:0 25px 60px rgba(0,0,0,0.5);">
+        <div style="background:#F3F1EA;border-radius:18px;max-width:760px;width:100%;padding:20px;box-shadow:0 25px 60px rgba(0,0,0,0.5);border:1px solid rgba(20,36,60,0.18);">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
             <h3 id="pgVideoTitle" style="color:#14243C;font-size:18px;margin:0;"></h3>
             <button type="button" id="pgVideoClose" style="background:none;border:none;font-size:26px;cursor:pointer;color:#14243C;">&times;</button>
@@ -645,14 +700,46 @@
     trackVisitor();
     renderConfirmedListings('All');
 
-    // Bind filter chips in #listing
+    // Bind filter chips in #listing (if present)
     document.querySelectorAll('#listing .filter-bar .chip').forEach(chip => {
       chip.addEventListener('click', () => {
         document.querySelectorAll('#listing .filter-bar .chip').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
-        renderConfirmedListings(chip.textContent.trim());
+        const val = chip.textContent.trim();
+        const catSelect = document.getElementById('inventoryCategorySelect');
+        if (catSelect) catSelect.value = val;
+        renderConfirmedListings(val);
       });
     });
+
+    // Bind category dropdown list in #listing
+    const catSelect = document.getElementById('inventoryCategorySelect');
+    if (catSelect) {
+      catSelect.addEventListener('change', (e) => {
+        const val = e.target.value;
+        document.querySelectorAll('#listing .filter-bar .chip').forEach(c => {
+          c.classList.toggle('active', c.textContent.trim() === val);
+        });
+        renderConfirmedListings(val);
+      });
+    }
+
+    // Bind Grid / List View toggle buttons
+    const viewGridBtn = document.getElementById('viewGridBtn');
+    const viewListBtn = document.getElementById('viewListBtn');
+    const listingGrid = document.querySelector('#listing .listing-grid');
+    if (viewGridBtn && viewListBtn && listingGrid) {
+      viewGridBtn.addEventListener('click', () => {
+        listingGrid.classList.remove('list-view');
+        viewGridBtn.classList.add('active');
+        viewListBtn.classList.remove('active');
+      });
+      viewListBtn.addEventListener('click', () => {
+        listingGrid.classList.add('list-view');
+        viewListBtn.classList.add('active');
+        viewGridBtn.classList.remove('active');
+      });
+    }
 
     // Bind quick search input in #listing
     const quickSearch = document.getElementById('inventoryQuickSearch');

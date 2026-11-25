@@ -83,9 +83,10 @@
 }
 .social-anim-btn:hover {
     transform: translateY(-4px) scale(1.12);
-    background: #C9A66C;
+    background: #F3F1EA;
     color: #14243C;
-    box-shadow: 0 10px 20px rgba(201, 166, 108, 0.45);
+    border-color: #14243C;
+    box-shadow: 0 10px 20px rgba(20, 36, 60, 0.28);
 }
 @keyframes socialFloat {
     0%, 100% { transform: translateY(0); }

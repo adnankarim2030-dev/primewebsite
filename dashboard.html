@@ -12,11 +12,11 @@
   --blue: #14243C;
   --blue-mid: #1E3557;
   --sand: #F3F1EA;
-  --white: #FFFFFF;
+  --white: #FAF9F5;
   --ink: #14243C;
-  --ink-soft: #4A5568;
-  --gold: #C9A66C;
-  --line: rgba(20, 36, 60, 0.12);
+  --ink-soft: #435063;
+  --gold: #F3F1EA;
+  --line: rgba(20, 36, 60, 0.14);
   --ease: cubic-bezier(.22,1,.36,1);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,28 +33,28 @@ a { text-decoration: none; color: inherit; }
 /* 3-Tier Header */
 .topbar-tier {
   background: var(--blue);
-  color: #D3D6E2;
+  color: #D6D2C7;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12.5px;
-  border-bottom: 1px solid rgba(201,166,108,0.2);
+  border-bottom: 1px solid rgba(243, 241, 234, 0.16);
 }
 .topbar-wrap { display: flex; justify-content: space-between; align-items: center; padding: 8px 28px; flex-wrap: wrap; gap: 10px; }
 .topbar-left-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.topbar-left-links a:hover { color: var(--gold); }
+.topbar-left-links a:hover { color: #F3F1EA; text-decoration: underline; text-underline-offset: 4px; }
 .topbar-right-info { display: flex; gap: 20px; flex-wrap: wrap; }
 
 .midbar-tier { background: var(--sand); border-bottom: 1px solid var(--line); padding: 14px 0; }
 .midbar-wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .btn-list-prop {
-  background: linear-gradient(135deg, #C9A66C 0%, #DFBE86 100%);
-  color: #14243C; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13.5px;
+  background: #14243C;
+  color: #F3F1EA; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13.5px;
   padding: 11px 22px; border-radius: 10px; display: inline-block;
 }
 .mainnav-tier { background: var(--sand); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; }
 .mainnav-wrap { display: flex; align-items: center; justify-content: center; height: 52px; }
 .nav-links-center { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 .nav-item { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--blue); padding: 8px 4px; }
-.nav-item:hover, .nav-item.active { color: var(--gold); }
+.nav-item:hover, .nav-item.active { color: var(--blue); border-bottom: 2.5px solid var(--blue); }
 
 /* Dashboard Content */
 .dash-hero {
@@ -66,7 +66,7 @@ a { text-decoration: none; color: inherit; }
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
 }
 .dash-hero h1 { font-family: 'Montserrat', sans-serif; font-size: 28px; color: #FFFFFF; }
-.dash-hero p { color: #CBD5E1; font-size: 15px; margin-top: 4px; }
+.dash-hero p { color: #D6D2C7; font-size: 15px; margin-top: 4px; }
 .dash-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn-dash {
   font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
@@ -81,7 +81,7 @@ a { text-decoration: none; color: inherit; }
   margin: 28px 0;
 }
 .kpi-card {
-  background: #FFFFFF; border-radius: 16px; padding: 20px 22px;
+  background: #FAF9F5; border-radius: 16px; padding: 20px 22px;
   border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(20,36,60,0.05);
 }
 .kpi-label {
@@ -99,7 +99,7 @@ a { text-decoration: none; color: inherit; }
 .dash-tab-btn {
   font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
   padding: 11px 20px; border-radius: 10px; border: 1px solid var(--line);
-  background: #FFFFFF; color: var(--blue); cursor: pointer;
+  background: #FAF9F5; color: var(--blue); cursor: pointer;
 }
 .dash-tab-btn.active {
   background: var(--blue); color: var(--sand); border-color: var(--blue);
@@ -108,7 +108,7 @@ a { text-decoration: none; color: inherit; }
 .dash-panel.active { display: block; }
 
 .table-card {
-  background: #FFFFFF; border-radius: 16px; border: 1px solid var(--line);
+  background: #FAF9F5; border-radius: 16px; border: 1px solid var(--line);
   overflow-x: auto; box-shadow: 0 6px 20px rgba(20,36,60,0.05); margin-bottom: 28px;
 }
 .table-card-head {
@@ -129,9 +129,9 @@ tr:last-child td { border-bottom: none; }
   display: inline-block; padding: 4px 10px; border-radius: 999px;
   font-size: 11.5px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
 }
-.badge-ok { background: #DCFCE7; color: #166534; }
-.badge-pend { background: #FEF3C7; color: #92400E; }
-.badge-blue { background: #E0E7FF; color: #14243C; }
+.badge-ok { background: #14243C; color: #F3F1EA; }
+.badge-pend { background: #EAE6DC; color: #14243C; border: 1px solid rgba(20,36,60,0.22); }
+.badge-blue { background: #F3F1EA; color: #14243C; border: 1px solid rgba(20,36,60,0.18); }
 
 .act-btn {
   padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line);
@@ -150,7 +150,7 @@ tr:last-child td { border-bottom: none; }
 }
 
 .burger {
-  display: none; align-items: center; gap: 10px; background: #ffffff;
+  display: none; align-items: center; gap: 10px; background: #FAF9F5;
   border: 1.5px solid rgba(20, 36, 60, 0.25); border-radius: 8px;
   padding: 7px 14px; margin-left: auto; cursor: pointer;
 }
@@ -169,7 +169,7 @@ tr:last-child td { border-bottom: none; }
 .mnav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; max-width: 85vw; background: #14243C; padding: 24px 20px; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); overflow-y: auto; }
 .mnav.open .mnav-panel { transform: translateX(0); }
 .mnav-panel a { display: block; font-family: 'Montserrat', sans-serif; font-size: 15.5px; font-weight: 600; color: #F3F1EA !important; padding: 12px 14px; border-radius: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.mnav-panel a:hover { background: rgba(201,166,108,0.2); color: #C9A66C !important; }
+.mnav-panel a:hover { background: rgba(243,241,234,0.16); color: #F3F1EA !important; }
 .mnav-sub-item { font-size: 14px !important; color: #D3D6E2 !important; padding: 8px 12px !important; border-bottom: none !important; }
 </style>
   <link rel="stylesheet" href="advanced-animations.css">
@@ -247,7 +247,7 @@ tr:last-child td { border-bottom: none; }
         <a href="index.html">Home</a>
         <a href="about.html">About Prime</a>
         <a href="contact-us.html">Contact</a>
-        <a href="dashboard.html" style="color:#C9A66C; font-weight:700;">Admin Dashboard</a>
+        <a href="dashboard.html" style="color:#F3F1EA; font-weight:700; text-decoration:underline; text-underline-offset:4px;">Admin Dashboard</a>
       </div>
       <div class="topbar-right-info">
         <span>📍 Karachi, Pakistan</span>
@@ -330,7 +330,7 @@ tr:last-child td { border-bottom: none; }
     <a href="mortgage-calculator.html">🧮 Financial Calculator</a>
     <a href="about.html">🏢 About Us</a>
     <a href="contact-us.html">📞 Contact Us</a>
-    <a href="dashboard.html" style="color:#C9A66C !important; border-top:1px solid rgba(243,241,234,0.18); margin-top:8px;">📊 Admin Dashboard</a>
+    <a href="dashboard.html" style="color:#F3F1EA !important; font-weight:700; border-top:1px solid rgba(243,241,234,0.22); margin-top:8px;">📊 Admin Dashboard</a>
   </div>
 </div>
 
@@ -496,18 +496,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listings table
     const lBody = document.getElementById('listingsTableBody');
     if (listings.length === 0) {
-      lBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:26px; color:#5C6073;">No property submissions yet. Submit a listing on the Homepage to see it here!</td></tr>';
+      lBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:26px; color:#435063;">No property submissions yet. Submit a listing on the Homepage to see it here!</td></tr>';
     } else {
       lBody.innerHTML = listings.map((item, idx) => `
         <tr>
           <td><strong>${item.id}</strong></td>
           <td>
             <strong>${item.title}</strong><br>
-            <small style="color:#5C6073;">📍 ${item.location}, ${item.city}</small>
+            <small style="color:#435063;">📍 ${item.location}, ${item.city}</small>
           </td>
           <td>
             <span>${item.customerEmail || item.email}</span><br>
-            <small style="color:#5C6073;">📞 ${item.mobile}</small>
+            <small style="color:#435063;">📞 ${item.mobile}</small>
           </td>
           <td>${item.purpose} · ${item.subtype}<br><small>${item.area} ${item.areaUnit}</small></td>
           <td><strong>PKR ${item.price}</strong></td>
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Customers table
     const cBody = document.getElementById('customersTableBody');
     if (customers.length === 0) {
-      cBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#5C6073;">No Gmail verified customers yet.</td></tr>';
+      cBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#435063;">No Gmail verified customers yet.</td></tr>';
     } else {
       cBody.innerHTML = customers.map(c => `
         <tr>
@@ -555,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Emails table
     const eBody = document.getElementById('emailsTableBody');
     if (emails.length === 0) {
-      eBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#5C6073;">No confirmation emails dispatched yet.</td></tr>';
+      eBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#435063;">No confirmation emails dispatched yet.</td></tr>';
     } else {
       eBody.innerHTML = emails.map(em => `
         <tr>
