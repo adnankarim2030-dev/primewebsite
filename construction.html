@@ -667,8 +667,7 @@ section{position:relative;padding:70px 0;}
 /* ============ CONSTRUCTION ============ */
 .process-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
 .process-wrap::before{
-  content:"";position:absolute;top:34px;left:6%;right:6%;height:2px;
-  background:repeating-linear-gradient(90deg, var(--line) 0 10px, transparent 10px 18px);
+  display:none;
 }
 .pstep{position:relative;padding:0 18px;text-align:left;}
 .pstep .num{
@@ -1255,11 +1254,11 @@ footer ul li a:hover{color:#F3F1EA; text-decoration:underline; text-underline-of
       <h2>Crafting your ideal home<br>for a better tomorrow</h2>
       <p>Our construction division carries every project from first sketch to final handover.</p>
     </div>
-    <div class="process-wrap">
-      <div class="pstep"><div class="num">01</div><h4>Project Consultation</h4><p>We scope goals, budget and site potential before a single brick is laid.</p></div>
-      <div class="pstep"><div class="num">02</div><h4>Architectural Services</h4><p>Concept, structural and interior design tailored to how you'll actually live.</p></div>
-      <div class="pstep"><div class="num">03</div><h4>Construction Service</h4><p>Licensed crews, quality materials, and transparent milestone reporting.</p></div>
-      <div class="pstep"><div class="num">04</div><h4>Project Management</h4><p>One point of contact from groundbreaking to key handover.</p></div>
+    <div class="process-wrap" style="gap:20px;">
+      <div class="pstep" style="background:#FAF9F5;border:1px solid var(--line);border-radius:16px;padding:26px 22px;"><h4>Project Consultation</h4><p>We scope goals, budget and site potential before a single brick is laid.</p></div>
+      <div class="pstep" style="background:#FAF9F5;border:1px solid var(--line);border-radius:16px;padding:26px 22px;"><h4>Architectural Services</h4><p>Concept, structural and interior design tailored to how you'll actually live.</p></div>
+      <div class="pstep" style="background:#FAF9F5;border:1px solid var(--line);border-radius:16px;padding:26px 22px;"><h4>Construction Service</h4><p>Licensed crews, quality materials, and transparent milestone reporting.</p></div>
+      <div class="pstep" style="background:#FAF9F5;border:1px solid var(--line);border-radius:16px;padding:26px 22px;"><h4>Project Management</h4><p>One point of contact from groundbreaking to key handover.</p></div>
     </div>
 
     <div class="blueprint">
