@@ -93,6 +93,23 @@
     50% { transform: translateY(-3px); }
 }
 
+/* ============ UNIFIED LOGO-MATCHED TYPOGRAPHY (MONTSERRAT GEOMETRIC) ============ */
+html, body, p, span, a, li, div, input, select, textarea, button, label, td, th,
+h1, h2, h3, h4, h5, h6, .mono, .eyebrow, .lt-label, .lt-count-badge, .legacy-year, .val-num {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.eyebrow, .lt-label, .legacy-year, .val-num, .prime-stat span, .about-stat span {
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
 /* ============ HIDE TOP UTILITY BAR & ADVISOR CALLOUT (DESKTOP & MOBILE) ============ */
 .topbar-tier, .topbar, .advisor-callout {
     display: none !important;
