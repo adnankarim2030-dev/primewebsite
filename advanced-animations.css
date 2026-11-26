@@ -117,6 +117,20 @@
     display: block;
 }
 
+@media (max-width: 900px) {
+    .foot-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 32px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .foot-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+}
+
 @media (min-width: 1440px) {
     .listing-grid:not(.list-view) {
         grid-template-columns: repeat(4, 1fr) !important;
