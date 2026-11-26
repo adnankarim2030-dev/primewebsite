@@ -93,9 +93,34 @@
     50% { transform: translateY(-3px); }
 }
 
-/* ============ HIDE TOP UTILITY BAR (DESKTOP & MOBILE) ============ */
-.topbar-tier, .topbar {
+/* ============ HIDE TOP UTILITY BAR & ADVISOR CALLOUT (DESKTOP & MOBILE) ============ */
+.topbar-tier, .topbar, .advisor-callout {
     display: none !important;
+}
+
+/* ============ FULL-WIDTH DESKTOP & MOBILE RESPONSIVE SHELL ============ */
+.wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: clamp(16px, 3.5vw, 56px) !important;
+    padding-right: clamp(16px, 3.5vw, 56px) !important;
+}
+
+.foot-logo-img {
+    height: 52px;
+    max-width: 240px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+    margin-bottom: 14px;
+    display: block;
+}
+
+@media (min-width: 1440px) {
+    .listing-grid:not(.list-view) {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
 }
 
 /* ============ UNIVERSAL MULTI-DEVICE MOBILE RESPONSIVENESS ============ */

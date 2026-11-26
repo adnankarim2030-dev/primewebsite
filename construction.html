@@ -921,7 +921,7 @@ footer ul li a:hover{color:#F3F1EA; text-decoration:underline; text-underline-of
   .burger { display: flex !important; }
 }
 \n</style>
-  <link rel="stylesheet" href="advanced-animations.css">
+  <link rel="stylesheet" href="advanced-animations.css?v=8">
 
 
 
@@ -1157,10 +1157,7 @@ footer ul li a:hover{color:#F3F1EA; text-decoration:underline; text-underline-of
 
       <!-- RIGHT ADVISOR & CTA -->
       <div class="midbar-actions">
-        <div class="advisor-callout">
-          <span class="adv-label">SPEAK TO ADVISOR</span>
-          <span class="adv-phone">+92 21 111 111 800</span>
-        </div>
+        
         <div class="header-socials" aria-label="Prime Group Social Links">
         <a href="https://facebook.com" target="_blank" rel="noopener" class="social-anim-btn" title="Facebook" aria-label="Facebook">
           <svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
@@ -1193,24 +1190,21 @@ footer ul li a:hover{color:#F3F1EA; text-decoration:underline; text-underline-of
   <nav class="mainnav-tier" id="mainnav">
     <div class="wrap mainnav-wrap">
       <div class="nav-links-center">
-        <a href="index.html" class="nav-item ">Home</a>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
         <div class="nav-dropdown">
-          <a href="property-listing.html" class="nav-item nav-dropdown-toggle ">Real Estate <span class="caret">▾</span></a>
+          <a href="construction.html" class="nav-item nav-dropdown-toggle active">Real Construction <span class="caret">▾</span></a>
           <div class="dropdown-menu">
-            <a href="property-listing.html?cat=Houses" class="dropdown-item">Houses</a>
-            <a href="property-listing.html?cat=Apartments" class="dropdown-item">Apartments</a>
-            <a href="property-listing.html?cat=Plots" class="dropdown-item">Plots</a>
+            <a href="construction.html" class="dropdown-item">Construction &amp; Projects</a>
+            <a href="property-listing.html" class="dropdown-item">All Listings</a>
+            <a href="window-collection.html" class="dropdown-item">Window Collection</a>
+            <a href="mortgage-calculator.html" class="dropdown-item">Financial Calculator</a>
           </div>
         </div>
-        <a href="construction.html" class="nav-item active">Constructions</a>
-        <a href="window-collection.html" class="nav-item ">Window Collection</a>
-        <a href="services.html" class="nav-item ">Services</a>
-        <a href="mortgage-calculator.html" class="nav-item ">Calculator</a>
-        <a href="about.html" class="nav-item ">About Us</a>
-        <a href="contact-us.html" class="nav-item ">Contact</a>
-      </div>
-
-      </div>
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="list-property.html" class="nav-item">List Your Properties</a>
+        <a href="find-property.html" class="nav-item">Find Dream Property</a>
+      </div></div>
   </nav>
 </header>
 
@@ -1223,6 +1217,15 @@ footer ul li a:hover{color:#F3F1EA; text-decoration:underline; text-underline-of
       <span style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:17px; color:#F3F1EA; letter-spacing:0.04em;">PRIME GROUP MENU</span>
       <div class="mnav-close" id="mnavClose" style="font-size:28px; cursor:pointer; color:#F3F1EA; line-height:1;">&times;</div>
     </div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="construction.html">Real Construction</a>
+    <a href="services.html">Services</a>
+    <a href="list-property.html">List Your Properties</a>
+    <a href="find-property.html">Find Dream Property</a>
+    <a href="contact-us.html">Contact Us</a>
+    <a href="dashboard.html" style="color:#F3F1EA !important; font-weight:700; border-top:1px solid rgba(243,241,234,0.22); margin-top:8px;">Admin Dashboard</a>
+  </div></div>
     <a href="index.html">🏠 Home</a>
     <div class="mnav-dropdown">
       <a href="property-listing.html" style="font-weight:700; display:flex; justify-content:space-between; align-items:center;">🏷️ Real Estate <span>▾</span></a>
@@ -1551,18 +1554,24 @@ footer ul li a:hover{color:#F3F1EA; text-decoration:underline; text-underline-of
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-logo">PRIME GROUP</div>
-        <p style="font-size:14px;max-width:280px;">Delivering the highest standard of real estate and construction services to clients across Karachi since 1986.</p>
-      </div>
+    <div class="foot-grid" style="display:grid;grid-template-columns:1fr 1fr 1.2fr 1.4fr;gap:40px;align-items:start;">
       <div>
         <h5>Quick Links</h5>
-        <ul><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="property-listing.html">Property Listing</a></li><li><a href="construction.html">Construction</a></li></ul>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="construction.html">Real Construction</a></li>
+          <li><a href="services.html">Services</a></li>
+        </ul>
       </div>
       <div>
-        <h5>Explore</h5>
-        <ul><li><a href="window-collection.html">Window Collection</a></li><li><a href="contact-us.html">Contact Us</a></li><li><a href="index.html">Careers</a></li><li><a href="index.html">Blog</a></li></ul>
+        <h5>Properties</h5>
+        <ul>
+          <li><a href="find-property.html">Find Dream Property</a></li>
+          <li><a href="list-property.html">List Your Properties</a></li>
+          <li><a href="mortgage-calculator.html">Financial Calculator</a></li>
+          <li><a href="window-collection.html">Window Collection</a></li>
+        </ul>
       </div>
       <div>
         <h5>Contact</h5>
@@ -1572,10 +1581,14 @@ footer ul li a:hover{color:#F3F1EA; text-decoration:underline; text-underline-of
           <li>(021) 111-111-800</li>
         </ul>
       </div>
+      <div class="foot-brand-col" style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;">
+        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" class="foot-logo-img">
+        <p style="font-size:14px;max-width:290px;">Karachi's trusted real estate and construction partner since 1986.</p>
+      </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Prime Group. All rights reserved.</span>
-      <span>Design concept · Karachi, Pakistan</span>
+      <span>Karachi, Pakistan</span>
     </div>
   </div>
 </footer>

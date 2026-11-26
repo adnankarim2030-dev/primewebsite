@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List Your Properties — Prime Group</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#14243C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="advanced-animations.css?v=8">
+<style>
+:root{
+  --blue:#14243C;
+  --blue-mid:#1E3557;
+  --white:#FAF9F5;
+  --ink:#14243C;
+  --ink-soft:#435063;
+  --sand:#F3F1EA;
+  --line:rgba(20, 36, 60,0.14);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;color:var(--ink);background:var(--sand);overflow-x:hidden;line-height:1.6;}
+h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--blue);}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+.wrap{max-width:100%;width:100%;margin:0 auto;padding:0 clamp(16px,3.5vw,56px);}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer;border:none;transition:all 0.25s ease;}
+.btn-primary{background:#14243C;color:#F3F1EA;}
+.btn-primary:hover{background:#1E3557;transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:#14243C;border:1.5px solid rgba(20,36,60,0.28);}
+
+/* HEADER */
+.header-3tier{width:100%;position:relative;z-index:200;}
+.midbar-tier{background:#F3F1EA;border-bottom:1px solid rgba(20,36,60,0.08);padding:14px 0;}
+.midbar-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.brand-logo{display:flex;align-items:center;gap:14px;}
+.sector-toggle-pill{background:#14243C;padding:5px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;}
+.sector-toggle-pill .toggle-btn{padding:8px 20px;border-radius:999px;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:700;border:none;cursor:pointer;color:#D6D2C7;background:transparent;}
+.sector-toggle-pill .toggle-btn.active{background:#F3F1EA;color:#14243C;}
+.midbar-actions{display:flex;align-items:center;gap:14px;}
+.mainnav-tier{position:sticky;top:0;z-index:200;background:#F3F1EA;border-top:1px solid rgba(20,36,60,0.08);border-bottom:1px solid rgba(20,36,60,0.12);}
+.mainnav-wrap{display:flex;align-items:center;justify-content:center;height:54px;}
+.nav-links-center{display:flex;align-items:center;gap:24px;}
+.nav-item{font-family:'Montserrat',sans-serif;font-size:14.5px;font-weight:600;color:#14243C;padding:15px 4px;position:relative;white-space:nowrap;}
+.nav-item.active::after,.nav-item:hover::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:#14243C;border-radius:3px 3px 0 0;}
+.nav-dropdown{position:relative;display:inline-flex;align-items:center;}
+.nav-dropdown-toggle{display:inline-flex;align-items:center;gap:5px;cursor:pointer;}
+.dropdown-menu{position:absolute;top:100%;left:0;min-width:210px;background:#FAF9F5;border-radius:12px;box-shadow:0 16px 36px rgba(20,36,60,0.18);border:1px solid rgba(20,36,60,0.12);padding:8px 0;margin-top:2px;opacity:0;visibility:hidden;transform:translateY(8px);transition:all 0.25s ease;z-index:1000;}
+.nav-dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+.dropdown-item{display:block;padding:10px 18px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:600;color:#14243C;}
+.dropdown-item:hover{background:rgba(20,36,60,0.08);padding-left:22px;}
+.burger{display:none;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:#FAF9F5;border:1.5px solid rgba(20,36,60,0.25);cursor:pointer;}
+.burger-icon{width:18px;height:12px;display:flex;flex-direction:column;justify-content:space-between;}
+.burger-icon .bar{width:100%;height:2px;background:#14243C;border-radius:2px;}
+.mnav{position:fixed;inset:0;background:rgba(20,36,60,0.75);backdrop-filter:blur(8px);z-index:999999;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+.mnav.open{opacity:1;pointer-events:auto;}
+.mnav-panel{position:absolute;right:0;top:0;bottom:0;width:300px;max-width:85vw;background:#14243C;padding:24px 20px;transform:translateX(100%);transition:transform 0.35s var(--ease);overflow-y:auto;}
+.mnav.open .mnav-panel{transform:translateX(0);}
+.mnav-panel a{display:block;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:600;color:#F3F1EA !important;padding:12px 14px;border-radius:8px;border-bottom:1px solid rgba(243,241,234,0.1);}
+.mnav-panel a:hover,.mnav-panel a.active{background:rgba(243,241,234,0.15);}
+@media (max-width:980px){
+  .sector-toggle-pill,.mainnav-tier{display:none !important;}
+  .burger{display:inline-flex !important;}
+  .brand-logo img{height:clamp(42px,10vw,56px) !important;max-width:clamp(150px,42vw,240px) !important;}
+}
+
+/* PAGE HEADER & FORM */
+.page-band{background:#14243C;color:#F3F1EA;padding:52px 0;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#F3F1EA;font-weight:700;display:inline-flex;align-items:center;gap:10px;margin-bottom:10px;}
+.eyebrow::before{content:"";width:22px;height:2px;background:#F3F1EA;display:inline-block;}
+.page-band h1{font-size:clamp(28px,4vw,44px);color:#FFFFFF;margin-bottom:8px;}
+.page-band p{color:#D6D2C7;font-size:16px;max-width:620px;}
+
+.lp-section{padding:48px 0 80px;}
+.lp-card{background:#FAF9F5;border-radius:16px;padding:24px 28px;margin-bottom:16px;display:grid;grid-template-columns:210px 1fr;gap:24px;border:1px solid rgba(20,36,60,0.12);box-shadow:0 6px 20px rgba(20,36,60,0.05);}
+.lp-card-left{display:flex;flex-direction:column;align-items:flex-start;gap:8px;}
+.lp-card-icon{width:42px;height:42px;border-radius:10px;background:#14243C;color:#F3F1EA;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.lp-card-title{font-family:'Montserrat',sans-serif;font-size:14.5px;font-weight:700;color:#14243C;}
+.lp-field-group{margin-bottom:16px;}
+.lp-field-group:last-child{margin-bottom:0;}
+.lp-field-label{display:block;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#14243C;margin-bottom:8px;}
+.lp-cat-tabs{display:flex;gap:20px;border-bottom:2px solid rgba(20,36,60,0.14);margin-bottom:12px;}
+.lp-cat-tab{background:none;border:none;padding:6px 2px 10px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:700;color:#435063;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-2px;}
+.lp-cat-tab.active{color:#14243C;border-bottom-color:#14243C;}
+.lp-pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+.lp-pill{padding:8px 15px;border-radius:999px;border:1px solid rgba(20,36,60,0.2);background:#F3F1EA;color:#14243C;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;transition:all 0.2s ease;}
+.lp-pill.active{background:#14243C;color:#F3F1EA;border-color:#14243C;font-weight:700;}
+.lp-input,.lp-textarea,.lp-select{width:100%;background:#F3F1EA;color:#14243C;font-family:'Lato',sans-serif;font-size:14.5px;font-weight:600;padding:12px 14px;border-radius:10px;border:1.5px solid rgba(20,36,60,0.14);outline:none;}
+.lp-input:focus,.lp-textarea:focus,.lp-select:focus{background:#FFFFFF;border-color:#14243C;}
+.lp-textarea{min-height:86px;resize:vertical;}
+.lp-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.lp-grid-area{display:grid;grid-template-columns:1fr 130px;gap:10px;}
+.lp-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(20,36,60,0.12);}
+.lp-toggle-row small{color:#435063;display:block;font-size:12px;}
+.lp-switch{position:relative;width:44px;height:24px;display:inline-block;}
+.lp-switch input{opacity:0;width:0;height:0;}
+.lp-slider{position:absolute;inset:0;cursor:pointer;background:rgba(20,36,60,0.22);border-radius:999px;transition:.25s;}
+.lp-slider::before{content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#FAF9F5;border-radius:50%;transition:.25s;}
+.lp-switch input:checked + .lp-slider{background:#14243C;}
+.lp-switch input:checked + .lp-slider::before{transform:translateX(20px);}
+.lp-upload-box{border:2px dashed rgba(20,36,60,0.25);border-radius:12px;padding:18px;background:#F3F1EA;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.lp-preview-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+.lp-preview-thumb{width:76px;height:76px;border-radius:10px;object-fit:cover;border:2px solid #14243C;}
+.lp-submit-bar{background:#14243C;border-radius:16px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;color:#F3F1EA;}
+.lp-submit-btn{background:#F3F1EA;color:#14243C;border:none;border-radius:12px;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;cursor:pointer;}
+.lp-submit-btn:hover{background:#FFFFFF;}
+.lp-success-box{display:none;background:#FAF9F5;border:1.5px solid #14243C;border-radius:18px;padding:36px;text-align:center;}
+
+/* GMAIL MODAL */
+#gmailAuthModal{position:fixed;inset:0;z-index:9999999;background:rgba(20,36,60,0.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;}
+#gmailAuthModal.open{display:flex;}
+.gmail-modal-card{background:#FAF9F5;border-radius:20px;max-width:440px;width:100%;padding:28px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,0.45);}
+.gmail-btn-google{width:100%;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#14243C;color:#F3F1EA;border:none;border-radius:12px;padding:14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer;}
+
+@media (max-width:780px){
+  .lp-card{grid-template-columns:1fr;gap:14px;padding:18px;}
+  .lp-grid-2,.lp-grid-area{grid-template-columns:1fr;}
+}
+
+/* FOOTER */
+footer{background:#14243C;color:#D6D2C7;padding:70px 0 28px;border-top:1px solid rgba(243,241,234,0.16);}
+.foot-grid{display:grid;grid-template-columns:1fr 1fr 1.2fr 1.4fr;gap:40px;align-items:start;}
+footer h5{color:#F3F1EA;font-size:14px;margin-bottom:16px;}
+footer ul li{margin-bottom:10px;font-size:14px;}
+footer ul li a:hover{color:#F3F1EA;text-decoration:underline;text-underline-offset:4px;}
+.foot-brand-col{text-align:right;display:flex;flex-direction:column;align-items:flex-end;}
+.foot-bottom{margin-top:50px;padding-top:24px;border-top:1px solid rgba(243,241,234,0.14);display:flex;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:12px;color:#B8B4A8;}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}.foot-brand-col{text-align:left;align-items:flex-start;}}
+@media (max-width:600px){.foot-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="header-3tier">
+  <div class="midbar-tier">
+    <div class="wrap midbar-wrap">
+      <a href="index.html" class="brand-logo">
+        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" style="height:74px; max-width:330px; object-fit:contain; background:transparent;">
+      </a>
+
+      <div class="sector-toggle-pill">
+        <button type="button" class="toggle-btn active" onclick="location.href='find-property.html'">REAL ESTATE</button>
+        <button type="button" class="toggle-btn" onclick="location.href='construction.html'">CONSTRUCTIONS</button>
+      </div>
+
+      <div class="midbar-actions">
+        <div class="header-socials" aria-label="Prime Group Social Links">
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-anim-btn" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-anim-btn" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-anim-btn" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-anim-btn" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg></a>
+          <a href="https://wa.me/9221111111800" target="_blank" rel="noopener" class="social-anim-btn" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m5.8 14.1c-.25.7-1.43 1.34-1.98 1.42-.52.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.42-5.21-4.62-.15-.2-1.24-1.65-1.24-3.15s.79-2.24 1.07-2.54c.28-.3.61-.38.81-.38l.58.01c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.17-.32.38-.45.51-.15.15-.31.31-.13.61.18.3.79 1.3 1.7 2.11 1.17 1.04 2.16 1.37 2.46 1.52.3.15.48.13.66-.08.18-.2.76-.88.96-1.18.2-.3.4-.25.67-.15.27.1 1.74.82 2.04.97.3.15.5.22.57.34.08.12.08.7-.17 1.4z"/></svg></a>
+        </div>
+        <div class="burger" id="burgerBtn" aria-label="Toggle Navigation Menu">
+          <div class="burger-icon"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="mainnav-tier" id="mainnav">
+    <div class="wrap mainnav-wrap">
+      <div class="nav-links-center">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <div class="nav-dropdown">
+          <a href="construction.html" class="nav-item nav-dropdown-toggle">Real Construction <span class="caret">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="construction.html" class="dropdown-item">Construction &amp; Projects</a>
+            <a href="property-listing.html" class="dropdown-item">All Listings</a>
+            <a href="window-collection.html" class="dropdown-item">Window Collection</a>
+            <a href="mortgage-calculator.html" class="dropdown-item">Financial Calculator</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="list-property.html" class="nav-item active">List Your Properties</a>
+        <a href="find-property.html" class="nav-item">Find Dream Property</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="mnav" id="mnav">
+  <div class="mnav-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;border-bottom:1px solid rgba(243,241,234,0.18);padding-bottom:14px;">
+      <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;color:#F3F1EA;">PRIME GROUP MENU</span>
+      <div id="mnavClose" style="font-size:28px;cursor:pointer;color:#F3F1EA;line-height:1;">&times;</div>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="construction.html">Real Construction</a>
+    <a href="services.html">Services</a>
+    <a href="list-property.html" class="active">List Your Properties</a>
+    <a href="find-property.html">Find Dream Property</a>
+    <a href="contact-us.html">Contact Us</a>
+    <a href="dashboard.html">Admin Dashboard</a>
+  </div>
+</div>
+
+<section class="page-band">
+  <div class="wrap">
+    <span class="eyebrow">Seller Portal</span>
+    <h1>List Your Property</h1>
+    <p>Publish your property to verified Karachi buyers in minutes. Listings go live immediately after Gmail confirmation.</p>
+  </div>
+</section>
+
+<section class="lp-section">
+  <div class="wrap">
+    <form id="listPropertyForm">
+      <!-- 1. Location and Purpose -->
+      <div class="lp-card">
+        <div class="lp-card-left">
+          <div class="lp-card-icon">📍</div>
+          <div class="lp-card-title">Location &amp; Purpose</div>
+        </div>
+        <div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Select Purpose</label>
+            <div class="lp-pill-row" id="lpPurposeGroup">
+              <button type="button" class="lp-pill active" data-value="Sell">Sell</button>
+              <button type="button" class="lp-pill" data-value="Rent">Rent</button>
+            </div>
+          </div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Select Property Type</label>
+            <div class="lp-cat-tabs" id="lpCategoryGroup">
+              <button type="button" class="lp-cat-tab active" data-cat="Home">Home</button>
+              <button type="button" class="lp-cat-tab" data-cat="Plots">Plots</button>
+              <button type="button" class="lp-cat-tab" data-cat="Commercial">Commercial</button>
+            </div>
+            <div class="lp-pill-row" id="lpSubtypeGroup">
+              <button type="button" class="lp-pill active" data-sub="House">House</button>
+              <button type="button" class="lp-pill" data-sub="Flat">Flat</button>
+              <button type="button" class="lp-pill" data-sub="Upper Portion">Upper Portion</button>
+              <button type="button" class="lp-pill" data-sub="Lower Portion">Lower Portion</button>
+              <button type="button" class="lp-pill" data-sub="Penthouse">Penthouse</button>
+            </div>
+          </div>
+          <div class="lp-grid-2">
+            <div class="lp-field-group">
+              <label class="lp-field-label">City</label>
+              <select id="lpCity" class="lp-select" required>
+                <option value="Karachi">Karachi</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Islamabad">Islamabad</option>
+              </select>
+            </div>
+            <div class="lp-field-group">
+              <label class="lp-field-label">Location</label>
+              <input type="text" id="lpLocation" class="lp-input" placeholder="e.g. DHA Phase 8" required>
+            </div>
+          </div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Plot Number (Optional)</label>
+            <input type="text" id="lpPlotNo" class="lp-input" placeholder="e.g. 235 D">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Price & Area -->
+      <div class="lp-card">
+        <div class="lp-card-left">
+          <div class="lp-card-icon">💰</div>
+          <div class="lp-card-title">Price &amp; Area</div>
+        </div>
+        <div>
+          <div class="lp-grid-2">
+            <div class="lp-field-group">
+              <label class="lp-field-label">Area Size</label>
+              <div class="lp-grid-area">
+                <input type="number" id="lpArea" class="lp-input" placeholder="e.g. 500" min="1" required>
+                <select id="lpAreaUnit" class="lp-select">
+                  <option value="Sq. Yd." selected>Sq. Yd.</option>
+                  <option value="Sq. Ft.">Sq. Ft.</option>
+                  <option value="Marla">Marla</option>
+                  <option value="Kanal">Kanal</option>
+                </select>
+              </div>
+            </div>
+            <div class="lp-field-group">
+              <label class="lp-field-label">Price (PKR)</label>
+              <input type="text" id="lpPrice" class="lp-input" placeholder="e.g. 4.5 Crore" required>
+            </div>
+          </div>
+          <div class="lp-toggle-row">
+            <div><strong style="font-size:13.5px;">Installment available</strong><small>Enable if available on installments</small></div>
+            <label class="lp-switch"><input type="checkbox" id="lpInstallment"><span class="lp-slider"></span></label>
+          </div>
+          <div class="lp-toggle-row">
+            <div><strong style="font-size:13.5px;">Ready for Possession</strong><small>Enable if ready for handover</small></div>
+            <label class="lp-switch"><input type="checkbox" id="lpPossession" checked><span class="lp-slider"></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Specs & Amenities -->
+      <div class="lp-card">
+        <div class="lp-card-left">
+          <div class="lp-card-icon">✨</div>
+          <div class="lp-card-title">Features &amp; Specs</div>
+        </div>
+        <div>
+          <div id="lpSpecsRow">
+            <div class="lp-field-group">
+              <label class="lp-field-label">Bedrooms</label>
+              <div class="lp-pill-row" id="lpBedsGroup">
+                <button type="button" class="lp-pill" data-val="Studio">Studio</button>
+                <button type="button" class="lp-pill" data-val="2">2</button>
+                <button type="button" class="lp-pill active" data-val="3">3</button>
+                <button type="button" class="lp-pill" data-val="4">4</button>
+                <button type="button" class="lp-pill" data-val="5">5</button>
+                <button type="button" class="lp-pill" data-val="6+">6+</button>
+              </div>
+            </div>
+            <div class="lp-field-group">
+              <label class="lp-field-label">Bathrooms</label>
+              <div class="lp-pill-row" id="lpBathsGroup">
+                <button type="button" class="lp-pill" data-val="2">2</button>
+                <button type="button" class="lp-pill active" data-val="3">3</button>
+                <button type="button" class="lp-pill" data-val="4">4</button>
+                <button type="button" class="lp-pill" data-val="5+">5+</button>
+              </div>
+            </div>
+          </div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Amenities</label>
+            <div class="lp-pill-row" id="lpAmenitiesGroup">
+              <button type="button" class="lp-pill" data-am="Parking">Parking</button>
+              <button type="button" class="lp-pill" data-am="24/7 Security">24/7 Security</button>
+              <button type="button" class="lp-pill" data-am="Electricity Backup">Electricity Backup</button>
+              <button type="button" class="lp-pill" data-am="Lawn / Garden">Lawn / Garden</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Ad Information & Media -->
+      <div class="lp-card">
+        <div class="lp-card-left">
+          <div class="lp-card-icon">🖼️</div>
+          <div class="lp-card-title">Title &amp; Media</div>
+        </div>
+        <div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Property Title</label>
+            <input type="text" id="lpTitle" class="lp-input" placeholder="e.g. Modern Corner Villa in DHA Phase 8" required>
+          </div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Short Note</label>
+            <textarea id="lpDesc" class="lp-textarea" placeholder="Key highlights of your property..." required></textarea>
+          </div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Property Photos &amp; Video Clip</label>
+            <div class="lp-upload-box">
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <input type="file" id="lpImagesInput" accept="image/png,image/jpeg,image/webp" multiple style="display:none;">
+                <button type="button" class="btn btn-primary" id="lpUploadBtn" style="padding:10px 18px;font-size:13px;">Upload Photos</button>
+                <input type="file" id="lpVideoFileInput" accept="video/mp4,video/webm,video/quicktime" style="display:none;">
+                <button type="button" class="btn btn-ghost" id="lpVideoUploadBtn" style="padding:10px 18px;font-size:13px;">🎥 Upload Video</button>
+              </div>
+              <div id="lpVideoFileName" style="font-size:12.5px;font-weight:700;color:#14243C;"></div>
+            </div>
+            <div class="lp-preview-grid" id="lpImagePreviews"></div>
+            <video id="lpVideoPreview" controls playsinline style="display:none;width:100%;max-height:220px;border-radius:12px;background:#000;margin-top:12px;"></video>
+          </div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">YouTube Video Link (Optional)</label>
+            <input type="url" id="lpVideoUrl" class="lp-input" placeholder="https://youtube.com/watch?v=...">
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Contact Information -->
+      <div class="lp-card">
+        <div class="lp-card-left">
+          <div class="lp-card-icon">📞</div>
+          <div class="lp-card-title">Contact Details</div>
+        </div>
+        <div class="lp-grid-2">
+          <div class="lp-field-group">
+            <label class="lp-field-label">Email</label>
+            <input type="email" id="lpEmail" class="lp-input" placeholder="yourname@gmail.com" required>
+          </div>
+          <div class="lp-field-group">
+            <label class="lp-field-label">Mobile Number</label>
+            <input type="tel" id="lpPhone" class="lp-input" placeholder="+92 300 1234567" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-submit-bar">
+        <div>
+          <strong style="font-size:15px;">Ready to Publish?</strong>
+          <div style="font-size:13px;color:#D6D2C7;">Verify with Gmail in the next step to publish live.</div>
+        </div>
+        <button type="submit" class="lp-submit-btn">Post Your Ad →</button>
+      </div>
+    </form>
+
+    <div class="lp-success-box" id="lpSuccessBox">
+      <div style="font-size:40px;margin-bottom:10px;">✅</div>
+      <h3 style="font-size:24px;margin-bottom:8px;">Property Confirmed &amp; Live!</h3>
+      <p id="lpSuccessSummary" style="color:#435063;margin-bottom:18px;"></p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="find-property.html" class="btn btn-primary">View Live Listings →</a>
+        <button type="button" class="btn btn-ghost" id="lpResetBtn">List Another Property</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GMAIL MODAL -->
+<div id="gmailAuthModal" role="dialog" aria-modal="true">
+  <div class="gmail-modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#435063;">GMAIL VERIFICATION</span>
+      <button type="button" id="gmailAuthClose" style="background:none;border:none;font-size:22px;cursor:pointer;color:#14243C;">&times;</button>
+    </div>
+    <img src="prime-group-logo.png" alt="Prime Group" style="height:44px;margin:0 auto 12px;object-fit:contain;">
+    <h3 style="font-size:20px;margin-bottom:6px;">Sign in with Gmail to Publish</h3>
+    <p style="font-size:13.5px;color:#435063;margin-bottom:16px;">Confirm your details to publish your property live on Prime Group.</p>
+    <form id="gmailAuthForm" style="text-align:left;">
+      <div class="lp-field-group">
+        <label class="lp-field-label">Your Full Name</label>
+        <input type="text" id="gmailAuthName" class="lp-input" placeholder="e.g. Ali Raza" required>
+      </div>
+      <div class="lp-field-group">
+        <label class="lp-field-label">Gmail Address</label>
+        <input type="email" id="gmailAuthEmail" class="lp-input" placeholder="yourname@gmail.com" required>
+      </div>
+      <button type="submit" class="gmail-btn-google">Verify Gmail &amp; Confirm Listing →</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="construction.html">Real Construction</a></li>
+          <li><a href="services.html">Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Properties</h5>
+        <ul>
+          <li><a href="find-property.html">Find Dream Property</a></li>
+          <li><a href="list-property.html">List Your Properties</a></li>
+          <li><a href="mortgage-calculator.html">Financial Calculator</a></li>
+          <li><a href="window-collection.html">Window Collection</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>63‑C DHA 2, Phase 2, Karachi</li>
+          <li>primeestateenterprises@gmail.com</li>
+          <li>(021) 111-111-800</li>
+        </ul>
+      </div>
+      <div class="foot-brand-col">
+        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" class="foot-logo-img">
+        <p style="font-size:14px;max-width:290px;">Karachi's trusted real estate and construction partner since 1986.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Prime Group. All rights reserved.</span>
+      <span>Karachi, Pakistan</span>
+    </div>
+  </div>
+</footer>
+
+<script src="list-property-logic.js?v=6"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.getElementById('burgerBtn');
+  const mnav = document.getElementById('mnav');
+  const close = document.getElementById('mnavClose');
+  if (burger && mnav) burger.addEventListener('click', () => mnav.classList.add('open'));
+  if (close && mnav) close.addEventListener('click', () => mnav.classList.remove('open'));
+  if (mnav) mnav.addEventListener('click', e => { if (e.target === mnav) mnav.classList.remove('open'); });
+
+  let lpPurpose = 'Sell', lpCategory = 'Home', lpSubtype = 'House', lpBeds = '3', lpBaths = '3';
+  let lpImages = [], lpVideoObjectUrl = '', lpVideoDataUrl = '', pendingPayload = null;
+  const subtypesMap = {
+    Home: ['House', 'Flat', 'Upper Portion', 'Lower Portion', 'Penthouse'],
+    Plots: ['Residential Plot', 'Commercial Plot', 'Agricultural Land'],
+    Commercial: ['Office', 'Shop', 'Warehouse', 'Building']
+  };
+
+  document.querySelectorAll('#lpPurposeGroup .lp-pill').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#lpPurposeGroup .lp-pill').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); lpPurpose = b.dataset.value;
+  }));
+
+  const subtypeGroup = document.getElementById('lpSubtypeGroup');
+  const specsRow = document.getElementById('lpSpecsRow');
+  function bindSubs() {
+    subtypeGroup.querySelectorAll('.lp-pill').forEach(b => b.addEventListener('click', () => {
+      subtypeGroup.querySelectorAll('.lp-pill').forEach(x => x.classList.remove('active'));
+      b.classList.add('active'); lpSubtype = b.dataset.sub;
+    }));
+  }
+  bindSubs();
+
+  document.querySelectorAll('#lpCategoryGroup .lp-cat-tab').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#lpCategoryGroup .lp-cat-tab').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); lpCategory = b.dataset.cat;
+    const subs = subtypesMap[lpCategory] || []; lpSubtype = subs[0] || '';
+    subtypeGroup.innerHTML = subs.map((s, i) => `<button type="button" class="lp-pill ${i===0?'active':''}" data-sub="${s}">${s}</button>`).join('');
+    bindSubs();
+    specsRow.style.display = lpCategory === 'Home' ? 'block' : 'none';
+  }));
+
+  document.querySelectorAll('#lpBedsGroup .lp-pill').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#lpBedsGroup .lp-pill').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); lpBeds = b.dataset.val;
+  }));
+  document.querySelectorAll('#lpBathsGroup .lp-pill').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#lpBathsGroup .lp-pill').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); lpBaths = b.dataset.val;
+  }));
+  document.querySelectorAll('#lpAmenitiesGroup .lp-pill').forEach(b => b.addEventListener('click', () => b.classList.toggle('active')));
+
+  const uploadBtn = document.getElementById('lpUploadBtn'), imagesInput = document.getElementById('lpImagesInput'), previewGrid = document.getElementById('lpImagePreviews');
+  uploadBtn.addEventListener('click', () => imagesInput.click());
+  imagesInput.addEventListener('change', (e) => {
+    lpImages = []; previewGrid.innerHTML = '';
+    Array.from(e.target.files || []).slice(0, 5).forEach(file => {
+      const r = new FileReader();
+      r.onload = (ev) => {
+        lpImages.push(ev.target.result);
+        const img = document.createElement('img'); img.src = ev.target.result; img.className = 'lp-preview-thumb';
+        previewGrid.appendChild(img);
+      };
+      r.readAsDataURL(file);
+    });
+  });
+
+  const videoBtn = document.getElementById('lpVideoUploadBtn'), videoInput = document.getElementById('lpVideoFileInput'), videoPreview = document.getElementById('lpVideoPreview'), videoName = document.getElementById('lpVideoFileName');
+  videoBtn.addEventListener('click', () => videoInput.click());
+  videoInput.addEventListener('change', (e) => {
+    const file = (e.target.files || [])[0]; if (!file) return;
+    if (lpVideoObjectUrl) URL.revokeObjectURL(lpVideoObjectUrl);
+    lpVideoObjectUrl = URL.createObjectURL(file);
+    videoName.textContent = `✓ ${file.name}`;
+    videoPreview.src = lpVideoObjectUrl; videoPreview.style.display = 'block';
+  });
+
+  const form = document.getElementById('listPropertyForm'), modal = document.getElementById('gmailAuthModal'), gmailForm = document.getElementById('gmailAuthForm');
+  const successBox = document.getElementById('lpSuccessBox'), successSummary = document.getElementById('lpSuccessSummary');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    pendingPayload = {
+      purpose: lpPurpose, category: lpCategory, subtype: lpSubtype,
+      city: document.getElementById('lpCity').value, location: document.getElementById('lpLocation').value,
+      plotNo: document.getElementById('lpPlotNo').value, area: document.getElementById('lpArea').value,
+      areaUnit: document.getElementById('lpAreaUnit').value, price: document.getElementById('lpPrice').value,
+      installment: document.getElementById('lpInstallment').checked, possession: document.getElementById('lpPossession').checked,
+      beds: lpCategory === 'Home' ? lpBeds : '', baths: lpCategory === 'Home' ? lpBaths : '',
+      amenities: Array.from(document.querySelectorAll('#lpAmenitiesGroup .lp-pill.active')).map(b => b.dataset.am),
+      title: document.getElementById('lpTitle').value, description: document.getElementById('lpDesc').value,
+      images: lpImages, videoObjectUrl: lpVideoObjectUrl, videoDataUrl: lpVideoDataUrl,
+      videoUrl: document.getElementById('lpVideoUrl').value,
+      email: document.getElementById('lpEmail').value, mobile: document.getElementById('lpPhone').value
+    };
+    document.getElementById('gmailAuthEmail').value = pendingPayload.email;
+    modal.classList.add('open');
+  });
+  document.getElementById('gmailAuthClose').addEventListener('click', () => modal.classList.remove('open'));
+  gmailForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); if (!pendingPayload) return;
+    const email = document.getElementById('gmailAuthEmail').value.trim();
+    const name = document.getElementById('gmailAuthName').value.trim() || email.split('@')[0];
+    const customer = window.PrimeGroupEngine.loginGmailCustomer(email, name, pendingPayload.mobile);
+    const record = await window.PrimeGroupEngine.submitListingWithConfirmation(pendingPayload, customer);
+    modal.classList.remove('open');
+    successSummary.textContent = `${record.purpose} • ${record.subtype} (${record.area} ${record.areaUnit}) in ${record.location}, ${record.city} — PKR ${record.price}. Ref: ${record.id}`;
+    form.style.display = 'none'; successBox.style.display = 'block';
+  });
+  document.getElementById('lpResetBtn').addEventListener('click', () => {
+    form.reset(); lpImages = []; previewGrid.innerHTML = ''; videoPreview.style.display = 'none'; videoName.textContent = '';
+    form.style.display = 'block'; successBox.style.display = 'none';
+  });
+});
+</script>
+</body>
+</html>
