@@ -15,7 +15,9 @@
 <link rel="stylesheet" href="assets/prime.css">
 <script>document.documentElement.classList.add('js')</script>
 <style>
-.cgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,60px);align-items:start}
+.cgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,36px);align-items:stretch}
+.cgrid .ccard,.cgrid .form{height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.cmap{margin-top:28px;width:100%;height:360px;aspect-ratio:auto}
 .chan{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:44px}
 .chan a{display:flex;flex-direction:column;gap:12px;padding:22px;border-radius:18px;background:#fff;border:1px solid var(--rule);text-decoration:none;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .chan a:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(20,36,60,.45)}
@@ -40,13 +42,10 @@
 </section>
 
 <section class="band white">
-  <div class="wrap cgrid">
-    <div>
+  <div class="wrap">
+    <div class="cgrid">
       <div class="ccard rv" data-contact="card"></div>
-      <div class="map rv" style="margin-top:18px"><div class="fallback">Map loading. <a href="#" id="mapLink">Open in Google Maps</a></div>
-        <iframe title="Prime Group office on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Commercial+Area+A+DHA+Phase+2+Karachi&output=embed"></iframe></div>
-    </div>
-    <form class="form rv" id="cf" novalidate>
+      <form class="form rv" id="cf" novalidate>
       <div class="fields">
         <h3>Send us a message</h3>
         <p class="sub">All fields except email are required.</p>
@@ -66,7 +65,10 @@
         <a class="btn btn-wa" data-wa-send href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
         <p style="margin-top:14px"><a href="#" data-again>Write another message</a></p>
       </div>
-    </form>
+      </form>
+    </div>
+    <div class="map cmap rv"><div class="fallback">Map loading. <a href="#" id="mapLink">Open in Google Maps</a></div>
+      <iframe title="Prime Group office on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Commercial+Area+A+DHA+Phase+2+Karachi&output=embed"></iframe></div>
   </div>
 </section>
 
