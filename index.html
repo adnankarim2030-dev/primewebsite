@@ -110,8 +110,17 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg
 .pillars{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:20px;font-size:14px;font-weight:600}
 .pillars a{text-decoration:none;color:var(--ink-2);border-bottom:1px solid rgba(20,36,60,.25);padding-bottom:3px;transition:color .25s,border-color .25s}
 .pillars a:hover{color:var(--navy);border-color:var(--navy)}
-.draw-wrap{position:relative;aspect-ratio:6/4.6;max-width:520px;width:100%;margin-left:auto}
-.draw-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.draw-wrap{position:relative;aspect-ratio:16/11;max-width:600px;width:100%;margin-left:auto}
+.hero-visual{position:relative;width:100%;height:100%;border-radius:22px;overflow:hidden;border:1px solid rgba(20,36,60,.2);background:var(--navy);box-shadow:0 36px 70px -40px rgba(20,36,60,.55)}
+.hero-visual img{width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
+.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,36,60,.06) 0%,rgba(20,36,60,.62) 100%);pointer-events:none}
+.hero-inset{position:absolute;left:-24px;bottom:20px;z-index:3;width:168px;border-radius:16px;overflow:hidden;border:2px solid #F3F1EA;box-shadow:0 20px 44px -18px rgba(20,36,60,.65);background:var(--navy)}
+.hero-inset img{width:100%;height:104px;object-fit:cover;display:block}
+.hero-inset span{display:block;padding:7px 10px;font-size:11.5px;font-weight:700;color:#F3F1EA;background:var(--navy)}
+.hero-badge{position:absolute;right:16px;bottom:16px;z-index:3;padding:10px 14px;border-radius:12px;background:rgba(20,36,60,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(243,241,234,.22);color:#F3F1EA;font-size:12.5px;font-weight:600;text-align:right}
+.hero-badge b{display:block;color:var(--glow);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+@media (max-width:1080px){.hero-inset{left:12px;bottom:12px;width:136px}.hero-inset img{height:82px}}
+@media (max-width:600px){.hero-inset{display:none}.hero-badge{left:10px;right:10px;bottom:10px;text-align:left;padding:8px 12px;font-size:11.5px}}
 .bp{fill:none;stroke:var(--navy);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .bp.thin{stroke:#6A85AB;stroke-width:1}
 .win{fill:url(#glow);opacity:0}
@@ -297,54 +306,18 @@ form.inq .btn-p:hover{background:var(--navy-2)}
       </div>
     </div>
 
-    <div class="draw-wrap" aria-hidden="true">
-      <svg viewBox="0 0 600 520" id="elev">
-        <defs>
-          <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#F7E6C1"/><stop offset="1" stop-color="#E2BC7A"/>
-          </linearGradient>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#7FA6D6" stop-opacity=".22"/><stop offset="1" stop-color="#7FA6D6" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <!-- dimension line -->
-        <g class="dim">
-          <path class="bp thin" d="M96 128H396M96 120v16M396 120v16"/>
-          <text class="anno" x="246" y="114" text-anchor="middle">24.0 m</text>
-          <path class="bp thin" d="M566 156V460M558 156h16M558 460h16"/>
-          <text class="anno" x="582" y="308" transform="rotate(90 582 308)" text-anchor="middle">12.5 m</text>
-        </g>
-        <!-- tower behind -->
-        <rect class="mass" x="410" y="40" width="120" height="420"/>
-        <path class="bp thin" d="M410 460V40h120v420"/>
-        <path class="bp thin" d="M410 80h120M410 120h120M410 160h120M410 200h120M410 240h120M410 280h120M410 320h120M410 360h120M410 400h120M450 40v420M490 40v420"/>
-        <!-- villa masses -->
-        <rect class="mass" x="110" y="262" width="330" height="198"/>
-        <rect class="mass" x="150" y="168" width="250" height="94"/>
-        <path class="bp" d="M130 156h300v12H130z"/>
-        <path class="bp" d="M150 168v94M400 168v94"/>
-        <path class="bp" d="M96 250h358v12H96z"/>
-        <path class="bp" d="M110 262v198M440 262v198"/>
-        <!-- upper glazing -->
-        <rect class="win" x="172" y="188" width="140" height="56"/>
-        <path class="bp" d="M172 188h140v56H172zM219 188v56M265 188v56"/>
-        <rect class="win" x="330" y="188" width="48" height="56"/>
-        <path class="bp" d="M330 188h48v56h-48z"/>
-        <!-- balcony rail -->
-        <path class="bp thin" d="M160 250v-14M180 250v-14M200 250v-14M220 250v-14M240 250v-14M260 250v-14M280 250v-14M300 250v-14M320 250v-14M150 236h170"/>
-        <!-- ground glazing and door -->
-        <rect class="win" x="128" y="290" width="170" height="170"/>
-        <path class="bp" d="M128 290h170v170H128zM185 290v170M242 290v170M128 330h170"/>
-        <rect class="win" x="328" y="330" width="62" height="130"/>
-        <path class="bp" d="M328 330h62v130h-62zM378 396h4"/>
-        <path class="bp thin" d="M404 300h22v40h-22zM404 360h22v40h-22z"/>
-        <!-- trees -->
-        <path class="bp thin" d="M88 460V380M76 392a22 22 0 1 1 24 0 26 26 0 1 1-24 0"/>
-                <!-- ground -->
-        <path class="bp" d="M30 460h540"/>
-        <path class="bp thin" d="M30 472h540" stroke-dasharray="3 7"/>
-        <text class="anno big" x="30" y="500">Front elevation, illustrative</text>
-      </svg>
+    <div class="draw-wrap">
+      <div class="hero-visual">
+        <img id="heroMainImg" src="karachi_dha6_mansion.jpg" alt="Prime Group luxury villa in DHA Phase 6, Karachi">
+      </div>
+      <div class="hero-inset" id="heroInset">
+        <img src="karachi_corporate_tower.jpg" alt="DHA Commercial Workspace, Karachi">
+        <span>DHA Phase 6 &amp; 8</span>
+      </div>
+      <div class="hero-badge" id="heroBadge">
+        <b>Since 1986 · Karachi</b>
+        Title-Verified Real Estate &amp; Builds
+      </div>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"></div>
@@ -452,22 +425,19 @@ form.inq .btn-p:hover{background:var(--navy-2)}
 PG.form(document.getElementById("inq"), { n: PG.V.req, p: PG.V.phone, e: PG.V.email, pu: PG.V.sel, m: PG.V.msg },
   v => "Hello Prime Group,\n\n" + Object.entries(v).filter(([k, x]) => x).map(([k, x]) => k === "Message" ? "\n" + x : k + ": " + x).join("\n"));
 
-const svg = document.getElementById("elev");
-const strokes = [...svg.querySelectorAll(".bp")];
 const ms = [...document.querySelectorAll(".ms")];
 const setOn = i => ms.forEach((m, k) => m.classList.toggle("on", k <= i));
 
 if (PG.hasG) {
-  /* Hero: blueprint draws itself, then lights come on */
-  strokes.forEach(p => { if (p.getAttribute("stroke-dasharray")) return; const L = p.getTotalLength ? p.getTotalLength() : 600; p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+  /* Hero: crisp typography reveal + smooth architectural photo zoom & floating card entrance */
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-  tl.from("#h1 .line-mask>span", { yPercent: 110, duration: 1.1, stagger: .12 })
-    .to("#what .rv", { opacity: 1, y: 0, duration: .9, stagger: .1 }, "-=.7")
-    .to(strokes.filter(p => !p.getAttribute("stroke-dasharray")), { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut", stagger: .04 }, .2)
-    .from(".anno", { opacity: 0, duration: .8, stagger: .15 }, "-=1.2")
-    .to(".mass", { opacity: 1, duration: 1 }, "-=.8")
-    .to(".win", { opacity: .9, duration: .9, stagger: .18, ease: "power1.inOut" }, "-=.6");
-  gsap.to(".draw-wrap", { yPercent: -8, ease: "none", scrollTrigger: { trigger: "#what", start: "top top", end: "bottom top", scrub: true } });
+  tl.from("#h1 .line-mask>span", { yPercent: 110, duration: 1, stagger: .11 })
+    .to("#what .rv", { opacity: 1, y: 0, duration: .85, stagger: .09 }, "-=.65")
+    .fromTo("#heroMainImg", { scale: 1.16, opacity: 0 }, { scale: 1.02, opacity: 1, duration: 1.3, ease: "power3.out" }, .15)
+    .from("#heroInset", { y: 28, opacity: 0, duration: .9 }, "-=.8")
+    .from("#heroBadge", { y: 18, opacity: 0, duration: .8 }, "-=.65");
+  gsap.to("#heroMainImg", { yPercent: 8, ease: "none", scrollTrigger: { trigger: "#what", start: "top top", end: "bottom top", scrub: true } });
+  gsap.to("#heroInset", { y: -22, ease: "none", scrollTrigger: { trigger: "#what", start: "top top", end: "bottom top", scrub: true } });
   gsap.to(".ghost", { xPercent: -18, ease: "none", scrollTrigger: { trigger: "#legacy", start: "top bottom", end: "bottom top", scrub: true } });
 
   /* Legacy: pinned horizontal run on wide screens, simple reveal on narrow */
@@ -484,8 +454,6 @@ if (PG.hasG) {
     ms.forEach((m, i) => gsap.from(m, { opacity: 0, y: 40, duration: .9, ease: "power3.out", scrollTrigger: { trigger: m, start: "top 82%", onEnter: () => setOn(i), onLeaveBack: () => setOn(i - 1) } }));
   });
 } else {
-  svg.querySelectorAll(".win").forEach(w => w.style.opacity = .9);
-  svg.querySelectorAll(".mass").forEach(w => w.style.opacity = 1);
   ms.forEach(m => m.classList.add("on"));
   document.getElementById("rail").style.transform = "scaleX(1)";
 }

@@ -254,7 +254,18 @@
       tl.from(ph.querySelectorAll("h1 .line-mask>span"), { yPercent: 110, duration: 1, stagger: 0.1 })
         .to(ph.querySelectorAll(".rv"), { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 }, "-=.6");
       drawSVG(ph.querySelector(".art svg"), 0.2);
+      const hp = ph.querySelector(".hero-photo img");
+      if (hp) {
+        gsap.fromTo(hp, { scale: 1.14 }, { scale: 1.02, duration: 1.4, ease: "power3.out" });
+        gsap.to(hp, { yPercent: 8, ease: "none", scrollTrigger: { trigger: ph, start: "top top", end: "bottom top", scrub: true } });
+      }
+      const hc = ph.querySelector(".hero-cap");
+      if (hc) gsap.from(hc, { y: 18, opacity: 0, duration: 0.8, delay: 0.45, ease: "power3.out" });
     }
+    /* Smooth image reveal on scroll for photo panels */
+    document.querySelectorAll(".panel.photo img").forEach(img => {
+      gsap.fromTo(img, { scale: 1.12 }, { scale: 1, duration: 1.2, ease: "power3.out", scrollTrigger: { trigger: img.closest(".panel"), start: "top 85%", once: true } });
+    });
     /* Generic reveals */
     ScrollTrigger.batch(document.querySelectorAll("main .rv:not(.phero .rv):not(#what .rv)"), {
       start: "top 88%", once: true,
