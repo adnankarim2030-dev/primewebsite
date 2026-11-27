@@ -322,8 +322,7 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg
 @keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
 .wa-float svg{width:28px;height:28px;fill:#fff}
 
-/* Reveal & 3D Motion Graphics */
-main,.band,.sheet{perspective:1200px}
+/* Reveal & 3D Motion Graphics (avoid perspective on main so GSAP pin:true stays exact) */
 .js .rv{opacity:0;transform:translateY(28px);will-change:transform,opacity}
 .hero-stage,.draw-wrap,.hero-photo,.panel.photo,.card,.pc,.area{transform-style:preserve-3d;will-change:transform}
 .hero-stage .hero-inset,.draw-wrap .hero-inset{transform:translateZ(34px)}
