@@ -88,12 +88,18 @@ p{margin:0 0 1em}
 .dd-menu span{font-size:13px;color:var(--ink-2)}
 .burger{display:none;margin-left:auto;width:46px;height:46px;border-radius:50%;border:1px solid rgba(20,36,60,.25);background:none;color:var(--navy);cursor:pointer;position:relative;z-index:51}
 .burger i{display:block;width:18px;height:1.5px;background:currentColor;margin:4px auto;transition:.3s}
-.mnav{position:fixed;inset:0;z-index:49;background:var(--cream);padding:100px max(6vw,24px) 40px;display:flex;flex-direction:column;gap:4px;clip-path:circle(0 at calc(100% - 44px) 44px);transition:clip-path .7s var(--ease);overflow:auto;visibility:hidden}
-.mnav.open{clip-path:circle(150% at calc(100% - 44px) 44px);visibility:visible}
-.mnav a{font-size:clamp(22px,6vw,30px);font-weight:700;letter-spacing:-.02em;text-decoration:none;padding:5px 0;color:var(--ink)}
-.mnav a.sub{font-size:16px;font-weight:500;color:var(--ink-2);padding-left:18px;letter-spacing:0}
-.mnav .mfoot{margin-top:auto;padding-top:30px;font-size:15px;color:var(--ink-2);display:grid;gap:6px}
-.mnav .mfoot a{font-size:15px;font-weight:600;letter-spacing:0}
+.mnav{position:fixed;top:64px;right:12px;left:auto;bottom:auto;z-index:49;width:min(290px,calc(100vw - 24px));max-height:calc(100vh - 80px);background:var(--cream);border:1px solid rgba(20,36,60,.2);border-radius:18px;box-shadow:0 28px 60px -20px rgba(20,36,60,.45);padding:12px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transform:translateY(-10px) scale(.97);transform-origin:top right;transition:opacity .25s var(--ease),transform .3s var(--ease),visibility .25s;overflow:auto}
+.mnav.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.mnav a{font-size:15px;font-weight:700;letter-spacing:-.01em;text-decoration:none;padding:8px 12px;border-radius:10px;color:var(--navy);transition:background .2s,color .2s,transform .2s var(--ease)}
+.mnav a:hover,.mnav a:active,.mnav a[aria-current]{background:var(--navy);color:#F3F1EA;transform:translateX(4px)}
+.mnav a.sub{font-size:13.5px;font-weight:600;color:var(--ink-2);padding:6px 12px 6px 24px;letter-spacing:0}
+.mnav a.sub:hover,.mnav a.sub:active{background:rgba(20,36,60,.1);color:var(--navy);transform:translateX(4px)}
+.mnav .mfoot{margin-top:8px;padding:10px 8px 4px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-2);display:grid;gap:6px}
+.mnav .mfoot a{font-size:13px;font-weight:700;padding:6px 10px}
+.mnav .msoc{display:flex;gap:8px;margin-top:4px;padding:0 4px}
+.mnav .msoc a{width:32px;height:32px;padding:0;border-radius:50%;background:var(--navy);color:#F3F1EA;display:grid;place-items:center}
+.mnav .msoc a:hover{transform:translateY(-2px);background:var(--navy-2)}
+.mnav .msoc svg{width:14px;height:14px}
 body.menu-open{overflow:hidden}
 body.menu-open .burger i:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
 body.menu-open .burger i:nth-child(2){opacity:0}
@@ -359,11 +365,11 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg
   .plist{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .plist.list .pc{flex-direction:column}
   .plist.list .pc .ph{flex:none;aspect-ratio:4/3;min-height:0}
-  .pc .bd{padding:12px 12px 14px;gap:5px}
-  .pc .price{font-size:15.5px}
-  .pc h3{font-size:14px}
-  .pc .loc{font-size:12px}
-  .specs{padding-top:8px;gap:4px 10px;font-size:12px}
+  .pc .bd{padding:10px 10px 12px;gap:4px}
+  .pc .price{font-size:14px}
+  .pc h3{font-size:13px;overflow-wrap:anywhere}
+  .pc .loc{font-size:11.5px;overflow-wrap:anywhere}
+  .specs{padding-top:7px;gap:4px 8px;font-size:11px}
   .ph .badge{left:8px;top:8px;font-size:10.5px;padding:4px 8px}
   .row3{grid-template-columns:minmax(0,1fr)}
 }
@@ -408,10 +414,10 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg
   .qa{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px}
   .qa a{min-height:40px;font-size:13px}
   .adv-wrap{margin-top:14px;padding-top:14px}
-  .adv-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-  .adv-list a{padding:8px 10px}
+  .adv-list{grid-template-columns:minmax(0,1fr);gap:6px}
+  .adv-list a{flex-direction:row;justify-content:space-between;align-items:center;padding:8px 12px}
   .kv{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .kv div{padding:10px 12px}
+  .kv div{padding:10px 12px;overflow-wrap:anywhere}
   .faq summary{padding:16px 0;font-size:15px}
   .faq .ans{padding:0 0 16px;font-size:14px}
   .cta{padding:26px 20px;border-radius:20px;gap:18px}
