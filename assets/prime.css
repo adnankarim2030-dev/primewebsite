@@ -8,7 +8,7 @@
   --ink:#1B233B; --ink-2:#4F5A6E; --blue:#41618C; --rule:rgba(20,36,60,.12);
   --ok:#2F7D5B; --err:#B4413A;
   --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --wrap:1280px; --ease:cubic-bezier(.2,.7,.1,1);
+  --wrap:100%; --ease:cubic-bezier(.2,.7,.1,1);
   color-scheme:light;
 }
 *{box-sizing:border-box;min-width:0}
@@ -18,7 +18,7 @@ img{max-width:100%;display:block}
 a{color:inherit}
 button{font-family:inherit}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(5vw,20px);padding-right:max(5vw,20px)}
+.wrap{max-width:var(--wrap);width:100%;margin:0 auto;padding-left:clamp(18px,3vw,48px);padding-right:clamp(18px,3vw,48px)}
 h1,h2,h3,h4{font-weight:700;line-height:1.1;letter-spacing:-.025em;margin:0;text-wrap:balance;color:var(--navy)}
 h2{font-size:clamp(30px,3.6vw,50px)}
 h3{font-size:clamp(19px,1.6vw,23px);letter-spacing:-.015em;line-height:1.25}
@@ -228,7 +228,8 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg
 .chip small{opacity:.6;margin-left:4px;font-weight:500}
 
 /* Property cards */
-.plist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
+.plist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,1.6vw,24px)}
+@media (max-width:1360px){.plist{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .plist.list{grid-template-columns:minmax(0,1fr)}
 .pc{background:#fff;border:1px solid var(--rule);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .45s var(--ease),box-shadow .45s var(--ease);text-align:left;font:inherit;color:inherit;padding:0}
 .pc:hover{transform:translateY(-5px);box-shadow:0 34px 60px -36px rgba(20,36,60,.5)}

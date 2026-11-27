@@ -71,6 +71,33 @@
   </div>
 </section>
 
+<section class="band white" id="featured">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker rv">Featured inventory</p><h2 class="rv">Verified Karachi properties</h2></div>
+      <p class="lead rv">Handpicked homes, suites and DHA commercial opportunities across Phase 6, Phase 8, Clifton and Bahria Town. Tap any listing for full details and direct advisor contact.</p>
+    </div>
+    <div class="plist" id="find-featured"></div>
+    <div class="ctas rv" style="margin-top:36px;justify-content:center">
+      <a class="btn btn-p mag" href="property-listing.html">View all 18 listings <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="highlights">
+  <div class="wrap" id="ig" data-limit="3">
+    <div class="head">
+      <div><p class="kicker rv">DHA Phase 6 &amp; 8</p><h2 class="rv">DHA Commercial Highlights</h2></div>
+      <p class="lead rv">Latest commercial spaces, reels and property updates from Bukhari Commercial (DHA Phase 6) and Al-Murtaza &amp; Sahil Commercial (DHA Phase 8).</p>
+    </div>
+    <div class="ig-top">
+      <a class="ig-handle" href="https://www.instagram.com/primeestateenterprises/?hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>@primeestateenterprises</a>
+      <a class="tlink" href="property-listing.html#instagram">See all 11 highlights <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+    </div>
+    <div class="ig-grid"></div>
+  </div>
+</section>
+
 <section class="band white">
   <div class="wrap">
     <div class="head">
@@ -126,9 +153,14 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/prime.js"></script>
 <script src="assets/listings.js"></script>
+<script src="assets/instagram.js"></script>
 <script>
 {
   const D=PGL.data,$=id=>document.getElementById(id);
+  if ($("find-featured")) {
+    const picks = [16, 17, 18, 1, 2, 7, 5, 6].map(id => D.find(p => p.id === id)).filter(Boolean);
+    PGL.render($("find-featured"), picks);
+  }
   const HOODS=["DHA","Clifton","Bahria Town","PECHS","North Nazimabad","Bahadurabad","Gulshan-e-Iqbal","Shahrah-e-Faisal","KDA Scheme 1"];
   HOODS.forEach(h=>$("fh").insertAdjacentHTML("beforeend",`<option>${h}</option>`));
   const LBL={fp:{sale:"For sale",rent:"For rent"},fc:{houses:"Houses",apartments:"Apartments",plots:"Plots",commercial:"Commercial"},fb:{"0-5":"Up to 5 Crore","5-10":"5–10 Crore","10-20":"10–20 Crore","20-999":"20 Crore +"},fr:{"3":"3+ beds","4":"4+ beds","5":"5+ beds","6":"6+ beds"}};
