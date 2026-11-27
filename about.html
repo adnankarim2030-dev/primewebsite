@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="advanced-animations.css?v=10">
+<link rel="stylesheet" href="advanced-animations.css?v=12">
 <style>
 :root{
   --blue:#14243C;
@@ -158,13 +158,24 @@ footer ul li a:hover{color:#F3F1EA;text-decoration:underline;text-underline-offs
   <div class="midbar-tier">
     <div class="wrap midbar-wrap">
       <a href="index.html" class="brand-logo">
-        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" style="height:74px; max-width:330px; object-fit:contain; background:transparent;">
+        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" style="height:60px; max-width:260px; object-fit:contain; background:transparent;">
       </a>
 
-      <div class="sector-toggle-pill">
-        <button type="button" class="toggle-btn active" onclick="location.href='find-property.html'">REAL ESTATE</button>
-        <button type="button" class="toggle-btn" onclick="location.href='construction.html'">CONSTRUCTIONS</button>
-      </div>
+      <nav class="inline-desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item active">About</a>
+        <div class="nav-dropdown">
+          <a href="construction.html" class="nav-item nav-dropdown-toggle">Real Estate &amp; Construction <span class="caret">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="construction.html" class="dropdown-item">Construction &amp; Projects</a>
+            <a href="property-listing.html" class="dropdown-item">All Listings</a>
+            <a href="mortgage-calculator.html" class="dropdown-item">Financial Calculator</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="list-property.html" class="nav-item">List Your Properties</a>
+        <a href="find-property.html" class="nav-item">Find Dream Property</a>
+      </nav>
 
       <div class="midbar-actions">
         <div class="header-socials" aria-label="Prime Group Social Links">
@@ -180,27 +191,6 @@ footer ul li a:hover{color:#F3F1EA;text-decoration:underline;text-underline-offs
       </div>
     </div>
   </div>
-
-  <nav class="mainnav-tier" id="mainnav">
-    <div class="wrap mainnav-wrap">
-      <div class="nav-links-center">
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="about.html" class="nav-item active">About</a>
-        <div class="nav-dropdown">
-          <a href="construction.html" class="nav-item nav-dropdown-toggle">Real Estate &amp; Construction <span class="caret">▾</span></a>
-          <div class="dropdown-menu">
-            <a href="construction.html" class="dropdown-item">Construction &amp; Projects</a>
-            <a href="property-listing.html" class="dropdown-item">All Listings</a>
-            <a href="window-collection.html" class="dropdown-item">Window Collection</a>
-            <a href="mortgage-calculator.html" class="dropdown-item">Financial Calculator</a>
-          </div>
-        </div>
-        <a href="services.html" class="nav-item">Services</a>
-        <a href="list-property.html" class="nav-item">List Your Properties</a>
-        <a href="find-property.html" class="nav-item">Find Dream Property</a>
-      </div>
-    </div>
-  </nav>
 </header>
 
 <div class="mnav" id="mnav">
@@ -336,7 +326,7 @@ footer ul li a:hover{color:#F3F1EA;text-decoration:underline;text-underline-offs
           <li><a href="find-property.html">Find Dream Property</a></li>
           <li><a href="list-property.html">List Your Properties</a></li>
           <li><a href="mortgage-calculator.html">Financial Calculator</a></li>
-          <li><a href="window-collection.html">Window Collection</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
         </ul>
       </div>
       <div>
