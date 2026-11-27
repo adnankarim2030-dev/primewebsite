@@ -251,8 +251,8 @@
     const ph = document.querySelector(".phero");
     if (ph) {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(ph.querySelectorAll("h1 .line-mask>span"), { yPercent: 110, duration: 1, stagger: 0.1 })
-        .to(ph.querySelectorAll(".rv"), { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 }, "-=.6");
+      tl.from(ph.querySelectorAll("h1 .line-mask>span"), { yPercent: 110, rotationX: 16, transformPerspective: 900, duration: 1, stagger: 0.1 })
+        .to(ph.querySelectorAll(".rv"), { opacity: 1, y: 0, rotationX: 0, duration: 0.9, stagger: 0.08, clearProps: "transform" }, "-=.6");
       drawSVG(ph.querySelector(".art svg"), 0.2);
       const hp = ph.querySelector(".hero-photo img");
       if (hp) {
@@ -281,11 +281,49 @@
     document.querySelectorAll(".panel.photo img").forEach(img => {
       gsap.fromTo(img, { scale: 1.12 }, { scale: 1, duration: 1.2, ease: "power3.out", scrollTrigger: { trigger: img.closest(".panel"), start: "top 85%", once: true } });
     });
-    /* Generic reveals */
+    /* Top scroll progress bar */
+    const prog = document.createElement("div");
+    prog.className = "pg-progress";
+    document.body.appendChild(prog);
+    gsap.to(prog, { scaleX: 1, ease: "none", scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 0.2 } });
+
+    /* Generic 3D translated reveals for text, headings & sections */
     ScrollTrigger.batch(document.querySelectorAll("main .rv:not(.phero .rv):not(#what .rv)"), {
       start: "top 88%", once: true,
-      onEnter: els => gsap.to(els, { opacity: 1, y: 0, duration: 0.9, stagger: 0.09, ease: "power3.out" })
+      onEnter: els => gsap.fromTo(els,
+        { opacity: 0, y: 38, rotationX: 11, transformPerspective: 1000, transformOrigin: "50% 100%" },
+        { opacity: 1, y: 0, rotationX: 0, duration: 0.95, stagger: 0.08, ease: "power3.out", clearProps: "transform" })
     });
+    /* 3D scroll reveal on hero & photo containers */
+    document.querySelectorAll(".panel.photo, .hero-photo").forEach(box => {
+      gsap.fromTo(box,
+        { y: 34, rotationX: 8, scale: 0.96, transformPerspective: 1100 },
+        { y: 0, rotationX: 0, scale: 1, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: box, start: "top 88%", once: true } });
+    });
+    /* Interactive 3D tilt with Z-depth parallax on fine pointers (desktop) */
+    if (matchMedia("(pointer:fine)").matches) {
+      const bindTilt = (el, max = 6) => {
+        if (!el || el.dataset.tilt) return;
+        el.dataset.tilt = "1";
+        el.addEventListener("mousemove", e => {
+          const r = el.getBoundingClientRect();
+          const rx = ((e.clientY - r.top) / r.height - 0.5) * -max * 2;
+          const ry = ((e.clientX - r.left) / r.width - 0.5) * max * 2;
+          gsap.to(el, { rotationX: rx, rotationY: ry, transformPerspective: 1000, duration: 0.45, ease: "power2.out", overwrite: "auto" });
+        });
+        el.addEventListener("mouseleave", () => {
+          gsap.to(el, { rotationX: 0, rotationY: 0, duration: 0.75, ease: "elastic.out(1, 0.55)", overwrite: "auto" });
+        });
+      };
+      document.querySelectorAll(".hero-stage, .draw-wrap, .hero-photo, .panel.photo").forEach(el => bindTilt(el, 5.5));
+      document.querySelectorAll(".card, .area").forEach(el => bindTilt(el, 3.5));
+      /* Also apply subtle 3D tilt to dynamically rendered property & highlight cards */
+      document.addEventListener("mousemove", e => {
+        const c = e.target.closest(".pc, .igc");
+        if (!c) return;
+        bindTilt(c, 3.2);
+      }, { passive: true });
+    }
     /* Panels draw as they enter */
     document.querySelectorAll(".panel svg,[data-draw]").forEach(svg => {
       ScrollTrigger.create({ trigger: svg, start: "top 80%", once: true, onEnter: () => drawSVG(svg) });

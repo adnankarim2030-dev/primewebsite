@@ -431,8 +431,8 @@ const setOn = i => ms.forEach((m, k) => m.classList.toggle("on", k <= i));
 if (PG.hasG) {
   /* Hero: crisp typography reveal + smooth architectural photo zoom & floating card entrance */
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-  tl.from("#h1 .line-mask>span", { yPercent: 110, duration: 1, stagger: .11 })
-    .to("#what .rv", { opacity: 1, y: 0, duration: .85, stagger: .09 }, "-=.65")
+  tl.from("#h1 .line-mask>span", { yPercent: 110, rotationX: 16, transformPerspective: 900, duration: 1, stagger: .11 })
+    .to("#what .rv", { opacity: 1, y: 0, rotationX: 0, duration: .85, stagger: .09, clearProps: "transform" }, "-=.65")
     .fromTo("#heroMainImg", { scale: 1.16, opacity: 0 }, { scale: 1.02, opacity: 1, duration: 1.3, ease: "power3.out" }, .15)
     .from("#heroInset", { y: 28, opacity: 0, duration: .9 }, "-=.8")
     .from("#heroBadge", { y: 18, opacity: 0, duration: .8 }, "-=.65");

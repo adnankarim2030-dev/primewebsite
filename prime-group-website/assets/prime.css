@@ -322,8 +322,20 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg
 @keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
 .wa-float svg{width:28px;height:28px;fill:#fff}
 
-/* Reveal */
-.js .rv{opacity:0;transform:translateY(28px)}
+/* Reveal & 3D Motion Graphics */
+main,.band,.sheet{perspective:1200px}
+.js .rv{opacity:0;transform:translateY(28px);will-change:transform,opacity}
+.hero-stage,.draw-wrap,.hero-photo,.panel.photo,.card,.pc,.area{transform-style:preserve-3d;will-change:transform}
+.hero-stage .hero-inset,.draw-wrap .hero-inset{transform:translateZ(34px)}
+.hero-stage .hero-badge,.draw-wrap .hero-badge{transform:translateZ(26px)}
+.card,.pc,.igc,.area{position:relative}
+.card::after,.pc::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(233,201,140,.14) 50%,transparent 70%);background-size:220% 220%;background-position:130% 0;transition:background-position .75s var(--ease);opacity:0}
+.card:hover::after,.pc:hover::after{opacity:1;background-position:-30% 0}
+.pg-progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:90;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--navy),var(--blue),var(--glow));pointer-events:none}
+.sheet::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent 0%,rgba(20,36,60,.045) 50%,transparent 100%);background-size:200% 100%;animation:pgSweep 11s linear infinite}
+@keyframes pgSweep{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-visual::before,.hero-photo::before{content:"";position:absolute;left:0;right:0;top:-30%;height:30%;z-index:2;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(233,201,140,.16),transparent);animation:pgScan 7s ease-in-out infinite}
+@keyframes pgScan{0%,100%{transform:translateY(0);opacity:0}20%{opacity:1}80%{opacity:.8}100%{transform:translateY(480%);opacity:0}}
 
 @media (max-width:1180px){
   .hdr .wrap{display:flex;align-items:center;justify-content:space-between}
