@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14243C">
+<title>Financial & Mortgage Calculator (PKR) | Prime Group Karachi</title>
+<meta name="description" content="Estimate your monthly home loan instalment in PKR. Set property price, down payment, tenure and KIBOR-based rate to see principal, total interest and lifetime cost.">
+<meta property="og:title" content="Financial & Mortgage Calculator (PKR) | Prime Group Karachi">
+<meta property="og:description" content="Estimate your monthly home loan instalment in PKR. Set property price, down payment, tenure and KIBOR-based rate to see principal, total interest and lifetime cost.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/prime.css">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+.chero{padding:140px 0 40px}
+.chero h1{font-size:clamp(32px,4vw,56px);margin-bottom:14px}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(20px,3vw,40px);align-items:start}
+.inputs{background:#fff;border:1px solid var(--rule);border-radius:24px;padding:clamp(24px,3vw,40px)}
+.ig{margin-bottom:26px}
+.ig:last-child{margin-bottom:0}
+.ig .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.ig label{font-weight:700;font-size:14.5px;color:var(--navy)}
+.ig .val{font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ig .hint{font-size:13px;color:var(--ink-2);margin-top:8px}
+.money{display:flex;align-items:center;border:1px solid #DDDDD3;border-radius:14px;background:#F7F7F3;overflow:hidden}
+.money:focus-within{border-color:var(--navy);background:#fff;box-shadow:0 0 0 4px rgba(20,36,60,.08)}
+.money span{padding:0 0 0 16px;font-weight:700;color:var(--ink-2);font-size:14px}
+.money input{flex:1;border:0;background:none;min-height:54px;padding:10px 16px 10px 8px;font:700 18px var(--sans);color:var(--ink);font-variant-numeric:tabular-nums;width:100%}
+.money input:focus{outline:none}
+.psel{width:100%;min-height:54px;border-radius:14px;border:1px solid #DDDDD3;background:#F7F7F3 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2314243C' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center;padding:10px 40px 10px 16px;font:600 15px var(--sans);color:var(--ink);appearance:none;-webkit-appearance:none}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:linear-gradient(90deg,var(--navy) var(--p,50%),#E2E1D6 var(--p,50%))}
+input[type=range]::-moz-range-track{height:6px;border-radius:99px;background:#E2E1D6}
+input[type=range]::-moz-range-progress{height:6px;border-radius:99px;background:var(--navy)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--navy);margin-top:-9px;box-shadow:0 4px 10px -4px rgba(20,36,60,.5)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--navy)}
+.ticks2{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2);margin-top:2px}
+.out{background:var(--navy);color:var(--chalk);border-radius:24px;padding:clamp(24px,3vw,44px);position:sticky;top:96px;overflow:hidden;isolation:isolate}
+.out::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(160deg,transparent 30%,#000);-webkit-mask-image:linear-gradient(160deg,transparent 30%,#000)}
+.out .lab{font-size:14px;color:var(--mist);font-weight:600}
+.emi{font-weight:800;font-size:clamp(32px,3.8vw,54px);letter-spacing:-.035em;line-height:1.05;color:#fff;font-variant-numeric:tabular-nums;margin:6px 0 4px;white-space:nowrap}
+.emi small{font-size:.32em;font-weight:600;color:var(--mist);letter-spacing:0;margin-left:6px}
+.viz{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;align-items:center;margin:30px 0}
+.viz svg{width:170px;height:170px}
+.leg{display:grid;gap:12px}
+.leg div{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14.5px}
+.leg i{width:12px;height:12px;border-radius:3px}
+.leg b{font-variant-numeric:tabular-nums;color:#fff;white-space:nowrap}
+.tot{display:flex;justify-content:space-between;gap:12px;padding:18px 0;border-top:1px solid rgba(127,166,214,.25);font-size:15px}
+.tot b{color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.out .ctas{margin-top:20px}
+.amort{margin-top:30px}
+.amort summary{cursor:pointer;font-weight:700;color:var(--navy);padding:16px 0;list-style:none;display:flex;align-items:center;gap:10px}
+.amort summary::-webkit-details-marker{display:none}
+.amort summary::before{content:"+";width:26px;height:26px;border-radius:50%;border:1px solid var(--rule);display:grid;place-items:center}
+.amort[open] summary::before{content:"–"}
+.tblw{overflow-x:auto;border:1px solid var(--rule);border-radius:16px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:12px 16px;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12.5px;color:var(--ink-2);background:var(--cream);font-weight:700}
+tr:last-child td{border-bottom:0}
+@media (max-width:1080px){.calc{grid-template-columns:minmax(0,1fr)}.out{position:relative;top:0}}
+@media (max-width:520px){.viz{grid-template-columns:minmax(0,1fr);justify-items:center}.leg{width:100%}}
+</style>
+</head>
+<body data-page="calculator">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pgGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7E6C1"/><stop offset="1" stop-color="#E2BC7A"/></linearGradient></defs></svg>
+<header id="site-header"></header>
+<main>
+<section class="sheet chero">
+  <div class="wrap">
+    <nav class="crumb rv" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Real Estate &amp; Construction</span><span>/</span><span>Financial Calculator</span></nav>
+    <h1 class="rv">Financial &amp; mortgage calculator</h1>
+    <p class="lead rv">Pick a property or enter a price, then adjust the down payment, tenure and rate. Your monthly instalment and total cost update instantly.</p>
+  </div>
+</section>
+
+<section style="padding:20px 0 90px">
+  <div class="wrap">
+    <div class="calc">
+      <div class="inputs rv">
+        <div class="ig"><div class="top"><label for="preset">Property</label></div>
+          <select class="psel" id="preset"><option value="">Custom amount</option></select></div>
+        <div class="ig"><div class="top"><label for="price">Property price</label></div>
+          <div class="money"><span>PKR</span><input id="price" inputmode="numeric" value="35,000,000" aria-describedby="priceW"></div>
+          <div class="hint" id="priceW">≈ <span id="priceCr">3.50</span> Crore</div></div>
+        <div class="ig"><div class="top"><label for="dp">Down payment</label><span class="val"><span id="dpPct">20</span>% · PKR <span id="dpAmt">7,000,000</span></span></div>
+          <input type="range" id="dp" min="15" max="80" step="1" value="20"><div class="ticks2"><span>15%</span><span>80%</span></div>
+          <div class="hint">State Bank of Pakistan guidelines generally ask for at least 15–20% down on residential financing.</div></div>
+        <div class="ig"><div class="top"><label for="yrs">Loan tenure</label><span class="val"><span id="yrsV">15</span> years</span></div>
+          <input type="range" id="yrs" min="5" max="25" step="1" value="15"><div class="ticks2"><span>5 yrs</span><span>25 yrs</span></div></div>
+        <div class="ig"><div class="top"><label for="rate">Annual interest rate</label><span class="val"><span id="rateV">11.5</span>%</span></div>
+          <input type="range" id="rate" min="6" max="25" step="0.1" value="11.5"><div class="ticks2"><span>6%</span><span>25%</span></div>
+          <div class="hint">Home loans in Pakistan are usually priced as KIBOR plus the bank's margin.</div></div>
+      </div>
+
+      <div class="out rv" aria-live="polite">
+        <div class="lab">Estimated monthly instalment</div>
+        <div class="emi">PKR <span id="emi">0</span><small>/ month</small></div>
+        <div class="viz">
+          <svg viewBox="0 0 42 42" role="img" aria-label="Breakdown of total cost">
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="rgba(127,166,214,.18)" stroke-width="5"/>
+            <circle id="s1" cx="21" cy="21" r="15.915" fill="none" stroke="#E9C98C" stroke-width="5" stroke-dasharray="0 100" transform="rotate(-90 21 21)"/>
+            <circle id="s2" cx="21" cy="21" r="15.915" fill="none" stroke="#F4F6F9" stroke-width="5" stroke-dasharray="0 100" transform="rotate(-90 21 21)"/>
+            <circle id="s3" cx="21" cy="21" r="15.915" fill="none" stroke="#7FA6D6" stroke-width="5" stroke-dasharray="0 100" transform="rotate(-90 21 21)"/>
+          </svg>
+          <div class="leg">
+            <div><i style="background:#E9C98C"></i><span>Down payment</span><b>PKR <span id="lDown">0</span></b></div>
+            <div><i style="background:#F4F6F9"></i><span>Loan principal</span><b>PKR <span id="lPrin">0</span></b></div>
+            <div><i style="background:#7FA6D6"></i><span>Total interest</span><b>PKR <span id="lInt">0</span></b></div>
+          </div>
+        </div>
+        <div class="tot"><span>Total lifetime outflow</span><b>PKR <span id="total">0</span></b></div>
+        <div class="ctas"><a class="btn btn-l mag" id="apply" href="#" target="_blank" rel="noopener">Apply for pre-approval help</a><a class="btn btn-ol" href="property-listing.html">Browse listings</a></div>
+        <p style="font-size:12.5px;color:var(--mist);margin:18px 0 0">Estimates only, based on a fixed rate for the whole tenure. Your bank's final rate, fees and terms will differ.</p>
+      </div>
+    </div>
+
+    <details class="amort rv"><summary>Year-by-year repayment schedule</summary>
+      <div class="tblw"><table><thead><tr><th>Year</th><th>Paid this year</th><th>Principal</th><th>Interest</th><th>Balance left</th></tr></thead><tbody id="amort"></tbody></table></div>
+    </details>
+  </div>
+</section>
+
+<section class="band white">
+  <div class="wrap">
+    <div class="head"><div><p class="kicker rv">Before you apply</p><h2 class="rv">Three things worth knowing</h2></div></div>
+    <div class="g3">
+      <article class="card rv"><div class="ico" data-ic="chart"></div><h3>KIBOR benchmark</h3><p>Pakistani commercial banks price home loans on the Karachi Interbank Offered Rate (KIBOR) plus a margin, so instalments on floating-rate loans can change over time.</p></article>
+      <article class="card rv"><div class="ico" data-ic="doc"></div><h3>Down payment terms</h3><p>State Bank of Pakistan guidelines generally require a minimum 15–20% down payment for residential property financing.</p></article>
+      <article class="card rv"><div class="ico" data-ic="shield"></div><h3>Verified title guarantee</h3><p>Prime Group checks property titles and allotment letters upfront, which banks need before they approve a loan.</p></article>
+    </div>
+  </div>
+</section>
+</main>
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/prime.js"></script>
+<script>
+{
+  const $=id=>document.getElementById(id);
+  const PRE=[["Bukhari Commercial Workspace (DHA Ph 6)",165000000],["Al-Murtaza Commercial Space (DHA Ph 8)",220000000],["Sahil Commercial Plot (DHA Ph 8)",137500000],["Crescent Bay Sea-View Suite",121500000],["DHA Phase 8 Corner Bungalow",145000000],["Bahria Precinct 10-A Villa",39000000],["PECHS Block 6 Sky Residence",32500000]];
+  PRE.forEach(([n,v])=>$("preset").insertAdjacentHTML("beforeend",`<option value="${v}">${n} · PKR ${(v/1e7).toFixed(2)} Crore</option>`));
+  const f=n=>Math.round(n).toLocaleString("en-PK");
+  const num=()=>Math.max(0,+String($("price").value).replace(/[^\d]/g,"")||0);
+  try{const p=+new URLSearchParams(location.search).get("price");if(p>0)$("price").value=f(p)}catch(e){}
+  const pct=el=>((el.value-el.min)/(el.max-el.min)*100)+"%";
+  let last=null;
+  function calc(){
+    const P=num(),dpP=+$("dp").value,y=+$("yrs").value,r=+$("rate").value;
+    const down=P*dpP/100,L=P-down,n=y*12,m=r/1200;
+    const emi=m?L*m/(1-Math.pow(1+m,-n)):L/n, intr=emi*n-L, tot=down+L+intr;
+    ["dp","yrs","rate"].forEach(k=>$(k).style.setProperty("--p",pct($(k))));
+    $("priceCr").textContent=(P/1e7).toFixed(2);$("dpPct").textContent=dpP;$("dpAmt").textContent=f(down);$("yrsV").textContent=y;$("rateV").textContent=r.toFixed(1);
+    $("lDown").textContent=f(down);$("lPrin").textContent=f(L);$("lInt").textContent=f(intr);$("total").textContent=f(tot);
+    const a=tot?down/tot*100:0,b=tot?L/tot*100:0,c=tot?intr/tot*100:0;
+    $("s1").setAttribute("stroke-dasharray",`${a} ${100-a}`);
+    $("s2").setAttribute("stroke-dasharray",`${b} ${100-b}`);$("s2").setAttribute("stroke-dashoffset",-a);
+    $("s3").setAttribute("stroke-dasharray",`${c} ${100-c}`);$("s3").setAttribute("stroke-dashoffset",-(a+b));
+    if(PG.hasG&&last!==null){const o={v:last};gsap.to(o,{v:emi,duration:.5,ease:"power2.out",onUpdate:()=>$("emi").textContent=f(o.v)})}else $("emi").textContent=f(emi);
+    last=emi;
+    let bal=L,rows="";for(let yr=1;yr<=y;yr++){let pi=0,ii=0;for(let k=0;k<12;k++){const i=bal*m,pr=emi-i;ii+=i;pi+=pr;bal-=pr}rows+=`<tr><td>Year ${yr}</td><td>${f(pi+ii)}</td><td>${f(pi)}</td><td>${f(ii)}</td><td>${f(Math.max(0,bal))}</td></tr>`}
+    $("amort").innerHTML=rows;
+    $("apply").href=PG.wa(`Hello Prime Group, I'd like help with home finance pre-approval.\n\nProperty price: PKR ${f(P)}\nDown payment: ${dpP}% (PKR ${f(down)})\nTenure: ${y} years at ${r.toFixed(1)}%\nEstimated instalment: PKR ${f(emi)} / month`);
+  }
+  $("preset").addEventListener("change",e=>{if(e.target.value){$("price").value=f(+e.target.value);calc()}});
+  $("price").addEventListener("input",()=>{const el=$("price"),v=num();el.value=v?f(v):"";$("preset").value="";calc()});
+  ["dp","yrs","rate"].forEach(k=>$(k).addEventListener("input",calc));
+  calc();
+  if(PG.hasG)gsap.to(".chero .rv",{opacity:1,y:0,duration:.9,stagger:.08,ease:"power3.out"});
+}
+</script>
+</body>
+</html>

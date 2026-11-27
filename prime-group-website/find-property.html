@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14243C">
+<title>Find Your Dream Property in Karachi | Prime Group</title>
+<meta name="description" content="Search verified Karachi homes, apartments, plots and commercial spaces by purpose, neighbourhood, category, budget and bedrooms, or send Prime Group your requirement.">
+<meta property="og:title" content="Find Your Dream Property in Karachi | Prime Group">
+<meta property="og:description" content="Search verified Karachi homes, apartments, plots and commercial spaces by purpose, neighbourhood, category, budget and bedrooms, or send Prime Group your requirement.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/prime.css">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+.fhero{padding:140px 0 0}
+.fhero h1{font-size:clamp(34px,4.4vw,60px);margin-bottom:16px}
+.finder{margin-top:40px;background:#fff;border:1px solid var(--rule);border-radius:24px;padding:22px;box-shadow:0 40px 80px -50px rgba(20,36,60,.45);display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) auto;gap:12px;align-items:end;position:relative;z-index:2}
+.finder label{display:block}
+.finder span{display:block;font-size:12.5px;font-weight:700;color:var(--blue);margin:0 0 6px 4px}
+.finder select{width:100%;min-height:52px;border-radius:14px;border:1px solid #DDDDD3;background:#F7F7F3 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2314243C' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 14px center;padding:10px 36px 10px 14px;font:600 15px var(--sans);color:var(--ink);appearance:none;-webkit-appearance:none}
+.finder select:focus{outline:none;border-color:var(--navy);background-color:#fff}
+.finder .btn{min-height:52px;border-radius:14px}
+.rhead{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.rhead h2{font-size:clamp(24px,2.4vw,32px)}
+.active{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.active button{border:1px solid var(--rule);background:#fff;border-radius:999px;padding:6px 12px;font:600 13px var(--sans);color:var(--ink);cursor:pointer}
+.active button:hover{border-color:var(--navy)}
+.areas2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.area{position:relative;border-radius:20px;overflow:hidden;background:var(--navy);color:#fff;padding:26px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;isolation:isolate;transition:transform .45s var(--ease)}
+.area::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:26px 26px;transition:transform 1s var(--ease)}
+.area:hover{transform:translateY(-5px)}.area:hover::before{transform:scale(1.15)}
+.area b{font-size:22px;letter-spacing:-.02em}
+.area span{color:var(--mist);font-size:14px}
+.area em{position:absolute;top:22px;right:22px;font-style:normal;font-size:13px;font-weight:700;background:rgba(255,255,255,.12);padding:5px 11px;border-radius:999px}
+.brief{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:start}
+@media (max-width:1080px){.finder{grid-template-columns:repeat(3,minmax(0,1fr))}.finder .btn{grid-column:1/-1}.areas2{grid-template-columns:repeat(2,minmax(0,1fr))}.brief{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.finder{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.areas2{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body data-page="find">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pgGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7E6C1"/><stop offset="1" stop-color="#E2BC7A"/></linearGradient></defs></svg>
+<header id="site-header"></header>
+<main>
+<section class="sheet fhero">
+  <div class="wrap">
+    <nav class="crumb rv" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Find Properties</span><span>/</span><span>Find Dream Property</span></nav>
+    <p class="kicker rv">Smart property search</p>
+    <h1 class="rv">Find your dream property</h1>
+    <p class="lead rv">Filter verified Karachi homes, apartments, plots and commercial spaces by location, budget and size.</p>
+    <form class="finder rv" id="finder">
+      <label><span>Purpose</span><select id="fp"><option value="">All</option><option value="sale">For sale</option><option value="rent">For rent</option></select></label>
+      <label><span>Neighbourhood</span><select id="fh"><option value="">All neighbourhoods</option></select></label>
+      <label><span>Category</span><select id="fc"><option value="">All categories</option><option value="houses">Houses</option><option value="apartments">Apartments</option><option value="plots">Plots</option><option value="commercial">Commercial</option></select></label>
+      <label><span>Budget</span><select id="fb"><option value="">Any budget</option><option value="0-5">Up to 5 Crore</option><option value="5-10">5 – 10 Crore</option><option value="10-20">10 – 20 Crore</option><option value="20-999">20 Crore +</option></select></label>
+      <label><span>Bedrooms</span><select id="fr"><option value="">Any</option><option value="3">3+ beds</option><option value="4">4+ beds</option><option value="5">5+ beds</option><option value="6">6+ beds</option></select></label>
+      <button class="btn btn-p" type="submit">Find properties <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+    </form>
+  </div>
+</section>
+
+<section class="band" style="padding-top:70px" id="results">
+  <div class="wrap">
+    <div class="rhead">
+      <div><h2 id="rtitle">All verified properties</h2><div class="active" id="active"></div></div>
+      <span class="count muted" id="count" aria-live="polite" style="font-weight:600;font-size:14px"></span>
+    </div>
+    <div class="plist" id="list"></div>
+  </div>
+</section>
+
+<section class="band white">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker rv">Popular areas</p><h2 class="rv">Start with a neighbourhood</h2></div>
+      <p class="lead rv">The parts of Karachi our clients ask about most. Tap one to see what is available.</p>
+    </div>
+    <div class="areas2" id="areas"></div>
+  </div>
+</section>
+
+<section class="band" id="brief">
+  <div class="wrap brief">
+    <div>
+      <p class="kicker rv">Can't find it?</p>
+      <h2 class="rv">Tell us exactly what you want</h2>
+      <p class="lead rv" style="margin-top:16px">Many properties change hands before they are ever listed. Send your requirement and our team will search our network for you.</p>
+      <ul class="ticks rv"><li>Only title-verified options are shared</li><li>Free, with no obligation</li><li>Updates on WhatsApp</li></ul>
+    </div>
+    <form class="form rv" id="bf" novalidate>
+      <div class="fields">
+        <h3>Send your requirement</h3>
+        <p class="sub">Fields marked optional can be left blank.</p>
+        <span class="lbl">I want to</span>
+        <div class="pills"><input type="radio" name="Purpose" id="bp1" value="Buy" checked><label for="bp1">Buy</label><input type="radio" name="Purpose" id="bp2" value="Rent"><label for="bp2">Rent</label><input type="radio" name="Purpose" id="bp3" value="Invest"><label for="bp3">Invest</label></div>
+        <div class="row">
+          <div class="f"><select id="bc" name="Property type"><option value="" selected disabled hidden></option><option>House / Bungalow</option><option>Apartment</option><option>Penthouse</option><option>Plot</option><option>Commercial</option></select><label for="bc">Property type</label><small class="e">Choose a property type.</small></div>
+          <div class="f"><input id="ba" name="Preferred areas" placeholder=" "><label for="ba">Preferred areas</label><small class="e">Tell us where you'd like to be.</small></div>
+        </div>
+        <div class="row">
+          <div class="f"><input id="bb" name="Budget" placeholder=" "><label for="bb">Budget (e.g. 4–6 Crore)</label><small class="e">Give us a rough budget.</small></div>
+          <div class="f"><input id="bs" name="Size / bedrooms" placeholder=" "><label for="bs">Size or bedrooms (optional)</label></div>
+        </div>
+        <div class="row">
+          <div class="f"><input id="bn" name="Name" placeholder=" " autocomplete="name"><label for="bn">Full name</label><small class="e">Enter your name.</small></div>
+          <div class="f"><input id="bph" name="Phone" type="tel" placeholder=" " autocomplete="tel"><label for="bph">Phone / WhatsApp</label><small class="e">Enter a number we can call or message.</small></div>
+        </div>
+        <button class="btn btn-p submit" type="submit">Send requirement <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+      </div>
+      <div class="done" role="status" aria-live="polite">
+        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#D9D8CC" stroke-width="1.5"/><path d="M20 33l8 8 16-17" stroke="#14243C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Requirement ready</h3>
+        <p>Send it on WhatsApp and we'll start searching.</p>
+        <a class="btn btn-wa" data-wa-send href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <p style="margin-top:14px"><a href="#" data-again>Start again</a></p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/prime.js"></script>
+<script src="assets/listings.js"></script>
+<script>
+{
+  const D=PGL.data,$=id=>document.getElementById(id);
+  const HOODS=["DHA","Clifton","Bahria Town","PECHS","North Nazimabad","Bahadurabad","Gulshan-e-Iqbal","Shahrah-e-Faisal","KDA Scheme 1"];
+  HOODS.forEach(h=>$("fh").insertAdjacentHTML("beforeend",`<option>${h}</option>`));
+  const LBL={fp:{sale:"For sale",rent:"For rent"},fc:{houses:"Houses",apartments:"Apartments",plots:"Plots",commercial:"Commercial"},fb:{"0-5":"Up to 5 Crore","5-10":"5–10 Crore","10-20":"10–20 Crore","20-999":"20 Crore +"},fr:{"3":"3+ beds","4":"4+ beds","5":"5+ beds","6":"6+ beds"}};
+  try{const u=new URLSearchParams(location.search);["fp","fh","fc","fb","fr"].forEach(k=>{if(u.get(k))$(k).value=u.get(k)})}catch(e){}
+  function run(scroll){
+    const v=k=>$(k).value, [mn,mx]=(v("fb")||"0-999").split("-").map(Number);
+    const L=D.filter(p=>(!v("fp")||p.purpose===v("fp"))&&(!v("fh")||p.hood===v("fh"))&&(!v("fc")||p.cat===v("fc"))&&p.cr>=mn&&p.cr<mx&&(!v("fr")||(+p.beds||0)>=+v("fr")));
+    $("count").textContent=`Showing ${L.length} ${L.length===1?"property":"properties"}`;
+    const act=["fp","fh","fc","fb","fr"].filter(k=>v(k));
+    $("rtitle").textContent=act.length?"Matching properties":"All verified properties";
+    $("active").innerHTML=act.map(k=>`<button type="button" data-k="${k}">${PG.esc(LBL[k]?LBL[k][v(k)]:v(k))} ×</button>`).join("")+(act.length>1?`<button type="button" data-k="*">Clear all</button>`:"");
+    PGL.render($("list"),L);
+    if(scroll){const y=$("results").getBoundingClientRect().top+scrollY-80;PG.lenis?PG.lenis.scrollTo(y):scrollTo({top:y,behavior:"smooth"});}
+  }
+  $("finder").addEventListener("submit",e=>{e.preventDefault();run(true)});
+  $("finder").addEventListener("change",()=>run(false));
+  $("active").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;(b.dataset.k==="*"?["fp","fh","fc","fb","fr"]:[b.dataset.k]).forEach(k=>$(k).value="");run(false)});
+  const A=[["DHA","Bungalows, villas and prime plots"],["Clifton","Sea-view apartments and offices"],["Bahria Town","Gated villas for families"],["PECHS","Central apartments"]];
+  $("areas").innerHTML=A.map(([h,d])=>{const n=D.filter(p=>p.hood===h).length;return `<a class="area rv" href="#results" data-h="${h}"><em>${n} listed</em><b>${h}</b><span>${d}</span></a>`}).join("");
+  $("areas").addEventListener("click",e=>{const a=e.target.closest(".area");if(!a)return;e.preventDefault();$("fh").value=a.dataset.h;run(true)});
+  run(false);
+  if(PG.hasG){gsap.to(".fhero .rv",{opacity:1,y:0,duration:.9,stagger:.08,ease:"power3.out"});gsap.set("#areas .rv",{opacity:0,y:28});ScrollTrigger.batch("#areas .rv",{start:"top 88%",once:true,onEnter:e=>gsap.to(e,{opacity:1,y:0,duration:.9,stagger:.08})});}
+  PG.form($("bf"),{bc:PG.V.sel,ba:PG.V.req,bb:PG.V.req,bn:PG.V.req,bph:PG.V.phone},
+    v=>"Hello Prime Group, here is my property requirement.\n\n"+Object.entries(v).filter(([k,x])=>x).map(([k,x])=>k+": "+x).join("\n"));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14243C">
+<title>List Your Property for Sale or Rent in Karachi | Prime Group</title>
+<meta name="description" content="Sell or rent out your house, flat, plot or commercial property with Prime Group. Title-verified listings, serious buyers and tenants, and support until the deal closes.">
+<meta property="og:title" content="List Your Property for Sale or Rent in Karachi | Prime Group">
+<meta property="og:description" content="Sell or rent out your house, flat, plot or commercial property with Prime Group. Title-verified listings, serious buyers and tenants, and support until the deal closes.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/prime.css">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+.lp{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(30px,4vw,64px);align-items:start}
+.aside{position:sticky;top:100px}
+.prog{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:4px}
+.prog li{display:flex;gap:14px;align-items:center;padding:10px 0;color:var(--ink-2);font-weight:600;font-size:15px;transition:color .3s}
+.prog i{width:34px;height:34px;flex:none;border-radius:50%;border:1.5px solid #CFCFC4;display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700;transition:.3s;background:var(--cream)}
+.prog li.on{color:var(--navy)}
+.prog li.on i{border-color:var(--navy);background:var(--navy);color:#fff}
+.prog li.ok i{border-color:var(--navy);color:var(--navy)}
+.why2{margin-top:36px;padding:24px;border-radius:18px;background:#fff;border:1px solid var(--rule)}
+.why2 h3{font-size:16px;margin-bottom:6px}
+.bar2{height:4px;background:#E2E1D6;border-radius:99px;margin-bottom:28px;overflow:hidden}
+.bar2 b{display:block;height:100%;background:var(--navy);width:20%;transition:width .6s var(--ease)}
+.stepc{display:none}
+.stepc.on{display:block;animation:in .5s var(--ease)}
+@keyframes in{from{opacity:0;transform:translateX(16px)}}
+.stepc h3{font-size:22px;margin-bottom:4px}
+.stepc>p.sub{color:var(--ink-2);margin:0 0 24px;font-size:15px}
+.nav2{display:flex;justify-content:space-between;gap:12px;margin-top:10px}
+.tog{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;border:1px solid #DDDDD3;border-radius:14px;background:#F7F7F3;margin-bottom:12px;cursor:pointer}
+.tog input{position:absolute;opacity:0}
+.tog .sw{width:46px;height:26px;border-radius:99px;background:#CFCFC4;position:relative;transition:.3s;flex:none}
+.tog .sw::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.3s var(--ease)}
+.tog input:checked+.sw{background:var(--navy)}
+.tog input:checked+.sw::after{transform:translateX(20px)}
+.tog input:focus-visible+.sw{outline:2px solid var(--blue);outline-offset:2px}
+.amen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.amen label{display:flex;gap:10px;align-items:center;min-height:50px;padding:10px 16px;border:1px solid #DDDDD3;border-radius:12px;background:#F7F7F3;cursor:pointer;font-weight:600;font-size:14.5px}
+.amen input{width:18px;height:18px;accent-color:var(--navy)}
+.drop{border:1.5px dashed #C9C9BD;border-radius:16px;padding:28px;text-align:center;background:#F7F7F3;cursor:pointer;transition:.25s;margin-bottom:16px;display:block}
+.drop:hover,.drop.over{border-color:var(--navy);background:#fff}
+.drop svg{width:34px;height:34px;color:var(--blue);margin:0 auto 8px}
+.drop b{display:block;color:var(--navy)}
+.drop span{font-size:13.5px;color:var(--ink-2)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-bottom:16px}
+.thumbs div{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--cream)}
+.thumbs img,.thumbs video{width:100%;height:100%;object-fit:cover}
+.thumbs button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(255,255,255,.92);cursor:pointer;font-size:16px;line-height:1}
+.review{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:14px;overflow:hidden;margin-bottom:18px}
+.review div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;background:#fff;padding:12px 16px;font-size:14.5px}
+.review dt{color:var(--ink-2);font-weight:600}
+.review dd{margin:0;font-weight:600;color:var(--navy);overflow-wrap:anywhere}
+.stepErr{color:var(--err);font-size:14px;margin:0 0 12px;display:none}
+.stepErr.show{display:block}
+@media (max-width:1080px){.lp{grid-template-columns:minmax(0,1fr)}.aside{position:static}.prog{grid-template-columns:repeat(5,minmax(0,1fr))}.prog li span{display:none}.prog li{justify-content:center}.why2{display:none}}
+@media (max-width:600px){.amen{grid-template-columns:minmax(0,1fr)}.review div{grid-template-columns:minmax(0,1fr);gap:2px}}
+</style>
+</head>
+<body data-page="list">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pgGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7E6C1"/><stop offset="1" stop-color="#E2BC7A"/></linearGradient></defs></svg>
+<header id="site-header"></header>
+<main>
+<section class="sheet phero" style="padding-bottom:60px">
+  <div class="wrap phero-grid">
+    <div>
+      <nav class="crumb rv" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Find Properties</span><span>/</span><span>List Your Properties</span></nav>
+      <h1><span class="line-mask"><span>List your property</span></span><span class="line-mask"><span>with Prime Group</span></span></h1>
+      <p class="lead rv">Sell or rent out your home, plot or commercial space through a name Karachi has trusted since 1986. We verify, market and handle the paperwork, you choose the offer.</p>
+      <div class="ctas rv"><a class="btn btn-p mag" href="#form">Start listing <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a></div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 500 400">
+        <rect class="bp-fill" x="90" y="170" width="220" height="180"/>
+        <path class="bp" d="M70 184L200 90l130 94M90 170v180h220V170"/>
+        <rect class="bp-win" x="120" y="210" width="70" height="60"/><path class="bp" d="M120 210h70v60h-70zM155 210v60"/>
+        <rect class="bp-win" x="225" y="250" width="50" height="100"/><path class="bp" d="M225 250h50v100h-50z"/>
+        <path class="bp" d="M30 350h440"/>
+        <path class="bp" d="M380 350V170M380 176h80v56h-80"/>
+        <text class="anno" x="420" y="210" text-anchor="middle">LISTED</text>
+        <path class="bp thin" d="M380 150l40-20M380 150l-20-20" />
+        <text class="anno" x="30" y="380">Title-verified before it goes live</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="form" style="padding-top:80px">
+  <div class="wrap lp">
+    <div class="aside">
+      <p class="kicker">Five quick steps</p>
+      <h2 style="font-size:clamp(26px,2.6vw,36px)">Takes about three minutes</h2>
+      <ol class="prog" id="prog">
+        <li class="on"><i>1</i><span>Purpose &amp; location</span></li>
+        <li><i>2</i><span>Price &amp; area</span></li>
+        <li><i>3</i><span>Features</span></li>
+        <li><i>4</i><span>Title &amp; media</span></li>
+        <li><i>5</i><span>Contact &amp; review</span></li>
+      </ol>
+      <div class="why2"><h3>Why list with Prime Group?</h3><ul class="ticks" style="margin-top:10px;font-size:14.5px"><li>Title checked before going live</li><li>Serious, pre-qualified buyers and tenants</li><li>Negotiation and transfer support</li></ul></div>
+    </div>
+
+    <form class="form" id="lf" novalidate>
+      <div class="fields">
+        <div class="bar2"><b id="bar"></b></div>
+        <p class="stepErr" id="serr" role="alert">Please complete the highlighted fields.</p>
+
+        <div class="stepc on" data-s="1">
+          <h3>Purpose &amp; location</h3><p class="sub">What would you like to do, and where is the property?</p>
+          <span class="lbl">I want to</span>
+          <div class="pills"><input type="radio" name="Purpose" id="pu1" value="Sell" checked><label for="pu1">Sell</label><input type="radio" name="Purpose" id="pu2" value="Rent out"><label for="pu2">Rent out</label></div>
+          <div class="row">
+            <div class="f"><select id="ty" name="Property type" required><option value="" selected disabled hidden></option>
+              <optgroup label="Homes"><option>House</option><option>Flat</option><option>Upper portion</option><option>Lower portion</option><option>Penthouse</option></optgroup>
+              <optgroup label="Plots"><option>Residential plot</option><option>Commercial plot</option></optgroup>
+              <optgroup label="Commercial"><option>Office</option><option>Shop</option><option>Building</option></optgroup></select><label for="ty">Property type</label><small class="e">Choose a property type.</small></div>
+            <div class="f"><select id="ci" name="City"><option>Karachi</option><option>Lahore</option><option>Islamabad</option></select><label for="ci">City</label></div>
+          </div>
+          <div class="row">
+            <div class="f"><input id="lo" name="Location" placeholder=" " required><label for="lo">Area / location (e.g. DHA Phase 6)</label><small class="e">Enter the location.</small></div>
+            <div class="f"><input id="pn" name="Plot number" placeholder=" "><label for="pn">Plot / house number (optional)</label></div>
+          </div>
+        </div>
+
+        <div class="stepc" data-s="2">
+          <h3>Price &amp; area</h3><p class="sub">Asking price and size of the property.</p>
+          <div class="row">
+            <div class="f"><input id="ar" name="Area size" inputmode="decimal" placeholder=" " required><label for="ar">Area size</label><small class="e">Enter the size.</small></div>
+            <div class="f"><select id="un" name="Area unit"><option>Sq. Yd.</option><option>Sq. Ft.</option><option>Marla</option><option>Kanal</option></select><label for="un">Unit</label></div>
+          </div>
+          <div class="f"><input id="pr" name="Price (PKR)" inputmode="numeric" placeholder=" " required><label for="pr">Asking price in PKR (monthly rent if renting)</label><small class="e">Enter a price.</small></div>
+          <label class="tog"><span><b style="display:block;color:var(--navy)">Installments available</b><span class="muted" style="font-size:13.5px">Buyer can pay in instalments</span></span><input type="checkbox" name="Installments" value="Yes"><span class="sw"></span></label>
+          <label class="tog"><span><b style="display:block;color:var(--navy)">Ready for possession</b><span class="muted" style="font-size:13.5px">Can be handed over now</span></span><input type="checkbox" name="Ready for possession" value="Yes"><span class="sw"></span></label>
+        </div>
+
+        <div class="stepc" data-s="3">
+          <h3>Features</h3><p class="sub">Skip anything that doesn't apply, such as bedrooms for a plot.</p>
+          <span class="lbl">Bedrooms</span>
+          <div class="pills">${BEDS}</div>
+          <span class="lbl">Bathrooms</span>
+          <div class="pills">${BATHS}</div>
+          <span class="lbl">Amenities</span>
+          <div class="amen">
+            <label><input type="checkbox" name="Amenities" value="Parking">Parking</label>
+            <label><input type="checkbox" name="Amenities" value="24/7 security">24/7 security</label>
+            <label><input type="checkbox" name="Amenities" value="Electricity backup">Electricity backup</label>
+            <label><input type="checkbox" name="Amenities" value="Lawn / garden">Lawn / garden</label>
+          </div>
+        </div>
+
+        <div class="stepc" data-s="4">
+          <h3>Title &amp; media</h3><p class="sub">A clear title and good photos get far more inquiries.</p>
+          <div class="f"><input id="ti" name="Listing title" placeholder=" " required><label for="ti">Listing title (e.g. 500 yd corner bungalow, DHA Phase 6)</label><small class="e">Add a short title.</small></div>
+          <div class="f"><textarea id="no" name="Description" placeholder=" "></textarea><label for="no">Short description (optional)</label></div>
+          <label class="drop" id="drop"><input type="file" id="files" accept="image/*,video/*" multiple hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 8"/></svg>
+            <b>Add photos or videos</b><span>Tap to choose, or drag files here</span></label>
+          <div class="thumbs" id="thumbs"></div>
+          <div class="f"><input id="yt" name="YouTube link" type="url" placeholder=" "><label for="yt">YouTube video link (optional)</label></div>
+        </div>
+
+        <div class="stepc" data-s="5">
+          <h3>Contact &amp; review</h3><p class="sub">How should buyers and our team reach you?</p>
+          <div class="f"><input id="nm" name="Name" placeholder=" " autocomplete="name" required><label for="nm">Full name</label><small class="e">Enter your name.</small></div>
+          <div class="row">
+            <div class="f"><input id="em" name="Email" type="email" placeholder=" " autocomplete="email" required><label for="em">Email</label><small class="e">Enter a valid email address.</small></div>
+            <div class="f"><input id="mo" name="Mobile" type="tel" placeholder=" " autocomplete="tel" required><label for="mo">Mobile / WhatsApp</label><small class="e">Enter a number we can call or message.</small></div>
+          </div>
+          <span class="lbl">Your listing</span>
+          <dl class="review" id="review"></dl>
+        </div>
+
+        <div class="nav2">
+          <button class="btn btn-o" type="button" id="back" hidden>Back</button>
+          <button class="btn btn-p" type="button" id="next" style="margin-left:auto">Continue <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+          <button class="btn btn-p" type="submit" id="post" hidden style="margin-left:auto">Post my property</button>
+        </div>
+      </div>
+      <div class="done" role="status" aria-live="polite">
+        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#D9D8CC" stroke-width="1.5"/><path d="M20 33l8 8 16-17" stroke="#14243C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Your listing is ready to send</h3>
+        <p>Send the details on WhatsApp, then attach your photos in the same chat. Our team will verify the title and publish your listing.</p>
+        <a class="btn btn-wa" id="waSend" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <p style="margin-top:14px"><a href="#" id="again">List another property</a></p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/prime.js"></script>
+<script>
+{
+  const $=id=>document.getElementById(id),form=$("lf");
+  const pills=(name,arr,pre)=>arr.map((v,i)=>`<input type="radio" name="${name}" id="${pre}${i}" value="${v}"><label for="${pre}${i}">${v}</label>`).join("");
+  form.innerHTML=form.innerHTML.replace("${BEDS}",pills("Bedrooms",["Studio","2","3","4","5","6+"],"bd")).replace("${BATHS}",pills("Bathrooms",["2","3","4","5+"],"ba"));
+  const steps=[...form.querySelectorAll(".stepc")],prog=[...$("prog").children];let s=0;
+  const need={1:{ty:PG.V.sel,lo:PG.V.req},2:{ar:v=>+String(v).replace(/[^\d.]/g,"")>0,pr:v=>String(v).replace(/\D/g,"").length>=4},4:{ti:PG.V.req},5:{nm:PG.V.req,em:PG.V.emailReq,mo:PG.V.phone}};
+  const check=n=>{let ok=true,first=null;Object.entries(need[n]||{}).forEach(([id,fn])=>{const el=$(id),good=fn(el.value);el.closest(".f").classList.toggle("err",!good);if(!good){ok=false;first=first||el}});$("serr").classList.toggle("show",!ok);first&&first.focus();return ok};
+  form.addEventListener("input",e=>{const f=e.target.closest(".f.err");if(f){const id=e.target.id;for(const n in need)if(need[n][id]&&need[n][id](e.target.value))f.classList.remove("err")}});
+  $("pr").addEventListener("input",e=>{const v=e.target.value.replace(/\D/g,"");e.target.value=v?(+v).toLocaleString("en-PK"):""});
+  function data(){const fd=new FormData(form),o={};for(const [k,v] of fd.entries()){if(v instanceof File||!String(v).trim())continue;o[k]=o[k]?o[k]+", "+v:v}if(files.length)o["Media files"]=files.length+" (to attach on WhatsApp)";return o}
+  function go(n,sc=true){s=n;steps.forEach((el,i)=>el.classList.toggle("on",i===s));prog.forEach((li,i)=>{li.classList.toggle("on",i===s);li.classList.toggle("ok",i<s)});
+    $("bar").style.width=((s+1)/steps.length*100)+"%";$("back").hidden=s===0;$("next").hidden=s===steps.length-1;$("post").hidden=s!==steps.length-1;$("serr").classList.remove("show");
+    if(s===steps.length-1){const d=data();delete d.Name;delete d.Email;delete d.Mobile;$("review").innerHTML=Object.entries(d).map(([k,v])=>`<div><dt>${PG.esc(k)}</dt><dd>${PG.esc(v)}</dd></div>`).join("")}
+    const y=form.getBoundingClientRect().top+scrollY-100;if(sc&&Math.abs(scrollY-y)>200)(PG.lenis?PG.lenis.scrollTo(y):scrollTo({top:y,behavior:"smooth"}));}
+  $("next").addEventListener("click",()=>{if(check(s+1))go(s+1)});
+  $("back").addEventListener("click",()=>go(s-1));
+  form.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName==="INPUT"&&s<steps.length-1){e.preventDefault();$("next").click()}});
+  /* media previews */
+  let files=[];const th=$("thumbs");
+  const draw=()=>{th.innerHTML=files.map((f,i)=>`<div>${f.type.startsWith("video")?`<video src="${URL.createObjectURL(f)}" muted></video>`:`<img src="${URL.createObjectURL(f)}" alt="">`}<button type="button" data-i="${i}" aria-label="Remove file">×</button></div>`).join("")};
+  $("files").addEventListener("change",e=>{files=files.concat([...e.target.files]).slice(0,20);draw();e.target.value=""});
+  th.addEventListener("click",e=>{const b=e.target.closest("button");if(b){files.splice(+b.dataset.i,1);draw()}});
+  const dz=$("drop");["dragover","dragenter"].forEach(t=>dz.addEventListener(t,e=>{e.preventDefault();dz.classList.add("over")}));["dragleave","drop"].forEach(t=>dz.addEventListener(t,e=>{e.preventDefault();dz.classList.remove("over")}));
+  dz.addEventListener("drop",e=>{files=files.concat([...e.dataTransfer.files].filter(f=>/^(image|video)/.test(f.type))).slice(0,20);draw()});
+  form.addEventListener("submit",e=>{e.preventDefault();if(!check(5))return;const d=data();
+    $("waSend").href=PG.wa("Hello Prime Group, I'd like to list my property.\n\n"+Object.entries(d).map(([k,v])=>k+": "+v).join("\n"));
+    form.classList.add("sent");
+    /* Connect the live site's listing backend / Gmail verification step here. */});
+  $("again").addEventListener("click",e=>{e.preventDefault();form.reset();files=[];draw();form.classList.remove("sent");go(0)});
+  go(0,false);
+}
+</script>
+</body>
+</html>

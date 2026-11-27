@@ -3,617 +3,480 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prime Group — Karachi Real Estate &amp; Construction</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
 <meta name="theme-color" content="#14243C">
+<title>Prime Group — Karachi Real Estate & Construction</title>
+<meta name="description" content="Prime Group, Realtor & Developers. Karachi's trusted real estate brokerage, turnkey construction and property advisory firm since 1986.">
+<meta property="og:title" content="Prime Group — Karachi Real Estate & Construction">
+<meta property="og:description" content="Verified property, turnkey construction and clear advice in Karachi since 1986.">
+<meta property="og:image" content="assets/logo.png">
+<link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="advanced-animations.css?v=13">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Prime Group","alternateName":"Prime Group, Realtor & Developers","foundingDate":"1986","telephone":"+92-21-111-111-800","email":"primeestateenterprises@gmail.com","address":{"@type":"PostalAddress","streetAddress":"63-C, Commercial Area A, DHA Phase 2","addressLocality":"Karachi","addressCountry":"PK"},"openingHours":"Mo-Sa 09:00-19:00"}
+</script>
+<link rel="stylesheet" href="assets/prime.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
+/*
+VOICE: calm, assured, architectural. Few words, lots of air.
+IDEA: an architect's blueprint sheet. Prime Group builds as well as sells.
+PICTURE: a villa elevation that draws itself in white line, then its windows light up.
+COLOUR and TYPE: client theme, cream #F3F2EA + navy #14243C, blueprint line blue, one warm window-light tone. Montserrat throughout.
+LAYOUT: hero sheet (text left, drawing right), a pinned horizontal legacy run, a light contact sheet.
+*/
 :root{
-  --blue:#14243C;
-  --blue-mid:#1E3557;
-  --blue-soft:#EAE6DC;
-  --white:#FAF9F5;
-  --ink:#14243C;
-  --ink-soft:#435063;
-  --sand:#F3F1EA;
-  --line:rgba(20, 36, 60,0.14);
-  --radius:18px;
-  --ease:cubic-bezier(.22,1,.36,1);
+  --navy:#14243C; --navy-deep:#0D1829; --navy-2:#1C3150;
+  --line:#7FA6D6; --line-soft:rgba(127,166,214,.18);
+  --chalk:#F4F6F9; --mist:#C9D3E0; --glow:#F2D9A6;
+  --paper:#F3F2EA; --cream:#F3F2EA; --ink:#1B233B; --ink-2:#4F5A6E; --blue:#41618C;
+  --serif:"Montserrat",system-ui,sans-serif; --sans:"Montserrat",system-ui,-apple-system,Segoe UI,sans-serif;
+  --wrap:1280px; --ease:cubic-bezier(.2,.7,.1,1);
+  color-scheme:light;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Lato',sans-serif;
-  color:var(--ink);
-  background:var(--sand);
-  overflow-x:hidden;
-  line-height:1.6;
-}
-h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:-0.01em;color:var(--blue);}
-a{text-decoration:none;color:inherit;}
-ul{list-style:none;}
-img,svg{display:block;max-width:100%;}
-.mono{font-family:'JetBrains Mono',monospace;}
-.wrap{max-width:100%;width:100%;margin:0 auto;padding:0 clamp(16px,3.5vw,56px);}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:84px}
+body{margin:0;font:16px/1.7 var(--sans);color:var(--ink);background:var(--cream);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--line);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 max(5vw,20px)}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.1;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.kicker{font-size:14px;font-weight:600;color:var(--blue);margin:0 0 22px;display:flex;align-items:center;gap:12px}
+.kicker::before{content:"";width:28px;height:1px;background:currentColor}
 
-/* ============ HEADER ============ */
-.header-3tier{width:100%;position:relative;z-index:200;}
-.midbar-tier{background:#F3F1EA;border-bottom:1px solid rgba(20,36,60,0.08);padding:14px 0;}
-.midbar-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.brand-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
-.sector-toggle-pill{background:#14243C;padding:5px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;box-shadow:0 4px 15px rgba(20,36,60,0.15);}
-.sector-toggle-pill .toggle-btn{padding:8px 20px;border-radius:999px;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.04em;border:none;cursor:pointer;transition:all 0.3s var(--ease);color:#D6D2C7;background:transparent;}
-.sector-toggle-pill .toggle-btn.active{background:#F3F1EA;color:#14243C;}
-.sector-toggle-pill .toggle-btn:hover:not(.active){color:#FFFFFF;}
-.midbar-actions{display:flex;align-items:center;gap:14px;}
+/* Blueprint ground */
+.sheet{position:relative;background:var(--cream);isolation:isolate;--line-soft:rgba(20,36,60,.07)}
+.sheet::before{content:"";position:absolute;inset:0;z-index:-1;
+  background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px),
+  linear-gradient(rgba(20,36,60,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(20,36,60,.03) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  mask-image:radial-gradient(120% 90% at 70% 40%,#000 30%,transparent 85%)}
 
-.mainnav-tier{position:sticky;top:0;z-index:200;background:#F3F1EA;border-top:1px solid rgba(20,36,60,0.08);border-bottom:1px solid rgba(20,36,60,0.12);transition:box-shadow 0.3s ease;}
-.mainnav-tier.scrolled{box-shadow:0 10px 30px -15px rgba(20,36,60,0.2);background:rgba(243,241,234,0.96);backdrop-filter:blur(10px);}
-.mainnav-wrap{display:flex;align-items:center;justify-content:center;height:54px;}
-.nav-links-center{display:flex;align-items:center;gap:26px;}
-.nav-item{font-family:'Montserrat',sans-serif;font-size:14.5px;font-weight:600;color:#14243C;padding:15px 4px;position:relative;white-space:nowrap;transition:color 0.25s ease;}
-.nav-item.active::after,.nav-item:hover::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:#14243C;border-radius:3px 3px 0 0;}
-.nav-dropdown{position:relative;display:inline-flex;align-items:center;}
-.nav-dropdown-toggle{display:inline-flex;align-items:center;gap:5px;cursor:pointer;}
-.caret{font-size:10px;transition:transform 0.25s ease;}
-.nav-dropdown:hover .caret{transform:rotate(180deg);}
-.dropdown-menu{position:absolute;top:100%;left:0;min-width:210px;background:#FAF9F5;border-radius:12px;box-shadow:0 16px 36px rgba(20,36,60,0.18);border:1px solid rgba(20,36,60,0.12);padding:8px 0;margin-top:2px;opacity:0;visibility:hidden;transform:translateY(8px);transition:all 0.25s ease;z-index:1000;}
-.nav-dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
-.dropdown-item{display:block;padding:10px 18px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:600;color:#14243C;transition:background 0.2s ease,padding-left 0.2s ease;}
-.dropdown-item:hover{background:rgba(20,36,60,0.08);padding-left:22px;}
+/* Header */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,backdrop-filter .4s,padding .4s,border-color .4s;padding:22px 0;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(243,242,234,.88);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);padding:10px 0;border-color:rgba(20,36,60,.1);box-shadow:0 10px 30px -20px rgba(20,36,60,.35)}
+.hdr .wrap{display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.brand img{height:44px;width:auto}
+.brand .wm{font-family:var(--serif);font-size:22px;letter-spacing:-.01em;display:none}
+.brand.noimg .wm{display:block}.brand.noimg img{display:none}
+.nav{display:flex;gap:6px;margin-left:auto;align-items:center}
+.nav>a,.nav .dd>button{position:relative;font:700 15.5px var(--sans);color:var(--ink);text-decoration:none;padding:12px 15px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.nav>a::after,.nav .dd>button::after{content:"";position:absolute;left:15px;right:15px;bottom:2px;height:3px;border-radius:3px;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav>a:hover::after,.nav .dd:hover>button::after,.nav>a[aria-current]::after{transform:scaleX(1)}
+.nav .dd>button svg{width:9px;height:9px;transition:transform .3s}.nav .dd:hover>button svg{transform:rotate(180deg)}
+.dd{position:relative}
+.dd-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translate(-50%,8px);width:340px;padding:10px;border-radius:14px;background:#fff;border:1px solid rgba(20,36,60,.08);box-shadow:0 30px 60px -24px rgba(20,36,60,.35);opacity:0;visibility:hidden;transition:.3s var(--ease)}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.dd-menu a{display:block;padding:12px 14px;border-radius:10px;text-decoration:none;transition:background .2s}
+.dd-menu a:hover{background:var(--cream)}
+.dd-menu b{display:block;font-weight:700;font-size:14.5px;color:var(--ink)}
+.dd-menu span{font-size:13px;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px var(--sans);text-decoration:none;padding:15px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease);will-change:transform}
+.btn-p{background:var(--navy);color:#fff}
+.btn-p:hover{background:var(--navy-2)}
+.btn-o{border-color:rgba(20,36,60,.35);color:var(--navy);background:transparent}
+.btn-o:hover{border-color:var(--navy);background:rgba(20,36,60,.05)}
+.btn svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+.burger{display:none;margin-left:auto;width:46px;height:46px;border-radius:50%;border:1px solid rgba(20,36,60,.25);background:none;color:var(--navy);cursor:pointer}
+.burger i{display:block;width:18px;height:1.5px;background:currentColor;margin:4px auto;transition:.3s}
+.mnav{position:fixed;inset:0;z-index:49;background:var(--cream);padding:110px max(6vw,24px) 40px;display:flex;flex-direction:column;gap:6px;clip-path:circle(0 at calc(100% - 44px) 44px);transition:clip-path .7s var(--ease);overflow:auto}
+.mnav.open{clip-path:circle(150% at calc(100% - 44px) 44px)}
+.mnav a{font-size:clamp(22px,6vw,30px);font-weight:700;letter-spacing:-.02em;text-decoration:none;padding:5px 0;color:var(--ink)}
+.mnav a.sub{font-size:16px;font-weight:500;color:var(--ink-2);padding-left:18px;letter-spacing:0}
+.mnav .mfoot{margin-top:auto;padding-top:30px;font-size:15px;color:var(--ink-2);display:grid;gap:6px}
+body.menu-open .burger i:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+body.menu-open .burger i:nth-child(2){opacity:0}
+body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
 
-/* BURGER & MOBILE DRAWER */
-.burger{display:none;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:#FAF9F5;border:1.5px solid rgba(20,36,60,0.25);cursor:pointer;flex-shrink:0;}
-.burger-icon{width:18px;height:12px;display:flex;flex-direction:column;justify-content:space-between;}
-.burger-icon .bar{width:100%;height:2px;background:#14243C;border-radius:2px;}
-.mnav{position:fixed;inset:0;background:rgba(20,36,60,0.75);backdrop-filter:blur(8px);z-index:999999;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
-.mnav.open{opacity:1;pointer-events:auto;}
-.mnav-panel{position:absolute;right:0;top:0;bottom:0;width:300px;max-width:85vw;background:#14243C;padding:24px 20px;transform:translateX(100%);transition:transform 0.35s var(--ease);overflow-y:auto;}
-.mnav.open .mnav-panel{transform:translateX(0);}
-.mnav-panel a{display:block;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:600;color:#F3F1EA !important;padding:12px 14px;border-radius:8px;border-bottom:1px solid rgba(243,241,234,0.1);}
-.mnav-panel a:hover,.mnav-panel a.active{background:rgba(243,241,234,0.15);}
-@media (max-width:980px){
-  .sector-toggle-pill,.mainnav-tier{display:none !important;}
-  .burger{display:inline-flex !important;}
-  .brand-logo img{height:clamp(42px,10vw,56px) !important;max-width:clamp(150px,42vw,240px) !important;}
-}
+/* Section 1: What is Prime Group */
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 70px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(30px,5vw,80px);align-items:center}
+.hero h1{font-size:clamp(34px,4vw,58px);color:var(--navy)}
+.hero .lead{font-size:clamp(16px,1.25vw,18px);color:var(--ink-2);max-width:52ch;margin:28px 0 36px}
+.ctas{display:flex;flex-wrap:wrap;gap:14px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:56px;border-top:1px solid rgba(20,36,60,.15)}
+.stat{padding:22px 18px 0 0}
+.stat+.stat{padding-left:22px;border-left:1px solid rgba(20,36,60,.15)}
+.stat b{display:block;font-weight:800;font-size:clamp(30px,3vw,46px);letter-spacing:-.03em;line-height:1.05;color:var(--navy);font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--ink-2);font-weight:500}
+.pillars{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;font-size:14.5px;font-weight:600}
+.pillars a{text-decoration:none;color:var(--ink-2);border-bottom:1px solid rgba(20,36,60,.25);padding-bottom:3px;transition:color .25s,border-color .25s}
+.pillars a:hover{color:var(--navy);border-color:var(--navy)}
+.draw-wrap{position:relative;aspect-ratio:6/5.2}
+.draw-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bp{fill:none;stroke:var(--navy);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.bp.thin{stroke:#6A85AB;stroke-width:1}
+.win{fill:url(#glow);opacity:0}
+.mass{fill:#E6E4D8;opacity:0}
+.anno{fill:#6A85AB;font:600 11.5px var(--sans);letter-spacing:.02em}
+.anno.big{fill:var(--ink-2);font-size:12px}
+.scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:1px;height:56px;background:linear-gradient(var(--navy),transparent);overflow:hidden}
+.scroll-cue::after{content:"";position:absolute;left:0;top:-20px;width:1px;height:20px;background:var(--navy);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{to{top:60px}}
 
-/* ============ SHARED ELEMENTS ============ */
-.eyebrow{
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--blue);font-weight:700;display:inline-flex;align-items:center;gap:10px;
-}
-.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;display:inline-block;}
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 26px;border-radius:999px;
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:14.5px;
-  cursor:pointer;border:none;transition:all 0.3s var(--ease);white-space:nowrap;
-}
-.btn-primary{background:#14243C;color:#F3F1EA;box-shadow:0 12px 26px -10px rgba(20,36,60,0.45);}
-.btn-primary:hover{background:#1E3557;transform:translateY(-2px);}
-.btn-light-solid{background:#F3F1EA;color:#14243C;box-shadow:0 12px 26px -10px rgba(0,0,0,0.3);}
-.btn-light-solid:hover{background:#FFFFFF;transform:translateY(-2px);}
-.btn-light-outline{background:transparent;color:#F3F1EA;border:1.5px solid rgba(243,241,234,0.45);}
-.btn-light-outline:hover{background:rgba(243,241,234,0.12);border-color:#F3F1EA;transform:translateY(-2px);}
-section{padding:76px 0;}
-.section-head{max-width:680px;margin-bottom:40px;}
-.section-head h2{font-size:clamp(28px,3.2vw,42px);margin-top:10px;line-height:1.15;}
-.section-head p{color:var(--ink-soft);margin-top:12px;font-size:16.5px;}
+/* Section 2: Legacy */
+.legacy{background:var(--navy);color:var(--chalk);position:relative;overflow:hidden}
+.legacy-head{padding-top:120px;padding-bottom:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:40px;align-items:end}
+.legacy-head h2{font-size:clamp(32px,3.8vw,54px)}
+.legacy .kicker{color:var(--line)}
+.legacy-head p{color:var(--mist);max-width:46ch;margin:0}
+.ghost{position:absolute;right:-2vw;top:40px;font-weight:800;font-size:clamp(160px,26vw,420px);line-height:.8;color:rgba(127,166,214,.07);pointer-events:none;user-select:none}
+.rail{position:relative;margin:0 max(5vw,20px);height:1px;background:rgba(127,166,214,.22)}
+.rail i{position:absolute;inset:0;background:var(--chalk);transform-origin:left;transform:scaleX(0)}
+.track{display:flex;gap:0;padding:0 0 110px}
+.ms{flex:0 0 min(46vw,560px);padding:44px max(5vw,20px) 0;position:relative}
+.ms::before{content:"";position:absolute;top:-6px;left:max(5vw,20px);width:11px;height:11px;border-radius:50%;background:var(--navy);border:1.5px solid var(--line);transition:background .4s,border-color .4s}
+.ms.on::before{background:var(--chalk);border-color:var(--chalk)}
+.ms .yr{font-weight:800;letter-spacing:-.04em;font-size:clamp(64px,7vw,112px);line-height:.9;color:rgba(244,246,249,.28);transition:color .5s;font-variant-numeric:lining-nums}
+.ms.on .yr{color:#fff}
+.ms h3{font-size:clamp(20px,1.8vw,26px);margin:18px 0 10px}
+.ms p{color:var(--mist);max-width:38ch;margin:0}
+.ms svg{width:200px;height:120px;margin-top:30px;display:block}
+.ms svg .bp{stroke:var(--line)}
+.ms.on svg .bp{stroke:var(--chalk)}
+.story{display:inline-flex;margin:0 max(5vw,20px) 100px;font-weight:600;font-size:15px;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px;gap:8px}
 
-/* ============ 1. WHAT IS PRIME GROUP (COMPACT HALF-HEIGHT) ============ */
-.prime-intro-section{
-  background:#14243C;
-  color:#F3F1EA;
-  padding:28px 0;
-  border-bottom:1px solid rgba(243,241,234,0.12);
-}
-.prime-intro-section .eyebrow{color:#F3F1EA;font-size:10.5px;}
-.prime-intro-grid{
-  display:grid;
-  grid-template-columns:1.25fr 1fr;
-  gap:28px;
-  align-items:center;
-}
-.prime-intro-copy h1{
-  font-size:clamp(22px,2.5vw,34px);
-  color:#FFFFFF;
-  line-height:1.12;
-  margin:8px 0 10px;
-}
-.prime-intro-copy p{
-  color:#D6D2C7;
-  font-size:14px;
-  max-width:560px;
-  margin-bottom:16px;
-  line-height:1.5;
-}
-.prime-cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
-.prime-cta-row .btn{padding:10px 18px;font-size:13px;}
-.prime-stats-bar{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  padding-top:14px;
-  border-top:1px solid rgba(243,241,234,0.16);
-  max-width:440px;
-}
-.prime-stat b{
-  display:block;
-  font-family:'Montserrat',sans-serif;
-  font-size:clamp(18px,1.9vw,24px);
-  color:#FFFFFF;
-  line-height:1.1;
-}
-.prime-stat span{
-  font-size:9.5px;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  color:#D6D2C7;
-}
-.prime-pillars{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:8px;
-}
-.pillar-card{
-  background:rgba(243,241,234,0.06);
-  border:1px solid rgba(243,241,234,0.18);
-  border-radius:12px;
-  padding:11px 16px;
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  transition:transform 0.3s var(--ease), border-color 0.3s ease;
-}
-.pillar-card:hover{transform:translateX(4px);border-color:rgba(243,241,234,0.42);}
-.pillar-card h3{color:#FFFFFF;font-size:14px;margin-bottom:2px;}
-.pillar-card p{color:#D6D2C7;font-size:12px;margin:0;line-height:1.4;}
+/* Section 3: Contact */
+.contact{background:var(--paper);color:var(--ink);padding:120px 0;position:relative}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(30px,5vw,72px);align-items:start}
+.contact h2{font-size:clamp(32px,3.8vw,54px);color:var(--navy)}
+.contact .intro{color:var(--ink-2);max-width:44ch;margin:22px 0 38px}
+.map{margin-top:18px !important;border-radius:22px;overflow:hidden;border:1px solid #D9DFE8;background:#E8ECF2;aspect-ratio:16/8;position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.85) contrast(1.05) brightness(1.02) hue-rotate(185deg) saturate(.6)}
+form.inq{background:#fff;border-radius:22px;padding:clamp(26px,3.4vw,48px);box-shadow:0 40px 80px -50px rgba(20,36,60,.45);border:1px solid #E2E7EE}
+form.inq h3{font-size:24px;color:var(--navy);margin-bottom:6px}
+form.inq>p{color:var(--ink-2);margin:0 0 28px;font-size:15.5px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.f{position:relative;margin-bottom:16px}
+.f input,.f select,.f textarea{width:100%;font:16px var(--sans);color:var(--ink);background:#F6F8FB;border:1px solid #DCE2EA;border-radius:12px;padding:24px 16px 10px;transition:border-color .25s,background .25s,box-shadow .25s;appearance:none}
+.f textarea{min-height:130px;resize:vertical}
+.f select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2314243C' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.f label{position:absolute;left:17px;top:17px;font-size:16px;color:#6B7A90;pointer-events:none;transition:.2s var(--ease);transform-origin:left}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--navy);background:#fff;box-shadow:0 0 0 4px rgba(20,36,60,.08)}
+.f input:focus+label,.f input:not(:placeholder-shown)+label,.f textarea:focus+label,.f textarea:not(:placeholder-shown)+label,.f select+label{transform:translateY(-9px) scale(.78);color:#3D6699}
+.f.err input,.f.err select,.f.err textarea{border-color:#B4413A}
+.f small{display:none;color:#B4413A;font-size:13.5px;margin-top:6px}
+.f.err small{display:block}
+form.inq .btn-p{background:var(--navy);color:#fff;width:100%;justify-content:center;padding:17px;margin-top:6px}
+form.inq .btn-p:hover{background:var(--navy-2)}
+.done{display:none;text-align:center;padding:30px 0}
+.done svg{width:64px;height:64px;margin:0 auto 18px}
+.done svg path{stroke-dasharray:60;stroke-dashoffset:60}
+.inq.sent .fields{display:none}.inq.sent .done{display:block}
+.inq.sent .done svg path{animation:tick .8s .1s var(--ease) forwards}
+@keyframes tick{to{stroke-dashoffset:0}}
+.done p{color:var(--ink-2)}
+.done .btn{margin-top:14px}
 
-/* ============ 2. LEGACY ============ */
-.legacy-section{background:#F3F1EA;}
-.legacy-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
-}
-.legacy-card{
-  background:#FAF9F5;
-  border:1px solid rgba(20,36,60,0.14);
-  border-radius:18px;
-  padding:28px 24px;
-  transition:transform 0.3s var(--ease), box-shadow 0.3s ease;
-}
-.legacy-card:hover{transform:translateY(-6px);box-shadow:0 24px 44px -22px rgba(20,36,60,0.25);}
-.legacy-year{
-  display:inline-block;
-  font-family:'JetBrains Mono',monospace;
-  font-size:13px;font-weight:700;
-  background:#14243C;color:#F3F1EA;
-  padding:5px 12px;border-radius:999px;
-  margin-bottom:16px;
-}
-.legacy-card h3{font-size:19px;margin-bottom:8px;color:#14243C;}
-.legacy-card p{font-size:14.5px;color:#435063;line-height:1.55;}
+/* Footer */
+.ftr{background:#0F1C30;color:var(--mist);padding:90px 0 30px;position:relative;overflow:hidden;font-size:15.5px}
+.ftr-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:40px;position:relative;z-index:1}
+.ftr h4{font:600 15px var(--sans);color:#fff;margin:0 0 16px}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ftr a{text-decoration:none;transition:color .2s}.ftr a:hover{color:#fff}
+.ftr .brand img{filter:brightness(0) invert(1)}
+.ftr .about p{max-width:34ch;margin:18px 0 22px}
+.soc{display:flex;gap:10px}
+.soc a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(127,166,214,.3);display:grid;place-items:center;transition:border-color .25s,background .25s}
+.soc a:hover{border-color:#fff;background:rgba(255,255,255,.05)}
+.soc svg{width:17px;height:17px}
+.word{font-weight:800;font-size:clamp(48px,10.5vw,160px);line-height:.85;color:rgba(127,166,214,.09);margin:70px 0 30px;white-space:nowrap;letter-spacing:-.03em}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid rgba(127,166,214,.15);padding-top:24px;font-size:14px}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.5)}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:pulse 2.6s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+.wa-float svg{width:28px;height:28px;fill:#fff}
 
-/* ============ 3. FEATURED LISTINGS ============ */
-.listings-section{background:#EAE6DC;padding:34px 0 64px;}
-.listings-section .section-head{margin-bottom:20px;}
-.listings-section .section-head h2{font-size:clamp(22px,2.5vw,32px);margin-top:6px;}
-.listings-section .section-head p{margin-top:6px;font-size:14.5px;}
-.listing-toolbar{
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
-  background:#14243C;padding:12px 16px;border-radius:14px;margin-bottom:22px;
-  border:1px solid rgba(243,241,234,0.16);
-  box-shadow:0 18px 36px -20px rgba(20,36,60,0.45);
-}
-.lt-search-box{flex:1;min-width:240px;display:flex;align-items:center;gap:10px;background:#F3F1EA;border-radius:10px;padding:0 14px;height:42px;}
-.lt-search-box input{flex:1;border:none;background:transparent;outline:none;color:#14243C;font-family:'Lato',sans-serif;font-size:14px;font-weight:600;}
-.lt-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.lt-select-wrap{display:flex;align-items:center;gap:8px;}
-.lt-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;color:#D6D2C7;}
-.lt-select{height:42px;padding:0 16px;border-radius:10px;background:#F3F1EA;color:#14243C;border:none;outline:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;}
-.lt-view-toggle{display:inline-flex;background:rgba(243,241,234,0.1);padding:4px;border-radius:10px;border:1px solid rgba(243,241,234,0.18);gap:4px;}
-.lt-view-btn{border:none;background:transparent;color:#D6D2C7;cursor:pointer;padding:7px 12px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;}
-.lt-view-btn.active{background:#F3F1EA;color:#14243C;}
-.lt-count-badge{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#F3F1EA;background:rgba(243,241,234,0.12);padding:9px 14px;border-radius:10px;border:1px solid rgba(243,241,234,0.2);}
-.listing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.pcard{border-radius:18px;overflow:hidden;background:#14243C;color:#F3F1EA;border:1px solid rgba(243,241,234,0.16);}
-.pcard-body ul{display:flex;gap:14px;flex-wrap:wrap;font-size:14.5px;color:#D6D2C7;margin-bottom:12px;}
-.pcard-body ul li{display:flex;align-items:center;gap:6px;}
-.pcard-body ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:#F3F1EA;}
+/* Reveal defaults (JS adds .js) */
+.js .rv{opacity:0;transform:translateY(26px)}
+.line-mask{display:block;overflow:hidden;padding-bottom:.06em}
+.line-mask>span{display:block}
 
-/* ============ 4. HOW TO CONTACT ============ */
-.contact-section{background:#F3F1EA;}
-.contact-grid{display:grid;grid-template-columns:0.95fr 1.15fr;gap:40px;align-items:start;}
-.contact-channels{display:grid;grid-template-columns:1fr;gap:16px;}
-.channel-card{
-  background:#14243C;color:#F3F1EA;border-radius:18px;padding:24px 26px;
-  display:flex;align-items:center;gap:18px;
-  border:1px solid rgba(243,241,234,0.16);
-}
-.channel-ic{
-  width:46px;height:46px;border-radius:12px;
-  background:rgba(243,241,234,0.12);color:#F3F1EA;
-  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
-}
-.channel-card h4{color:#FFFFFF;font-size:16px;margin-bottom:3px;}
-.channel-card p{color:#D6D2C7;font-size:14.5px;margin:0;}
-.form-card{background:#FAF9F5;border:1px solid var(--line);border-radius:20px;padding:34px;box-shadow:0 20px 44px -26px rgba(20,36,60,0.2);}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.field{display:flex;flex-direction:column;gap:6px;}
-.field.full{grid-column:1/-1;}
-.field label{font-size:11.5px;font-family:'JetBrains Mono',monospace;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-weight:700;}
-.field input,.field select,.field textarea{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:'Lato',sans-serif;font-size:14.5px;background:#F3F1EA;color:#14243C;outline:none;transition:border-color .25s ease;}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:#14243C;background:#FFFFFF;}
-
-/* ============ FOOTER (LOGO ON RIGHT SIDE) ============ */
-footer{background:#14243C;color:#D6D2C7;padding:70px 0 28px;border-top:1px solid rgba(243,241,234,0.16);}
-.foot-grid{display:grid;grid-template-columns:1fr 1fr 1.2fr 1.4fr;gap:40px;align-items:start;}
-footer h5{color:#F3F1EA;font-size:14px;margin-bottom:16px;}
-footer ul li{margin-bottom:10px;font-size:14px;}
-footer ul li a:hover{color:#F3F1EA;text-decoration:underline;text-underline-offset:4px;}
-.foot-brand-col{text-align:right;display:flex;flex-direction:column;align-items:flex-end;}
-.foot-bottom{margin-top:50px;padding-top:24px;border-top:1px solid rgba(243,241,234,0.14);display:flex;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:12px;color:#B8B4A8;}
-
-/* ============ RESPONSIVE ============ */
 @media (max-width:1080px){
-  .prime-intro-grid,.contact-grid{grid-template-columns:1fr;}
-  .legacy-grid{grid-template-columns:repeat(2,1fr);}
-  .listing-grid{grid-template-columns:repeat(2,1fr);}
-  .foot-grid{grid-template-columns:1fr 1fr;}
-  .foot-brand-col{text-align:left;align-items:flex-start;}
+  .nav{display:none}.burger{display:block}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .draw-wrap{order:-1;max-width:560px;width:100%;margin:0 auto -10px}
+  .legacy-head,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .ftr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:720px){
-  section{padding:38px 0;}
-  .prime-intro-section{padding:16px 0;}
-  .prime-intro-grid{gap:12px;}
-  .prime-intro-section .eyebrow{font-size:9.5px;}
-  .prime-intro-copy h1{font-size:20px;margin:5px 0 6px;line-height:1.15;}
-  .prime-intro-copy p{font-size:12.5px;margin-bottom:10px;line-height:1.4;}
-  .prime-cta-row{gap:8px;margin-bottom:12px;}
-  .prime-cta-row .btn{padding:8px 13px;font-size:11.5px;}
-  .prime-stats-bar{gap:8px;padding-top:10px;}
-  .prime-stat b{font-size:16px;}
-  .prime-stat span{font-size:8.5px;}
-  .prime-pillars{grid-template-columns:repeat(3,1fr);gap:6px;}
-  .pillar-card{padding:8px 6px;border-radius:10px;justify-content:center;text-align:center;}
-  .pillar-card h3{font-size:10.5px;line-height:1.25;margin:0;}
-  .pillar-card p{display:none;}
-  .listings-section{padding:20px 0 44px;}
-  .listings-section .section-head{margin-bottom:12px;}
-  .listings-section .section-head h2{font-size:20px;}
-  .listings-section .section-head p{font-size:12.5px;}
-  .legacy-grid,.listing-grid,.form-row,.foot-grid{grid-template-columns:1fr;}
-  .lt-search-box{min-width:100%;}
-  .lt-controls{width:100%;justify-content:space-between;}
-  .form-card{padding:24px 20px;}
+@media (max-width:899px){
+  .rail{display:none}
+  .track{flex-direction:column;padding:10px 0 60px}
+  .ms{flex:none;padding:0 max(5vw,20px) 54px 56px;margin-left:max(5vw,20px);border-left:1px solid rgba(127,166,214,.25)}
+  .ms::before{left:-6px;top:14px}
+  .ms svg{width:170px;height:100px}
 }
-</style>
-<style id="pgCreativeHeroBg">
-.prime-intro-section {
-  background: linear-gradient(125deg, rgba(20, 36, 60, 0.88) 0%, rgba(20, 36, 60, 0.72) 55%, rgba(20, 36, 60, 0.86) 100%), url('karachi_clifton_apt.jpg') center center / cover no-repeat !important;
-  position: relative;
+@media (max-width:600px){
+  body{font-size:16px}
+  .hero{padding-top:110px}
+  .stats{grid-template-columns:minmax(0,1fr)}
+  .stat,.stat+.stat{padding:18px 0;border-left:0;border-bottom:1px solid rgba(127,166,214,.2);display:flex;align-items:baseline;gap:14px}
+  .row,.qa{grid-template-columns:minmax(0,1fr)}
+  .ftr-grid{grid-template-columns:minmax(0,1fr)}
+  .ctas .btn{flex:1 1 100%;justify-content:center}
+  .scroll-cue{display:none}
 }
-
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
 </style>
 </head>
-<body>
+<body data-page="home">
 
-<!-- ============ HEADER ============ -->
-<header class="header-3tier">
-  <div class="midbar-tier">
-    <div class="wrap midbar-wrap">
-      <a href="index.html" class="brand-logo">
-        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" style="height:60px; max-width:260px; object-fit:contain; background:transparent;">
-      </a>
+<header id="site-header"></header>
 
-      <nav class="inline-desktop-nav" aria-label="Main Navigation">
-        <a href="index.html" class="nav-item active">Home</a>
-        <a href="about.html" class="nav-item">About</a>
-        <div class="nav-dropdown">
-          <a href="construction.html" class="nav-item nav-dropdown-toggle">Real Estate &amp; Construction <span class="caret">▾</span></a>
-          <div class="dropdown-menu">
-            <a href="construction.html" class="dropdown-item">Construction &amp; Projects</a>
-            <a href="property-listing.html" class="dropdown-item">All Listings</a>
-            <a href="mortgage-calculator.html" class="dropdown-item">Financial Calculator</a>
-          </div>
-        </div>
-        <a href="services.html" class="nav-item">Services</a>
-        <div class="nav-dropdown">
-          <a href="find-property.html" class="nav-item nav-dropdown-toggle">Find Properties <span class="caret">▾</span></a>
-          <div class="dropdown-menu">
-            <a href="find-property.html" class="dropdown-item">Find Dream Property</a>
-            <a href="list-property.html" class="dropdown-item">List Your Properties</a>
-          </div>
-        </div>
-        <a href="contact-us.html" class="nav-item">Contact Us</a>
-      </nav>
-
-      <div class="midbar-actions">
-        <div class="header-socials" aria-label="Prime Group Social Links">
-          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-anim-btn" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-anim-btn" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-anim-btn" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
-          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-anim-btn" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg></a>
-          <a href="https://wa.me/9221111111800" target="_blank" rel="noopener" class="social-anim-btn" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m5.8 14.1c-.25.7-1.43 1.34-1.98 1.42-.52.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.42-5.21-4.62-.15-.2-1.24-1.65-1.24-3.15s.79-2.24 1.07-2.54c.28-.3.61-.38.81-.38l.58.01c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.17-.32.38-.45.51-.15.15-.31.31-.13.61.18.3.79 1.3 1.7 2.11 1.17 1.04 2.16 1.37 2.46 1.52.3.15.48.13.66-.08.18-.2.76-.88.96-1.18.2-.3.4-.25.67-.15.27.1 1.74.82 2.04.97.3.15.5.22.57.34.08.12.08.7-.17 1.4z"/></svg></a>
-        </div>
-        <div class="burger" id="burgerBtn" aria-label="Toggle Navigation Menu">
-          <div class="burger-icon"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
-        </div>
+<main>
+<!-- SECTION 1 — WHAT IS PRIME GROUP -->
+<section class="sheet hero" id="what">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker rv">What is Prime Group</p>
+      <h1 id="h1"><span class="line-mask"><span>Karachi’s trusted</span></span><span class="line-mask"><span>real estate &amp;</span></span><span class="line-mask"><span>construction partner</span></span></h1>
+      <p class="lead rv">Since 1986 we have helped Karachi buy, sell and build with confidence. One firm for verified property, turnkey construction and honest advice, from the first viewing to the day you get the keys.</p>
+      <div class="ctas rv">
+        <a class="btn btn-p mag" href="find-property.html">Find dream property <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+        <a class="btn btn-o mag" href="list-property.html">List your property</a>
+      </div>
+      <div class="stats rv" role="list">
+        <div class="stat" role="listitem"><b data-n="38">0</b><span>years of trust</span></div>
+        <div class="stat" role="listitem"><b data-n="500">0</b><span>verified deals</span></div>
+        <div class="stat" role="listitem"><b data-n="120">0</b><span>projects built</span></div>
+      </div>
+      <div class="pillars rv">
+        <a href="services.html">Real estate brokerage</a>
+        <a href="construction.html">Turnkey construction</a>
+        <a href="services.html">Smart advisory</a>
       </div>
     </div>
-  </div>
-</header>
 
-<!-- MOBILE NAV DRAWER -->
-<div class="mnav" id="mnav">
-  <div class="mnav-panel">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;border-bottom:1px solid rgba(243,241,234,0.18);padding-bottom:14px;">
-      <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;color:#F3F1EA;">PRIME GROUP MENU</span>
-      <div id="mnavClose" style="font-size:28px;cursor:pointer;color:#F3F1EA;line-height:1;">&times;</div>
+    <div class="draw-wrap" aria-hidden="true">
+      <svg viewBox="0 0 600 520" id="elev">
+        <defs>
+          <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F7E6C1"/><stop offset="1" stop-color="#E2BC7A"/>
+          </linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7FA6D6" stop-opacity=".22"/><stop offset="1" stop-color="#7FA6D6" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- dimension line -->
+        <g class="dim">
+          <path class="bp thin" d="M96 128H396M96 120v16M396 120v16"/>
+          <text class="anno" x="246" y="114" text-anchor="middle">24.0 m</text>
+          <path class="bp thin" d="M566 156V460M558 156h16M558 460h16"/>
+          <text class="anno" x="582" y="308" transform="rotate(90 582 308)" text-anchor="middle">12.5 m</text>
+        </g>
+        <!-- tower behind -->
+        <rect class="mass" x="410" y="40" width="120" height="420"/>
+        <path class="bp thin" d="M410 460V40h120v420"/>
+        <path class="bp thin" d="M410 80h120M410 120h120M410 160h120M410 200h120M410 240h120M410 280h120M410 320h120M410 360h120M410 400h120M450 40v420M490 40v420"/>
+        <!-- villa masses -->
+        <rect class="mass" x="110" y="262" width="330" height="198"/>
+        <rect class="mass" x="150" y="168" width="250" height="94"/>
+        <path class="bp" d="M130 156h300v12H130z"/>
+        <path class="bp" d="M150 168v94M400 168v94"/>
+        <path class="bp" d="M96 250h358v12H96z"/>
+        <path class="bp" d="M110 262v198M440 262v198"/>
+        <!-- upper glazing -->
+        <rect class="win" x="172" y="188" width="140" height="56"/>
+        <path class="bp" d="M172 188h140v56H172zM219 188v56M265 188v56"/>
+        <rect class="win" x="330" y="188" width="48" height="56"/>
+        <path class="bp" d="M330 188h48v56h-48z"/>
+        <!-- balcony rail -->
+        <path class="bp thin" d="M160 250v-14M180 250v-14M200 250v-14M220 250v-14M240 250v-14M260 250v-14M280 250v-14M300 250v-14M320 250v-14M150 236h170"/>
+        <!-- ground glazing and door -->
+        <rect class="win" x="128" y="290" width="170" height="170"/>
+        <path class="bp" d="M128 290h170v170H128zM185 290v170M242 290v170M128 330h170"/>
+        <rect class="win" x="328" y="330" width="62" height="130"/>
+        <path class="bp" d="M328 330h62v130h-62zM378 396h4"/>
+        <path class="bp thin" d="M404 300h22v40h-22zM404 360h22v40h-22z"/>
+        <!-- trees -->
+        <path class="bp thin" d="M88 460V380M76 392a22 22 0 1 1 24 0 26 26 0 1 1-24 0"/>
+                <!-- ground -->
+        <path class="bp" d="M30 460h540"/>
+        <path class="bp thin" d="M30 472h540" stroke-dasharray="3 7"/>
+        <text class="anno big" x="30" y="500">Front elevation, illustrative</text>
+      </svg>
     </div>
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="construction.html">Real Estate &amp; Construction</a>
-    <a href="services.html">Services</a>
-    <a href="find-property.html">Find Properties</a>
-    <a href="list-property.html" style="padding-left:26px;font-size:13.5px;opacity:0.85;">↳ List Your Properties</a>
-    <a href="contact-us.html">Contact Us</a>
-    <a href="dashboard.html" style="border-top:1px solid rgba(243,241,234,0.22);margin-top:8px;">Admin Dashboard</a>
   </div>
-</div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
 
-<!-- ============ 1. WHAT IS PRIME GROUP ============ -->
-<section id="what-is-prime" class="prime-intro-section">
+<!-- SECTION 1B — FEATURED PROPERTIES -->
+<section class="band white" id="featured">
   <div class="wrap">
-    <div class="prime-intro-grid">
-      <div class="prime-intro-copy">
-        <span class="eyebrow">What Is Prime Group</span>
-        <h1>Karachi's Trusted Real Estate &amp; Construction Partner</h1>
-        <p>Since 1986, Prime Group unites verified property brokerage, turnkey construction, and smart investment advisory under one roof.</p>
-        <div class="prime-cta-row">
-          <a href="find-property.html" class="btn btn-light-solid">Find Dream Property →</a>
-          <a href="list-property.html" class="btn btn-light-outline">List Your Properties</a>
-        </div>
-        <div class="prime-stats-bar">
-          <div class="prime-stat"><b>38+</b><span>Years of Trust</span></div>
-          <div class="prime-stat"><b>500+</b><span>Verified Deals</span></div>
-          <div class="prime-stat"><b>120+</b><span>Projects Built</span></div>
-        </div>
-      </div>
-
-      <div class="prime-pillars">
-        <div class="pillar-card">
-          <div>
-            <h3>Real Estate Brokerage</h3>
-            <p>Verified residential &amp; commercial properties across DHA, Clifton, and Bahria Town.</p>
-          </div>
-        </div>
-        <div class="pillar-card">
-          <div>
-            <h3>Turnkey Construction</h3>
-            <p>In-house architecture, grey structure, and luxury finishing delivered on schedule.</p>
-          </div>
-        </div>
-        <div class="pillar-card">
-          <div>
-            <h3>Smart Advisory</h3>
-            <p>Clear title verification, market valuation, and transparent end-to-end support.</p>
-          </div>
-        </div>
-      </div>
+    <div class="head">
+      <div><p class="kicker rv">Featured inventory</p><h2 class="rv">Verified Karachi properties</h2></div>
+      <p class="lead rv">Handpicked homes, suites and DHA commercial opportunities across Phase 6, Phase 8, Clifton and Bahria Town. Tap any listing for full details and direct advisor contact.</p>
+    </div>
+    <div class="plist" id="home-featured"></div>
+    <div class="ctas rv" style="margin-top:36px;justify-content:center">
+      <a class="btn btn-p mag" href="property-listing.html">View all 18 listings <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+      <a class="btn btn-o" href="find-property.html">Search by budget &amp; area</a>
     </div>
   </div>
 </section>
 
-<!-- ============ 2. FEATURED PROPERTIES ============ -->
-<section id="listing" class="listings-section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Featured Inventory</span>
-      <h2>Properties Ready for Sale &amp; Rent</h2>
-      <p>Explore verified listings with photos, video tours, and direct seller contact.</p>
+<!-- SECTION 1C — FROM OUR INSTAGRAM -->
+<section class="band" id="instagram">
+  <div class="wrap" id="ig" data-limit="3">
+    <div class="head">
+      <div><p class="kicker rv">From our Instagram</p><h2 class="rv">DHA Commercial Highlights</h2></div>
+      <p class="lead rv">Latest reels and property updates from Bukhari Commercial (DHA Phase 6) and Al-Murtaza &amp; Sahil Commercial (DHA Phase 8) straight from <strong>@primeestateenterprises</strong>.</p>
     </div>
-
-    <div class="listing-toolbar">
-      <div class="lt-search-box">
-        <span>🔍</span>
-        <input type="text" id="inventoryQuickSearch" placeholder="Search city, area, title, price...">
-      </div>
-      <div class="lt-controls">
-        <div class="lt-select-wrap">
-          <label for="inventoryCategorySelect" class="lt-label">Category</label>
-          <select id="inventoryCategorySelect" class="lt-select" aria-label="Filter properties by category">
-            <option value="All">All Properties</option>
-            <option value="For Sale">For Sale</option>
-            <option value="For Rent">For Rent</option>
-            <option value="Houses">Houses</option>
-            <option value="Apartments">Apartments</option>
-            <option value="Plots">Plots</option>
-            <option value="Commercial">Commercial</option>
-          </select>
-        </div>
-        <div class="lt-view-toggle" role="group" aria-label="Layout View">
-          <button type="button" id="viewGridBtn" class="lt-view-btn active">▦ Grid</button>
-          <button type="button" id="viewListBtn" class="lt-view-btn">☰ List</button>
-        </div>
-        <span id="inventoryCountBadge" class="lt-count-badge">Showing 18 Properties</span>
-      </div>
+    <div class="ig-top">
+      <a class="ig-handle" href="https://www.instagram.com/primeestateenterprises/?hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>@primeestateenterprises</a>
+      <a class="tlink" href="property-listing.html#instagram">See all 11 Instagram posts <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
     </div>
-
-    <div class="listing-grid"></div>
+    <div class="ig-grid"></div>
   </div>
 </section>
 
-<!-- ============ 3. OUR LEGACY ============ -->
-<section id="legacy" class="legacy-section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Our Legacy</span>
-      <h2>Nearly Four Decades of Excellence</h2>
-      <p>Four milestones that shaped Prime Group into Karachi's most dependable property name.</p>
+<!-- SECTION 2 — OUR LEGACY -->
+<section class="legacy" id="legacy">
+  <div class="ghost" aria-hidden="true">1986</div>
+  <div class="wrap legacy-head">
+    <div>
+      <p class="kicker rv">Our legacy</p>
+      <h2 class="rv">Nearly four decades of excellence</h2>
     </div>
-
-    <div class="legacy-grid">
-      <div class="legacy-card">
-        <span class="legacy-year">1986</span>
+    <p class="rv">Prime Group started as a small Karachi brokerage built on one rule: every deal is title-verified. That rule still holds as we design, build and sell across the city.</p>
+  </div>
+  <div class="pin" id="pin">
+    <div class="rail"><i id="rail"></i></div>
+    <div class="track" id="track">
+      <article class="ms on">
+        <div class="yr">1986</div>
         <h3>Foundation</h3>
-        <p>Established in Karachi with a clear promise: transparent, title-verified property deals.</p>
-      </div>
-      <div class="legacy-card">
-        <span class="legacy-year">2004</span>
-        <h3>Construction Wing</h3>
-        <p>Launched our dedicated architectural design and turnkey construction division.</p>
-      </div>
-      <div class="legacy-card">
-        <span class="legacy-year">2018</span>
-        <h3>Digital Listings</h3>
-        <p>Brought verified inventory, media tours, and direct seller access online.</p>
-      </div>
-      <div class="legacy-card">
-        <span class="legacy-year">2026</span>
-        <h3>Modern Era</h3>
-        <p>Full-service digital brokerage, financing tools, and modern architectural builds.</p>
-      </div>
+        <p>Prime Group opens in Karachi, earning its name on clean, title-verified property deals.</p>
+        <svg viewBox="0 0 200 120" aria-hidden="true"><path class="bp" d="M20 110h160M40 110V50h120v60M30 50h140l-10-20H40zM60 70h30v40H60zM110 70h34v24h-34z"/></svg>
+      </article>
+      <article class="ms">
+        <div class="yr">2004</div>
+        <h3>Construction wing</h3>
+        <p>An in-house architecture and turnkey construction division joins the brokerage.</p>
+        <svg viewBox="0 0 200 120" aria-hidden="true"><path class="bp" d="M20 110h160M50 110V14M50 18h120M50 30l30-12M150 18v30M144 48h12v12h-12zM90 110V70h50v40M90 86h50"/></svg>
+      </article>
+      <article class="ms">
+        <div class="yr">2018</div>
+        <h3>Digital listings</h3>
+        <p>Verified inventory goes online, with photo and video tours and direct seller access.</p>
+        <svg viewBox="0 0 200 120" aria-hidden="true"><path class="bp" d="M30 20h90v70H30zM20 90h110l-8 12H28zM50 70V50l25-16 25 16v20zM146 30h34v64h-34zM156 86h14"/></svg>
+      </article>
+      <article class="ms">
+        <div class="yr">2026</div>
+        <h3>Modern era</h3>
+        <p>Full-service digital brokerage, financing tools and modern builds, all under one roof.</p>
+        <svg viewBox="0 0 200 120" aria-hidden="true"><path class="bp" d="M20 110h160M40 110V60h30v50M80 110V16h44v94M134 110V44h36v66M90 30h24M90 46h24M90 62h24M90 78h24M144 58h16M144 74h16"/></svg>
+      </article>
     </div>
   </div>
+  <a class="story" href="about.html">Read our full story <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
 </section>
 
-<!-- ============ 4. HOW TO CONTACT ============ -->
-<section id="contact" class="contact-section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">How to Contact</span>
-      <h2>Connect With Prime Group</h2>
-      <p>Visit our DHA office, send an inquiry, or message our advisors directly.</p>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-channels">
-        <div class="channel-card">
-          <div class="channel-ic">📍</div>
-          <div>
-            <h4>Visit Our Office</h4>
-            <p>63‑C DHA Phase 2, Commercial Area A, Karachi</p>
-          </div>
-        </div>
-        <div class="channel-card">
-          <div class="channel-ic">✉</div>
-          <div>
-            <h4>Email Advisory</h4>
-            <p>primeestateenterprises@gmail.com</p>
-          </div>
-        </div>
-        <div class="channel-card">
-          <div class="channel-ic">📞</div>
-          <div>
-            <h4>Direct Line &amp; WhatsApp</h4>
-            <p>(021) 111-111-800 · Mon–Sat, 9 AM – 7 PM</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-card">
-        <form id="homeContactForm">
-          <div class="form-row">
-            <div class="field"><label>Your Name</label><input type="text" placeholder="Full name" required></div>
-            <div class="field"><label>Phone / WhatsApp</label><input type="tel" placeholder="+92 300 0000000" required></div>
-          </div>
-          <div class="form-row">
-            <div class="field"><label>Email</label><input type="email" placeholder="you@email.com" required></div>
-            <div class="field">
-              <label>Purpose</label>
-              <select>
-                <option>Buy a Property</option>
-                <option>Sell / List Property</option>
-                <option>Construction Project</option>
-                <option>General Inquiry</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field full"><label>Message</label><textarea rows="3" placeholder="Tell us how we can help..."></textarea></div>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
-        </form>
+<!-- SECTION 3 — HOW TO CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="kicker rv">How to contact</p>
+      <h2 class="rv">Connect with Prime Group</h2>
+      <p class="intro rv">Buying, selling or planning a build? Tell us what you need and our team will get back to you. WhatsApp is the quickest way to reach us.</p>
+      <div class="ccard rv" data-contact="card"></div>
+      <div class="map rv">
+        <iframe title="Prime Group office on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Commercial+Area+A+DHA+Phase+2+Karachi&output=embed"></iframe>
       </div>
     </div>
+
+    <form class="inq rv" id="inq" novalidate>
+      <div class="fields">
+        <h3>Send us a message</h3>
+        <p>All fields except email are required.</p>
+        <div class="row">
+          <div class="f"><input id="n" name="Name" placeholder=" " autocomplete="name"><label for="n">Full name</label><small class="e">Enter your name.</small></div>
+          <div class="f"><input id="p" name="Phone" type="tel" placeholder=" " autocomplete="tel"><label for="p">Phone / WhatsApp</label><small class="e">Enter a number we can call or message.</small></div>
+        </div>
+        <div class="f"><input id="e" name="Email" type="email" placeholder=" " autocomplete="email"><label for="e">Email (optional)</label><small class="e">This email address looks incomplete.</small></div>
+        <div class="f"><select id="pu" name="Purpose">
+          <option value="" selected disabled hidden></option>
+          <option>Buy a property</option><option>Sell / list property</option><option>Construction project</option><option>General inquiry</option>
+        </select><label for="pu">Purpose</label><small class="e">Choose what you need help with.</small></div>
+        <div class="f"><textarea id="m" name="Message" placeholder=" "></textarea><label for="m">Message</label><small class="e">Tell us a little about your requirement.</small></div>
+        <button class="btn btn-p" type="submit">Send message <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+      </div>
+      <div class="done" role="status" aria-live="polite">
+        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#C9D3E0" stroke-width="1.5"/><path d="M20 33l8 8 16-17" stroke="#14243C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Message ready</h3>
+        <p>Send it on WhatsApp to reach our team straight away.</p>
+        <a class="btn btn-p" data-wa-send href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <p><a href="#" data-again>Write another message</a></p>
+      </div>
+    </form>
   </div>
 </section>
+</main>
 
-<!-- ============ FOOTER (LOGO ON RIGHT SIDE) ============ -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;align-items:start;">
-      <div class="foot-brand-col" style="text-align:left;display:flex;flex-direction:column;align-items:flex-start;">
-        <img src="prime-group-logo.png" alt="Prime Group — Realtor and Developers" class="foot-logo-img">
-        <p style="font-size:14px;max-width:290px;">Karachi's trusted real estate and construction partner since 1986.</p>
-      </div>
-      <div>
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="construction.html">Real Estate &amp; Construction</a></li>
-          <li><a href="services.html">Services</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Properties</h5>
-        <ul>
-          <li><a href="find-property.html">Find Dream Property</a></li>
-          <li><a href="list-property.html">List Your Properties</a></li>
-          <li><a href="mortgage-calculator.html">Financial Calculator</a></li>
-          <li><a href="contact-us.html">Contact Us</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Contact</h5>
-        <ul>
-          <li>63‑C DHA 2, Phase 2, Karachi</li>
-          <li>primeestateenterprises@gmail.com</li>
-          <li>(021) 111-111-800</li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Prime Group. All rights reserved.</span>
-      <span>Karachi, Pakistan</span>
-    </div>
-  </div>
-</footer>
+<footer id="site-footer"></footer>
 
-<script src="list-property-logic.js?v=8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/prime.js"></script>
+<script src="assets/listings.js"></script>
+<script src="assets/instagram.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const nav = document.getElementById('mainnav');
-  if (nav) {
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
-  }
-  const burger = document.getElementById('burgerBtn');
-  const mnav = document.getElementById('mnav');
-  const close = document.getElementById('mnavClose');
-  if (burger && mnav) burger.addEventListener('click', () => mnav.classList.add('open'));
-  if (close && mnav) close.addEventListener('click', () => mnav.classList.remove('open'));
-  if (mnav) mnav.addEventListener('click', e => { if (e.target === mnav) mnav.classList.remove('open'); });
-  document.querySelectorAll('.mnav-panel a').forEach(a => a.addEventListener('click', () => mnav.classList.remove('open')));
+{
+/* Home page only: featured listings, hero drawing, legacy timeline, contact form. Header, footer, contact details live in assets/prime.js */
+if (window.PGL && document.getElementById("home-featured")) {
+  const picks = [16, 17, 18, 1, 2, 7].map(id => PGL.data.find(p => p.id === id)).filter(Boolean);
+  PGL.render(document.getElementById("home-featured"), picks);
+}
+PG.form(document.getElementById("inq"), { n: PG.V.req, p: PG.V.phone, e: PG.V.email, pu: PG.V.sel, m: PG.V.msg },
+  v => "Hello Prime Group,\n\n" + Object.entries(v).filter(([k, x]) => x).map(([k, x]) => k === "Message" ? "\n" + x : k + ": " + x).join("\n"));
 
-  const contactForm = document.getElementById('homeContactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you! Your inquiry has been received by Prime Group. Our team will contact you shortly.');
-      contactForm.reset();
-    });
-  }
-});
+const svg = document.getElementById("elev");
+const strokes = [...svg.querySelectorAll(".bp")];
+const ms = [...document.querySelectorAll(".ms")];
+const setOn = i => ms.forEach((m, k) => m.classList.toggle("on", k <= i));
+
+if (PG.hasG) {
+  /* Hero: blueprint draws itself, then lights come on */
+  strokes.forEach(p => { if (p.getAttribute("stroke-dasharray")) return; const L = p.getTotalLength ? p.getTotalLength() : 600; p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.from("#h1 .line-mask>span", { yPercent: 110, duration: 1.1, stagger: .12 })
+    .to("#what .rv", { opacity: 1, y: 0, duration: .9, stagger: .1 }, "-=.7")
+    .to(strokes.filter(p => !p.getAttribute("stroke-dasharray")), { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut", stagger: .04 }, .2)
+    .from(".anno", { opacity: 0, duration: .8, stagger: .15 }, "-=1.2")
+    .to(".mass", { opacity: 1, duration: 1 }, "-=.8")
+    .to(".win", { opacity: .9, duration: .9, stagger: .18, ease: "power1.inOut" }, "-=.6");
+  gsap.to(".draw-wrap", { yPercent: -8, ease: "none", scrollTrigger: { trigger: "#what", start: "top top", end: "bottom top", scrub: true } });
+  gsap.to(".ghost", { xPercent: -18, ease: "none", scrollTrigger: { trigger: "#legacy", start: "top bottom", end: "bottom top", scrub: true } });
+
+  /* Legacy: pinned horizontal run on wide screens, simple reveal on narrow */
+  const mm = gsap.matchMedia();
+  mm.add("(min-width: 900px)", () => {
+    const track = document.getElementById("track");
+    const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+    gsap.to(track, { x: () => -dist(), ease: "none", scrollTrigger: {
+      trigger: "#pin", start: "top 18%", end: () => "+=" + (dist() + innerHeight * .6), pin: true, scrub: .8, invalidateOnRefresh: true,
+      onUpdate: self => { document.getElementById("rail").style.transform = `scaleX(${self.progress})`; setOn(Math.min(ms.length - 1, Math.floor(self.progress * ms.length * .999))); }
+    }});
+  });
+  mm.add("(max-width: 899px)", () => {
+    ms.forEach((m, i) => gsap.from(m, { opacity: 0, y: 40, duration: .9, ease: "power3.out", scrollTrigger: { trigger: m, start: "top 82%", onEnter: () => setOn(i), onLeaveBack: () => setOn(i - 1) } }));
+  });
+} else {
+  svg.querySelectorAll(".win").forEach(w => w.style.opacity = .9);
+  svg.querySelectorAll(".mass").forEach(w => w.style.opacity = 1);
+  ms.forEach(m => m.classList.add("on"));
+  document.getElementById("rail").style.transform = "scaleX(1)";
+}
+}
 </script>
 </body>
 </html>
