@@ -81,7 +81,7 @@
   }
 
   if (PG.hasG) {
-    gsap.set(grid.querySelectorAll(".rv"), { opacity: 0, y: 28 });
-    ScrollTrigger.batch(grid.querySelectorAll(".rv"), { start: "top 90%", once: true, onEnter: els => gsap.to(els, { opacity: 1, y: 0, duration: 0.9, stagger: 0.08, ease: "power3.out" }) });
+    gsap.set(grid.querySelectorAll(".rv"), { opacity: 0, y: 40, rotationX: 10, scale: 0.96, transformPerspective: 1000 });
+    ScrollTrigger.batch(grid.querySelectorAll(".rv"), { start: "top 90%", once: true, onEnter: els => gsap.to(els, { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.85, stagger: 0.08, ease: "power3.out", clearProps: "transform" }) });
   }
 })();

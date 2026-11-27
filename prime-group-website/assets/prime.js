@@ -64,12 +64,11 @@
       <nav class="nav" aria-label="Main">
         <a href="index.html"${cur("home")}>Home</a>
         <a href="about.html"${cur("about")}>About</a>
-        <div class="dd${ddCur(["construction", "listings", "calculator"])}">
+        <div class="dd${ddCur(["construction", "listings"])}">
           <button type="button" aria-haspopup="true">Real Estate &amp; Construction ${ic.car}</button>
           <div class="dd-menu">
             <a href="construction.html"${cur("construction")}><b>Construction &amp; Projects</b><span>Design, grey structure and finishing</span></a>
             <a href="property-listing.html"${cur("listings")}><b>All Listings</b><span>Verified homes, plots and commercial space</span></a>
-            <a href="mortgage-calculator.html"${cur("calculator")}><b>Financial Calculator</b><span>Work out instalments before you commit</span></a>
           </div>
         </div>
         <a href="services.html"${cur("services")}>Services</a>
@@ -96,7 +95,6 @@
       <a href="construction.html">Real Estate &amp; Construction</a>
       <a class="sub" href="construction.html">Construction &amp; Projects</a>
       <a class="sub" href="property-listing.html">All Listings</a>
-      <a class="sub" href="mortgage-calculator.html">Financial Calculator</a>
       <a href="services.html">Services</a>
       <a href="find-property.html">Find Properties</a>
       <a class="sub" href="find-property.html">Find Dream Property</a>
@@ -124,7 +122,7 @@
           </div>
         </div>
         <div><h4>Quick links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="construction.html">Real Estate &amp; Construction</a></li><li><a href="services.html">Services</a></li></ul></div>
-        <div><h4>Properties</h4><ul><li><a href="find-property.html">Find Dream Property</a></li><li><a href="list-property.html">List Your Properties</a></li><li><a href="property-listing.html">All Listings</a></li><li><a href="mortgage-calculator.html">Financial Calculator</a></li><li><a href="contact-us.html">Contact Us</a></li></ul></div>
+        <div><h4>Properties</h4><ul><li><a href="find-property.html">Find Dream Property</a></li><li><a href="list-property.html">List Your Properties</a></li><li><a href="property-listing.html">All Listings</a></li><li><a href="contact-us.html">Contact Us</a></li></ul></div>
         <div><h4>Contact</h4><ul>
           <li>${esc(CONTACT.address)}</li>
           <li><a href="tel:${CONTACT.phoneTel}">${esc(CONTACT.phoneDisplay)}</a></li>
@@ -287,13 +285,23 @@
     document.body.appendChild(prog);
     gsap.to(prog, { scaleX: 1, ease: "none", scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 0.2 } });
 
-    /* Generic 3D translated reveals for text, headings & sections */
-    ScrollTrigger.batch(document.querySelectorAll("main .rv:not(.phero .rv):not(#what .rv)"), {
-      start: "top 88%", once: true,
+    /* Generic 3D translated reveals for all text, headings, sections & cards */
+    const rvNodes = [...document.querySelectorAll("main .rv:not(.phero .rv):not(#what .rv)")];
+    ScrollTrigger.batch(rvNodes, {
+      start: "top 90%", once: true,
       onEnter: els => gsap.fromTo(els,
-        { opacity: 0, y: 38, rotationX: 11, transformPerspective: 1000, transformOrigin: "50% 100%" },
-        { opacity: 1, y: 0, rotationX: 0, duration: 0.95, stagger: 0.08, ease: "power3.out", clearProps: "transform" })
+        { opacity: 0, y: 42, rotationX: 12, scale: 0.97, transformPerspective: 1000, transformOrigin: "50% 100%" },
+        { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.9, stagger: 0.08, ease: "power3.out", clearProps: "transform" })
     });
+    /* Extra 3D translated scroll animation for all cards, steps, FAQ rows & area tiles */
+    const cardNodes = [...document.querySelectorAll(".card:not(.rv), .step, .offer article, .areas > div, .faq details, .chan a:not(.rv), .why2, .board:not(.rv)")];
+    if (cardNodes.length) {
+      gsap.set(cardNodes, { opacity: 0, y: 38, rotationX: 10, scale: 0.96, transformPerspective: 1000 });
+      ScrollTrigger.batch(cardNodes, {
+        start: "top 90%", once: true,
+        onEnter: els => gsap.to(els, { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.85, stagger: 0.07, ease: "power3.out", clearProps: "transform" })
+      });
+    }
     /* 3D scroll reveal on hero & photo containers */
     document.querySelectorAll(".panel.photo, .hero-photo").forEach(box => {
       gsap.fromTo(box,

@@ -45,7 +45,9 @@
   function render(el, list) {
     el.innerHTML = list.length ? list.map(card).join("") :
       `<div class="empty"><h3>No properties match these filters</h3><p class="muted">Widen the budget or choose another area. You can also send us your requirement and we will look for you.</p><a class="btn btn-p btn-sm" href="find-property.html#brief">Send my requirement</a></div>`;
-    if (window.gsap && window.PG && PG.hasG) gsap.fromTo(el.querySelectorAll(".pc"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.05, ease: "power3.out" });
+    if (window.gsap && window.PG && PG.hasG) gsap.fromTo(el.querySelectorAll(".pc"),
+      { opacity: 0, y: 40, rotationX: 10, scale: 0.96, transformPerspective: 1000 },
+      { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.8, stagger: 0.06, ease: "power3.out", clearProps: "transform" });
     else el.querySelectorAll(".pc").forEach(c => { c.style.opacity = 1; c.style.transform = "none"; });
   }
 
@@ -75,10 +77,7 @@
           <a class="btn btn-wa" href="${waHref}" target="_blank" rel="noopener">${I.wa}${p.advisor ? "WhatsApp " + esc(p.advisor) : "Ask on WhatsApp"}</a>
           <a class="btn btn-o" href="${telHref}">${I.call}${p.advisor ? "Call " + esc(p.advisor) : "Call"}</a>
         </div>
-        <p style="margin:18px 0 0;display:flex;flex-wrap:wrap;gap:18px">
-          <a class="tlink" href="mortgage-calculator.html?price=${p.pkr}">Calculate monthly instalment ${I.arr}</a>
-          ${p.ig ? `<a class="tlink" href="${esc(p.ig)}" target="_blank" rel="noopener">View on Instagram ${I.arr}</a>` : ""}
-        </p>
+        ${p.ig ? `<p style="margin:18px 0 0"><a class="tlink" href="${esc(p.ig)}" target="_blank" rel="noopener">View on Instagram ${I.arr}</a></p>` : ""}
       </div></div>`;
     modal.classList.add("open"); document.body.style.overflow = "hidden";
     PG.lenis && PG.lenis.stop();
