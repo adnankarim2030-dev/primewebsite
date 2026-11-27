@@ -107,51 +107,52 @@ section{padding:76px 0;}
 .section-head h2{font-size:clamp(28px,3.2vw,42px);margin-top:10px;line-height:1.15;}
 .section-head p{color:var(--ink-soft);margin-top:12px;font-size:16.5px;}
 
-/* ============ 1. WHAT IS PRIME GROUP ============ */
+/* ============ 1. WHAT IS PRIME GROUP (COMPACT HALF-HEIGHT) ============ */
 .prime-intro-section{
   background:#14243C;
   color:#F3F1EA;
-  padding:72px 0;
+  padding:28px 0;
   border-bottom:1px solid rgba(243,241,234,0.12);
 }
-.prime-intro-section .eyebrow{color:#F3F1EA;}
+.prime-intro-section .eyebrow{color:#F3F1EA;font-size:10.5px;}
 .prime-intro-grid{
   display:grid;
   grid-template-columns:1.25fr 1fr;
-  gap:48px;
+  gap:28px;
   align-items:center;
 }
 .prime-intro-copy h1{
-  font-size:clamp(32px,4.2vw,54px);
+  font-size:clamp(22px,2.5vw,34px);
   color:#FFFFFF;
-  line-height:1.08;
-  margin:14px 0 18px;
+  line-height:1.12;
+  margin:8px 0 10px;
 }
 .prime-intro-copy p{
   color:#D6D2C7;
-  font-size:17.5px;
-  max-width:620px;
-  margin-bottom:28px;
+  font-size:14px;
+  max-width:560px;
+  margin-bottom:16px;
+  line-height:1.5;
 }
-.prime-cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px;}
+.prime-cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.prime-cta-row .btn{padding:10px 18px;font-size:13px;}
 .prime-stats-bar{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  padding-top:26px;
+  gap:14px;
+  padding-top:14px;
   border-top:1px solid rgba(243,241,234,0.16);
-  max-width:560px;
+  max-width:440px;
 }
 .prime-stat b{
   display:block;
   font-family:'Montserrat',sans-serif;
-  font-size:clamp(26px,2.8vw,34px);
+  font-size:clamp(18px,1.9vw,24px);
   color:#FFFFFF;
   line-height:1.1;
 }
 .prime-stat span{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;
+  font-size:9.5px;
   letter-spacing:0.08em;
   text-transform:uppercase;
   color:#D6D2C7;
@@ -159,28 +160,21 @@ section{padding:76px 0;}
 .prime-pillars{
   display:grid;
   grid-template-columns:1fr;
-  gap:16px;
+  gap:8px;
 }
 .pillar-card{
   background:rgba(243,241,234,0.06);
   border:1px solid rgba(243,241,234,0.18);
-  border-radius:16px;
-  padding:22px 24px;
+  border-radius:12px;
+  padding:11px 16px;
   display:flex;
   align-items:flex-start;
-  gap:16px;
+  gap:12px;
   transition:transform 0.3s var(--ease), border-color 0.3s ease;
 }
-.pillar-card:hover{transform:translateX(6px);border-color:rgba(243,241,234,0.42);}
-.pillar-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:13px;font-weight:700;
-  color:#14243C;background:#F3F1EA;
-  width:36px;height:36px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.pillar-card h3{color:#FFFFFF;font-size:17px;margin-bottom:4px;}
-.pillar-card p{color:#D6D2C7;font-size:14.5px;margin:0;line-height:1.5;}
+.pillar-card:hover{transform:translateX(4px);border-color:rgba(243,241,234,0.42);}
+.pillar-card h3{color:#FFFFFF;font-size:14px;margin-bottom:2px;}
+.pillar-card p{color:#D6D2C7;font-size:12px;margin:0;line-height:1.4;}
 
 /* ============ 2. LEGACY ============ */
 .legacy-section{background:#F3F1EA;}
@@ -209,10 +203,13 @@ section{padding:76px 0;}
 .legacy-card p{font-size:14.5px;color:#435063;line-height:1.55;}
 
 /* ============ 3. FEATURED LISTINGS ============ */
-.listings-section{background:#EAE6DC;}
+.listings-section{background:#EAE6DC;padding:34px 0 64px;}
+.listings-section .section-head{margin-bottom:20px;}
+.listings-section .section-head h2{font-size:clamp(22px,2.5vw,32px);margin-top:6px;}
+.listings-section .section-head p{margin-top:6px;font-size:14.5px;}
 .listing-toolbar{
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
-  background:#14243C;padding:14px 18px;border-radius:16px;margin-bottom:32px;
+  background:#14243C;padding:12px 16px;border-radius:14px;margin-bottom:22px;
   border:1px solid rgba(243,241,234,0.16);
   box-shadow:0 18px 36px -20px rgba(20,36,60,0.45);
 }
@@ -275,7 +272,7 @@ footer ul li a:hover{color:#F3F1EA;text-decoration:underline;text-underline-offs
 }
 @media (max-width:720px){
   section{padding:52px 0;}
-  .prime-intro-section{padding:48px 0;}
+  .prime-intro-section{padding:22px 0;}
   .legacy-grid,.listing-grid,.form-row,.foot-grid{grid-template-columns:1fr;}
   .prime-stats-bar{gap:12px;}
   .lt-search-box{min-width:100%;}
