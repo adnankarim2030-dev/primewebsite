@@ -266,11 +266,143 @@
       baths: '',
       title: 'Main Boulevard Commercial Plot',
       description: 'Ideal for showroom, medical center, or mixed-use tower with high footfall.',
-      images: ['construction_site.png'],
+      images: ['karachi_construction_site.jpg'],
       videoClip: '',
       customerName: 'Saad Builders',
       customerEmail: 'saad.builders@gmail.com',
       mobile: '+92 345 9182736',
+      status: 'Confirmed & Live',
+      isDefault: true
+    },
+    {
+      id: 'PG-104833',
+      purpose: 'Sell',
+      category: 'Home',
+      subtype: 'Penthouse',
+      city: 'Karachi',
+      location: 'Clifton Block 2, Sea View',
+      area: '4200',
+      areaUnit: 'Sq. Ft.',
+      price: '18.75 Crore',
+      beds: '4',
+      baths: '5',
+      title: 'Clifton Sea-View Penthouse',
+      description: 'Ultra-luxury rooftop terrace penthouse overlooking the Arabian Sea.',
+      images: ['karachi_clifton_penthouse.jpg', 'karachi_clifton_apt.jpg'],
+      videoClip: '',
+      customerName: 'Usman Tariq',
+      customerEmail: 'usman.tariq@gmail.com',
+      mobile: '+92 300 5541290',
+      status: 'Confirmed & Live',
+      isDefault: true
+    },
+    {
+      id: 'PG-104834',
+      purpose: 'Sell',
+      category: 'Home',
+      subtype: 'House',
+      city: 'Karachi',
+      location: 'DHA Phase 5, Khayaban-e-Muhafiz',
+      area: '500',
+      areaUnit: 'Sq. Yd.',
+      price: '16.50 Crore',
+      beds: '5',
+      baths: '6',
+      title: 'DHA Phase 5 Executive Bungalow',
+      description: 'Turnkey designer bungalow with travertine elevation and basement lounge.',
+      images: ['karachi_turnkey_bungalow.jpg', 'karachi_dha_villa.jpg'],
+      videoClip: '',
+      customerName: 'Salman Zubairi',
+      customerEmail: 'salman.z@gmail.com',
+      mobile: '+92 321 8201144',
+      status: 'Confirmed & Live',
+      isDefault: true
+    },
+    {
+      id: 'PG-104835',
+      purpose: 'Sell',
+      category: 'Home',
+      subtype: 'Flat',
+      city: 'Karachi',
+      location: 'Bahadurabad, Alamgir Road',
+      area: '2400',
+      areaUnit: 'Sq. Ft.',
+      price: '4.10 Crore',
+      beds: '4',
+      baths: '4',
+      title: 'Bahadurabad Luxury 4-Bed Flat',
+      description: 'Corner west-open luxury apartment with standby generator and lift.',
+      images: ['karachi_pechs_tower.jpg'],
+      videoClip: '',
+      customerName: 'Hamza Memon',
+      customerEmail: 'hamza.memon@gmail.com',
+      mobile: '+92 333 2190876',
+      status: 'Confirmed & Live',
+      isDefault: true
+    },
+    {
+      id: 'PG-104836',
+      purpose: 'Sell',
+      category: 'Home',
+      subtype: 'House',
+      city: 'Karachi',
+      location: 'KDA Scheme 1, Main Stadium Rd',
+      area: '600',
+      areaUnit: 'Sq. Yd.',
+      price: '24.00 Crore',
+      beds: '6',
+      baths: '6',
+      title: 'KDA Scheme 1 Courtyard Villa',
+      description: 'Gated luxury residence with landscaped lawn and modern kitchen.',
+      images: ['karachi_dha6_mansion.jpg'],
+      videoClip: '',
+      customerName: 'Faisal Lakhani',
+      customerEmail: 'faisal.l@gmail.com',
+      mobile: '+92 300 9241880',
+      status: 'Confirmed & Live',
+      isDefault: true
+    },
+    {
+      id: 'PG-104837',
+      purpose: 'Rent',
+      category: 'Commercial',
+      subtype: 'Office',
+      city: 'Karachi',
+      location: 'Shahrah-e-Faisal, Nursery',
+      area: '4800',
+      areaUnit: 'Sq. Ft.',
+      price: '8.50 Lac / mo',
+      beds: '',
+      baths: '4',
+      title: 'Shahrah-e-Faisal Corporate Hub',
+      description: 'Full-floor corporate headquarters with glass facade and parking.',
+      images: ['karachi_highrise_build.jpg', 'karachi_corporate_tower.jpg'],
+      videoClip: '',
+      customerName: 'Raza Holdings',
+      customerEmail: 'raza.holdings@gmail.com',
+      mobile: '+92 322 4401928',
+      status: 'Confirmed & Live',
+      isDefault: true
+    },
+    {
+      id: 'PG-104838',
+      purpose: 'Sell',
+      category: 'Home',
+      subtype: 'Flat',
+      city: 'Karachi',
+      location: 'Gulshan-e-Iqbal Block 7',
+      area: '1650',
+      areaUnit: 'Sq. Ft.',
+      price: '2.65 Crore',
+      beds: '3',
+      baths: '3',
+      title: 'Gulshan Block 7 Modern Flat',
+      description: 'Brand new 3-bed family apartment near University Road.',
+      images: ['karachi_bahria_villa.jpg'],
+      videoClip: '',
+      customerName: 'Omer Siddiqui',
+      customerEmail: 'omer.s@gmail.com',
+      mobile: '+92 334 7812093',
       status: 'Confirmed & Live',
       isDefault: true
     }
@@ -479,71 +611,123 @@
       const style = document.createElement('style');
       style.id = 'pgCarouselStyles';
       style.textContent = `
-        .pg-carousel { position: relative; height: 230px; overflow: hidden; background: #0E1A2B; }
+        /* 6-Column Compact Desktop & 2-Column Compact Mobile Grid */
+        #listing .listing-grid:not(.list-view) {
+          display: grid !important;
+          grid-template-columns: repeat(6, 1fr) !important;
+          gap: 14px !important;
+        }
+        @media (max-width: 1359px) {
+          #listing .listing-grid:not(.list-view) {
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 16px !important;
+          }
+        }
+        @media (max-width: 1023px) {
+          #listing .listing-grid:not(.list-view) {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 14px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          #listing .listing-grid:not(.list-view) {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+        }
+
+        .pg-carousel { position: relative; height: 155px; overflow: hidden; background: #0E1A2B; }
         .pg-carousel-track { display: flex; height: 100%; width: 100%; transition: transform 0.65s cubic-bezier(.22,1,.36,1); }
         .pg-carousel-slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
         .pg-carousel-slide img, .pg-carousel-slide video { width: 100%; height: 100%; object-fit: cover; display: block; }
         .pg-carousel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,36,60,0.72) 0%, transparent 55%); pointer-events: none; z-index: 1; }
-        .pg-c-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 28px; height: 28px; border-radius: 50%; border: none; background: rgba(20,36,60,0.82); color: #F3F1EA; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s ease; }
+        .pg-c-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 24px; height: 24px; border-radius: 50%; border: none; background: rgba(20,36,60,0.82); color: #F3F1EA; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s ease; }
         .pg-carousel:hover .pg-c-nav { opacity: 1; }
         @media (hover: none), (max-width: 900px) { .pg-c-nav { opacity: 0.85; } }
-        .pg-c-prev { left: 10px; }
-        .pg-c-next { right: 10px; }
-        .pg-c-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; gap: 5px; }
-        .pg-c-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(243,241,234,0.45); border: none; padding: 0; cursor: pointer; transition: all 0.25s ease; }
-        .pg-c-dot.active { background: #F3F1EA; width: 16px; border-radius: 999px; }
-        .pg-c-count { position: absolute; top: 12px; right: 12px; z-index: 3; background: rgba(20,36,60,0.86); color: #F3F1EA; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(243,241,234,0.22); }
+        .pg-c-prev { left: 6px; }
+        .pg-c-next { right: 6px; }
+        .pg-c-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; gap: 4px; }
+        .pg-c-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(243,241,234,0.45); border: none; padding: 0; cursor: pointer; transition: all 0.25s ease; }
+        .pg-c-dot.active { background: #F3F1EA; width: 12px; border-radius: 999px; }
+        .pg-c-count { position: absolute; top: 8px; right: 8px; z-index: 3; background: rgba(20,36,60,0.86); color: #F3F1EA; font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 999px; border: 1px solid rgba(243,241,234,0.22); }
 
-        /* Dark Blue Card Theme */
+        /* Dark Blue Compact Card Theme */
         #listing .pcard {
           background: #14243C !important;
           color: #F3F1EA !important;
           border: 1px solid rgba(243,241,234,0.16) !important;
-          box-shadow: 0 18px 40px -22px rgba(20,36,60,0.45);
-          transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
+          border-radius: 14px !important;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 14px 32px -18px rgba(20,36,60,0.45);
+          transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease, border-color 0.3s ease;
         }
         #listing .pcard:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 30px 58px -22px rgba(20,36,60,0.62);
+          transform: translateY(-4px);
+          box-shadow: 0 24px 44px -18px rgba(20,36,60,0.62);
           border-color: rgba(243,241,234,0.34) !important;
         }
-        #listing .pcard-body { padding: 22px 24px; display: flex; flex-direction: column; flex: 1; }
-        #listing .pcard-body h4 { font-size: 18px; color: #FFFFFF !important; line-height: 1.3; margin-bottom: 4px; }
-        #listing .pcard-body .price { color: #F3F1EA !important; font-size: 20px; font-weight: 700; margin: 6px 0 12px; }
-        #listing .pcard-body ul { color: #D6D2C7 !important; margin-bottom: 12px; }
-        #listing .pcard-body ul li::before { background: #F3F1EA !important; }
-        #listing .pcard-loc { color: #D6D2C7 !important; margin-bottom: 12px; }
+        #listing .pcard-body { padding: 13px 13px 14px; display: flex; flex-direction: column; flex: 1; }
+        #listing .pcard-body h4 { font-size: 13.5px; color: #FFFFFF !important; line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        #listing .pcard-body .price { color: #F3F1EA !important; font-size: 14.5px; font-weight: 800; margin: 2px 0 8px; }
+        #listing .pcard-body ul { color: #D6D2C7 !important; font-size: 11px !important; gap: 8px !important; margin-bottom: 8px !important; }
+        #listing .pcard-body ul li::before { width: 4px !important; height: 4px !important; background: #F3F1EA !important; }
+        #listing .pcard-loc { color: #D6D2C7 !important; font-size: 11px !important; margin-bottom: 10px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        #listing .pcard-seller-box {
+          background: rgba(243,241,234,0.08);
+          border-radius: 8px;
+          padding: 7px 9px;
+          font-size: 10.5px;
+          color: #F3F1EA;
+          margin-bottom: 10px;
+          border: 1px solid rgba(243,241,234,0.16);
+          line-height: 1.4;
+        }
         #listing .pcard-inquire-btn {
-          display: inline-flex; align-items: center; gap: 6px;
+          display: inline-flex; align-items: center; gap: 4px;
           background: #F3F1EA; color: #14243C !important;
-          padding: 8px 16px; border-radius: 999px;
-          font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+          padding: 6px 11px; border-radius: 999px;
+          font-weight: 700; font-size: 11px;
           transition: background 0.25s ease, transform 0.25s ease;
         }
         #listing .pcard-inquire-btn:hover { background: #FFFFFF; transform: translateX(2px); }
+        #listing .pcard-id { font-size: 9.5px; color: #B8B4A8; }
+        #listing .pcard .tag { padding: 3px 8px !important; font-size: 9.5px !important; bottom: 8px !important; left: 8px !important; }
+        #listing .pcard .pcard-video-btn { padding: 3px 8px !important; font-size: 9.5px !important; bottom: 8px !important; right: 8px !important; }
+
+        @media (max-width: 640px) {
+          .pg-carousel { height: 118px; }
+          #listing .pcard-body { padding: 10px; }
+          #listing .pcard-body h4 { font-size: 12px; }
+          #listing .pcard-body .price { font-size: 13px; margin: 2px 0 6px; }
+          #listing .pcard-body ul { font-size: 10px !important; gap: 6px !important; margin-bottom: 6px !important; }
+          #listing .pcard-loc { font-size: 10px !important; margin-bottom: 8px !important; }
+          #listing .pcard-seller-box { padding: 6px 7px; font-size: 9.5px; margin-bottom: 8px; }
+          #listing .pcard-inquire-btn { padding: 5px 9px; font-size: 10px; }
+          #listing .pcard-id { display: none; }
+          #listing .pcard .pcard-video-btn { display: none; }
+        }
 
         /* Horizontal List View Mode */
         #listing .listing-grid.list-view {
           grid-template-columns: 1fr !important;
-          gap: 20px;
+          gap: 16px !important;
         }
         #listing .listing-grid.list-view .pcard {
           display: grid;
-          grid-template-columns: 340px 1fr;
+          grid-template-columns: 300px 1fr;
           align-items: stretch;
         }
         #listing .listing-grid.list-view .pg-carousel {
           height: 100%;
-          min-height: 250px;
+          min-height: 200px;
         }
-        @media (max-width: 820px) {
-          #listing .listing-grid.list-view .pcard {
-            grid-template-columns: 1fr;
-          }
-          #listing .listing-grid.list-view .pg-carousel {
-            min-height: 220px;
-            height: 220px;
-          }
+        #listing .listing-grid.list-view .pcard-body { padding: 18px 22px; }
+        #listing .listing-grid.list-view .pcard-body h4 { font-size: 17px; }
+        #listing .listing-grid.list-view .pcard-body .price { font-size: 18px; }
+        @media (max-width: 720px) {
+          #listing .listing-grid.list-view .pcard { grid-template-columns: 1fr; }
+          #listing .listing-grid.list-view .pg-carousel { min-height: 180px; height: 180px; }
         }
       `;
       document.head.appendChild(style);
@@ -589,16 +773,13 @@
               ${item.baths ? `<li>${escapeHtml(item.baths)} Baths</li>` : ''}
             </ul>
             <div class="pcard-loc">📍 ${escapeHtml(item.location)}, ${escapeHtml(item.city)}</div>
-            <div style="background:rgba(243,241,234,0.08); border-radius:10px; padding:10px 12px; font-size:12.5px; color:#F3F1EA; margin-bottom:14px; border:1px solid rgba(243,241,234,0.18);">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:4px;">
-                <span><strong>Seller:</strong> ${escapeHtml(item.customerName || 'Verified Client')}</span>
-                <span style="background:rgba(243,241,234,0.16); color:#F3F1EA; font-weight:700; padding:2px 8px; border-radius:999px; font-size:11px;">✓ Verified</span>
-              </div>
-              <div><strong>Contact:</strong> <a href="tel:${escapeHtml(item.mobile)}" style="color:#FFFFFF; font-weight:700; text-decoration:underline; text-underline-offset:3px;">${escapeHtml(item.mobile)}</a></div>
+            <div class="pcard-seller-box">
+              <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><strong>${escapeHtml(item.customerName || 'Verified Client')}</strong> · ✓</div>
+              <div><a href="tel:${escapeHtml(item.mobile)}" style="color:#FFFFFF; font-weight:700; text-decoration:underline; text-underline-offset:2px;">${escapeHtml(item.mobile)}</a></div>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
-              <a href="contact-us.html" class="pcard-inquire-btn">Inquire Now <span>→</span></a>
-              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#B8B4A8;">${escapeHtml(item.id)}</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:auto;">
+              <a href="contact-us.html" class="pcard-inquire-btn">Inquire <span>→</span></a>
+              <span class="pcard-id">${escapeHtml(item.id)}</span>
             </div>
           </div>
         </div>
