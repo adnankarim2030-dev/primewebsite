@@ -261,6 +261,21 @@
       }
       const hc = ph.querySelector(".hero-cap");
       if (hc) gsap.from(hc, { y: 18, opacity: 0, duration: 0.8, delay: 0.45, ease: "power3.out" });
+      const hs = ph.querySelector(".hero-stage");
+      if (hs) {
+        const mainImg = hs.querySelector(".hero-visual img");
+        const inset = hs.querySelector(".hero-inset");
+        const badge = hs.querySelector(".hero-badge");
+        if (mainImg) {
+          gsap.fromTo(mainImg, { scale: 1.16, opacity: 0 }, { scale: 1.02, opacity: 1, duration: 1.3, delay: 0.15, ease: "power3.out" });
+          gsap.to(mainImg, { yPercent: 8, ease: "none", scrollTrigger: { trigger: ph, start: "top top", end: "bottom top", scrub: true } });
+        }
+        if (inset) {
+          gsap.from(inset, { y: 28, opacity: 0, duration: 0.9, delay: 0.45, ease: "power3.out" });
+          gsap.to(inset, { y: -22, ease: "none", scrollTrigger: { trigger: ph, start: "top top", end: "bottom top", scrub: true } });
+        }
+        if (badge) gsap.from(badge, { y: 18, opacity: 0, duration: 0.8, delay: 0.6, ease: "power3.out" });
+      }
     }
     /* Smooth image reveal on scroll for photo panels */
     document.querySelectorAll(".panel.photo img").forEach(img => {
