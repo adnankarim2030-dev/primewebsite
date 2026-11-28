@@ -256,7 +256,7 @@
       });
     }
     /* Page hero entrance */
-    const ph = document.querySelector(".phero");
+    const ph = document.querySelector(".phero, .fhero, .lhero");
     if (ph) {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(ph.querySelectorAll("h1 .line-mask>span"), { yPercent: 110, rotationX: 16, transformPerspective: 900, duration: 1, stagger: 0.1 })
