@@ -216,8 +216,10 @@ form.inq .btn-p:hover{background:var(--navy-2)}
 .line-mask>span{display:block}
 
 @media (max-width:1180px){
-  .hdr .wrap{display:flex;align-items:center;justify-content:space-between}
-  .nav,.hdr-soc{display:none}.burger{display:block}
+  .hdr .wrap{display:grid;grid-template-columns:40px 1fr 40px;align-items:center;gap:8px}
+  .brand{grid-column:2;justify-self:center}
+  .burger{grid-column:3;justify-self:end;margin-left:0;display:block}
+  .nav,.hdr-soc{display:none}
 }
 @media (max-width:1080px){
   .nav,.hdr-soc{display:none}.burger{display:block}

@@ -260,7 +260,7 @@
     if (ph) {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(ph.querySelectorAll("h1 .line-mask>span"), { yPercent: 110, rotationX: 16, transformPerspective: 900, duration: 1, stagger: 0.1 })
-        .to(ph.querySelectorAll(".rv"), { opacity: 1, y: 0, rotationX: 0, duration: 0.9, stagger: 0.08, clearProps: "transform" }, "-=.6");
+        .to(ph.querySelectorAll(".rv:not(.crumb)"), { opacity: 1, y: 0, rotationX: 0, duration: 0.9, stagger: 0.08, clearProps: "transform" }, "-=.6");
       drawSVG(ph.querySelector(".art svg"), 0.2);
       const hp = ph.querySelector(".hero-photo img");
       if (hp) {
