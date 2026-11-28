@@ -46,8 +46,8 @@
     el.innerHTML = list.length ? list.map(card).join("") :
       `<div class="empty"><h3>No properties match these filters</h3><p class="muted">Widen the budget or choose another area. You can also send us your requirement and we will look for you.</p><a class="btn btn-p btn-sm" href="find-property.html#brief">Send my requirement</a></div>`;
     if (window.gsap && window.PG && PG.hasG) gsap.fromTo(el.querySelectorAll(".pc"),
-      { opacity: 0, y: 40, rotationX: 10, scale: 0.96, transformPerspective: 1000 },
-      { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.8, stagger: 0.06, ease: "power3.out", clearProps: "transform" });
+      { opacity: 0, y: 36, rotationX: 10, scale: 0.97, transformPerspective: 1000 },
+      { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.8, stagger: 0.06, ease: "power3.out" });
     else el.querySelectorAll(".pc").forEach(c => { c.style.opacity = 1; c.style.transform = "none"; });
   }
 

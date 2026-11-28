@@ -330,7 +330,7 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg
 .wa-float svg{width:28px;height:28px;fill:#fff}
 
 /* Reveal & 3D Motion Graphics (avoid perspective on main so GSAP pin:true stays exact) */
-.js .rv{opacity:0;transform:translateY(28px);will-change:transform,opacity}
+.js .rv{opacity:0;will-change:transform,opacity}
 .hero-stage,.draw-wrap,.hero-photo,.panel.photo,.card,.pc,.area{transform-style:preserve-3d;will-change:transform}
 .hero-stage .hero-inset,.draw-wrap .hero-inset{transform:translateZ(34px)}
 .hero-stage .hero-badge,.draw-wrap .hero-badge{transform:translateZ(26px)}

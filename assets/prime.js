@@ -260,7 +260,7 @@
     if (ph) {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(ph.querySelectorAll("h1 .line-mask>span"), { yPercent: 110, rotationX: 16, transformPerspective: 900, duration: 1, stagger: 0.1 })
-        .to(ph.querySelectorAll(".rv:not(.crumb)"), { opacity: 1, y: 0, rotationX: 0, duration: 0.9, stagger: 0.08, clearProps: "transform" }, "-=.6");
+        .fromTo(ph.querySelectorAll(".rv:not(.crumb)"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.85, stagger: 0.08 }, "-=.6");
       drawSVG(ph.querySelector(".art svg"), 0.2);
       const hp = ph.querySelector(".hero-photo img");
       if (hp) {
@@ -296,20 +296,20 @@
     gsap.to(prog, { scaleX: 1, ease: "none", scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 0.2 } });
 
     /* Generic 3D translated reveals for all text, headings, sections & cards */
-    const rvNodes = [...document.querySelectorAll("main .rv:not(.phero .rv):not(#what .rv)")];
+    const rvNodes = [...document.querySelectorAll("main .rv:not(.phero .rv):not(.fhero .rv):not(.lhero .rv):not(#what .rv)")];
     ScrollTrigger.batch(rvNodes, {
       start: "top 90%", once: true,
       onEnter: els => gsap.fromTo(els,
-        { opacity: 0, y: 42, rotationX: 12, scale: 0.97, transformPerspective: 1000, transformOrigin: "50% 100%" },
-        { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.9, stagger: 0.08, ease: "power3.out", clearProps: "transform" })
+        { opacity: 0, y: 36, rotationX: 10, scale: 0.98, transformPerspective: 1000, transformOrigin: "50% 100%" },
+        { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.85, stagger: 0.08, ease: "power3.out" })
     });
     /* Extra 3D translated scroll animation for all cards, steps, FAQ rows & area tiles */
     const cardNodes = [...document.querySelectorAll(".card:not(.rv), .step, .offer article, .areas > div, .faq details, .chan a:not(.rv), .why2, .board:not(.rv)")];
     if (cardNodes.length) {
-      gsap.set(cardNodes, { opacity: 0, y: 38, rotationX: 10, scale: 0.96, transformPerspective: 1000 });
+      gsap.set(cardNodes, { opacity: 0, y: 34, rotationX: 10, scale: 0.97, transformPerspective: 1000 });
       ScrollTrigger.batch(cardNodes, {
         start: "top 90%", once: true,
-        onEnter: els => gsap.to(els, { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.85, stagger: 0.07, ease: "power3.out", clearProps: "transform" })
+        onEnter: els => gsap.to(els, { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.85, stagger: 0.07, ease: "power3.out" })
       });
     }
     /* 3D scroll reveal on hero & photo containers */
